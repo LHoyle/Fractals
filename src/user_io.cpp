@@ -32,6 +32,7 @@ int askQuestions3(std::istream& is, std::ostream& os){
     int intvalue=getInteger(is, os,doubleprompt);
     std::string intprompt="What is your favorite number? ";
     double doublevalue=getDouble(is, os,intprompt);
+    os <<std::endl;
     int i;
     std::string space=" ";
     if (intvalue<=0){
@@ -45,6 +46,6 @@ int askQuestions3(std::istream& is, std::ostream& os){
         std::cout << i<< space << stringvalue << space << doublevalue << std::endl;
        
     }
-    //os <<std::endl;
+    
     return intvalue;
 }
