@@ -1,53 +1,9 @@
-#include <string>
-#include <iostream>
-
-
-std::string getString( std::istream& is, std::ostream& os, const std::string& prompt ){
-    std::string value;
-    os <<prompt;
-    is >> value;
-    //os <<std::endl;
-    return value;
-}
-
-int getInteger( std::istream& is, std::ostream& os, const std::string& prompt ){
-    int value;
-    os <<prompt;
-    is >> value;
-    
-    return value;
-}
-
-double GetDouble(std::istream& is, std::ostream& os,const std::string& prompt){
-    double value;
-    os <<prompt;
-    is >> value;
-    //os <<std::endl;
-    return value;
-}
-
-int askQuestions3(std::istream& is, std::ostream& os){
-
-    std::string stringprompt="What is your favorite color? ";
-    std::string stringvalue=getString(std::cin, std::cout,stringprompt);
-    std::string doubleprompt="What is your favorite integer? ";
-    int intvalue=GetDouble(std::cin, std::cout,doubleprompt);
-    std::string intprompt="What is your favorite number? ";
-    double doublevalue=GetDouble(std::cin, std::cout,intprompt);
-    int i;
-    std::string space=" ";
-    for (i=0; i<=intvalue;i++){
-        std::cout << i+1<< space << stringvalue << space << doublevalue << std::endl;
-       
-    }
-    os <<std::endl;
-    return 0;
-}
+#include "imagemenu.h"
 
 int main(){
-    int value=askQuestions3(std::cin, std::cout);
+    int value = assignment1( std::cin, std::cout);
     
-    return 0;
+    return value;
 }
 
 
