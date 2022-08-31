@@ -43,8 +43,8 @@ int askQuestions3(std::istream& is, std::ostream& os){
         return intvalue;
     }*/
     for (i=1; i<=intvalue;i++){
-        std::cout << i<< space << stringvalue << space << doublevalue << std::endl;
-       
+        std::cout << i<< space << stringvalue << space << doublevalue;
+       os <<std::endl;
     }
     os <<std::endl;
     return intvalue;
