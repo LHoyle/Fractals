@@ -46,7 +46,7 @@ int askQuestions3(std::istream& is, std::ostream& os){
 
 int main(){
     int value=askQuestions3(std::cin, std::cout);
-    
+    os <<std::endl;
     return 0;
 }
 
