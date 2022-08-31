@@ -34,6 +34,9 @@ int askQuestions3(std::istream& is, std::ostream& os){
     double doublevalue=getDouble(is, os,intprompt);
     int i;
     std::string space=" ";
+    if (intvalue<=0){
+        return intvalue;
+    }
     for (i=0; i<intvalue;i++){
         std::cout << i+1<< space << stringvalue << space << doublevalue << std::endl;
        
