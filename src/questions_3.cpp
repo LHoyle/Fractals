@@ -1,4 +1,4 @@
-#include "imagemenu.h"
+#include "image_menu.h"
 
 int main(){
     int value = assignment1( std::cin, std::cout);
