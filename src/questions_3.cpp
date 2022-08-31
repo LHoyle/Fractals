@@ -40,13 +40,13 @@ int askQuestions3(std::istream& is, std::ostream& os){
         std::cout << i+1<< space << stringvalue << space << doublevalue << std::endl;
        
     }
-
+    os <<std::endl;
     return 0;
 }
 
-int main(std::istream& is, std::ostream& os){
+int main(){
     int value=askQuestions3(std::cin, std::cout);
-    os <<std::endl;
+    
     return 0;
 }
 
