@@ -1,4 +1,4 @@
-#include <iostream>
+/*#include <iostream>
 #incldue <string>
 
 double GetDouble(std::istream& is, std::ostream& os,const std::string, prompt){
@@ -8,3 +8,4 @@ double GetDouble(std::istream& is, std::ostream& os,const std::string, prompt){
 
     return value;
 }
+*/
