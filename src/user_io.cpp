@@ -44,7 +44,7 @@ int askQuestions3(std::istream& is, std::ostream& os){
     }*/
     for (i=1; i<=intvalue;i++){
         std::cout << i<< space << stringvalue << space << doublevalue;
-       os <<std::endl;
+       //os <<std::endl;
     }
     os <<std::endl;
     return intvalue;
