@@ -6,7 +6,7 @@ std::string getString( std::istream& is, std::ostream& os, const std::string& pr
     std::string value;
     os <<prompt;
     is >> value;
-
+    //os <<std::endl;
     return value;
 }
 
@@ -14,7 +14,7 @@ int getInteger( std::istream& is, std::ostream& os, const std::string& prompt ){
     int value;
     os <<prompt;
     is >> value;
-
+    
     return value;
 }
 
@@ -22,7 +22,7 @@ double GetDouble(std::istream& is, std::ostream& os,const std::string& prompt){
     double value;
     os <<prompt;
     is >> value;
-
+    //os <<std::endl;
     return value;
 }
 
