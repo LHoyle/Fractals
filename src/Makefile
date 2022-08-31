@@ -1,4 +1,4 @@
-all: hello
+all: hello 3questions
 
 hello: hello.o
 	g++ -g -o hello hello.o
