@@ -37,14 +37,14 @@ int askQuestions3(std::istream& is, std::ostream& os){
     if (intvalue<=0){
         return intvalue;
     }
-    if (intvalue==1){
+    /*if (intvalue==1){
         std::cout << intvalue<< space << stringvalue << space << doublevalue << std::endl;
         return intvalue;
-    }
-    for (i=0; i<intvalue;i++){
-        std::cout << i+1<< space << stringvalue << space << doublevalue << std::endl;
+    }*/
+    for (i=1; i<=intvalue;i++){
+        std::cout << i<< space << stringvalue << space << doublevalue << std::endl;
        
     }
-    os <<std::endl;
+    //os <<std::endl;
     return intvalue;
 }
