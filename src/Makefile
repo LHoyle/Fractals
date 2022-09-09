@@ -18,3 +18,10 @@ user_io.o: user_io.cpp image_menu.h
 
 controllers.o: controllers.cpp image_menu.h
 	g++ -g -c controllers.cpp
+
+ascii_image: Image.o image_menu.h Image.h ascii_image.o
+	g++ -g -o ascii_image.o
+
+ascii_image.o: Image.cpp image_menu.h Image.h ascii_image.cpp
+	g++ -g -c ascii_image.cpp
+
