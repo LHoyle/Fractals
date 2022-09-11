@@ -1,5 +1,5 @@
-#ifndef _IMAGE_H_
-#define _IMAGE_H_
+//#ifndef _IMAGE_H_
+//#define _IMAGE_H_
 #include <vector>
 #include <iostream>
 
@@ -24,7 +24,8 @@ class Image{
     
 
 
-#endif /*IMAGE_H_ 
+//#endif 
+/*IMAGE_H_ 
 Local Variables:
 mode:c++
 End: */

@@ -1,6 +1,6 @@
 #include <iostream>
 #include <string>
-#incldue "Image.h"
+#include "Image.h"
 
 std::string getString( std::istream& is, std::ostream& os, const std::string& prompt );
 
