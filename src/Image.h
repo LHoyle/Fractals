@@ -3,8 +3,22 @@
 
 class Image{
     public:
-    int getHeight( ) const;
-    int getWidth( ) const;
+    int getHeight( ) const{
+        return self.height
+    }
+    int getWidth( ) const{
+        return self.width
+    }
+    int getChannel( const int& row, const int& column, const int& channel ) const;
+    void setHeight( const int& height ){
+        self.height=height
+        return
+    }
+    void setWidth( const int& width ){
+        self.width=width
+        return
+    }
+    void setChannel( const int& row, const int& column, const int& channel, const int& value );
     
 
     private:
@@ -12,11 +26,6 @@ class Image{
     Image( const int& height, const int& width );
     bool indexValid( const int& row, const int& column, const int& channel ) const;
     int index( const int& row, const int& column, const int& channel ) const; 
-    int getChannel( const int& row, const int& column, const int& channel ) const;
-    void setHeight( const int& height );
-    void setWidth( const int& width );
-    void setChannel( const int& row, const int& column, const int& channel, const int& value );
-    
 }
 
 #endif /*IMAGE_H_ 
