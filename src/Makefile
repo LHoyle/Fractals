@@ -1,4 +1,4 @@
-all: hello questions_3
+all: hello questions_3 ascii_image
 
 hello: hello.o
 	g++ -g -o hello hello.o

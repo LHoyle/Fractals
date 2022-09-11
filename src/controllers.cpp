@@ -5,9 +5,9 @@ int assignment1( std::istream& is, std::ostream& os ){
     return value;
 }
 
-int assignement2( stdL::istream& is, std::ostream& os){
-    Image::image imag = Image::Image()
-    void diagonalQuadPattern(is,os,imag)
-    void drawAsciiImage(is,os,imag)
-    return 0
+int assignement2( std::istream& is, std::ostream& os){
+    Image::Image imag = Image::Image();
+    void diagonalQuadPattern(is,os,imag);
+    void drawAsciiImage(is,os,imag);
+    return 0;
 }
