@@ -7,7 +7,7 @@ int assignment1( std::istream& is, std::ostream& os ){
 
 int assignement2( stdL::istream& is, std::ostream& os){
     Image::image imag = Image::Image()
-    int diagonalQuadPattern(is,os,imag)
-    int value drawAsciiImage(is,os,imag)
+    void diagonalQuadPattern(is,os,imag)
+    void drawAsciiImage(is,os,imag)
     return 0
 }
