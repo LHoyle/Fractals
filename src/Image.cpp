@@ -4,6 +4,7 @@
         int self.height=0
         int self.width=0
         int self.channel=0
+        int self.column=0
         std::vector self.vect = (self.row * self.width * 3 + self.column * 3) + self.channel.
     }
     Image::getHeight( ) const{
@@ -16,6 +17,7 @@
         return self.channel
         }
     Image::setHeight( const int& height ){
+       
         self.height=height
         return
     }
@@ -31,7 +33,8 @@
     Image::indexValid( const int& row, const int& column, const int& channel ) const{
 
     }
-    Image::index( const int& row, const int& column, const int& channel ) const{
+    Image::index( const int& row, const int& column, const int& channel ) const{\
+         bool correct = indexValid( row, column,channel )
 
 
     }
