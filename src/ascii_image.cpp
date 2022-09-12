@@ -1,9 +1,8 @@
 #include "image_menu.h"
 
-int main(){
-    int A2 = assignment2(cin,cout)
+int main()
+{
+    int A2 = assignment2(is, os)
 
-    return A2 
-    
-
+        return A2
 }

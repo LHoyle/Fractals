@@ -1,56 +1,72 @@
 #include "Image.h"
 
-    Image::Image( ){
-        mHeight=0;
-        mWidth=0;
+Image::Image()
+{
+    mHeight = 0;
+    mWidth = 0;
+}
+Image::Image(const int &height, const int &width)
+{
+    mHeight = height;
+    mWidth = width;
+    pixelvector.resize(height * width * 3);
+}
+int Image::getHeight() const
+{
+    return mHeight;
+}
+int Image::getWidth() const
+{
+    return mWidth;
+}
+int Image::getChannel(const int &row, const int &column, const int &channel) const
+{
+    if indexValid (row, column, channel)
+    {
+        return pixelvector[index(row, column, channel)];
     }
-    Image::Image( const int& height, const int& width ){
-        mHeight=height;
-        mWidth=width;
-        pixelvector.resize(height*width*3);
-     }
-    int Image::getHeight( ) const{
-        return mHeight;
+    else
+    {
+        return -1;
     }
-    int Image::getWidth( ) const{
-        return mWidth;
+}
+void Image::setHeight(const int &height)
+{
+    mHeight = height;
+    return;
+}
+void Image::setWidth(const int &width)
+{
+    mWidth = width;
+    return;
+}
+void Image::setChannel(const int &row, const int &column, const int &channel, const int &value)
+{
+    if indexValid (row, column, channel)
+    {
+        pixelvector[index(row, column, channel)] = value;
     }
-    int Image::getChannel( const int& row, const int& column, const int& channel ) const{
-        if indexValid(row,column,channel) {
-            return pixelvector[index(row,column,channel)];
-        }
-        else {
-            return -1;
-        }
-        }
-    void Image::setHeight( const int& height ){
-        mHeight=height;
-        return;
+}
+bool Image::indexValid(const int &row, const int &column, const int &channel) const
+{
+    if (row >= mHeight || row < 0)
+    {
+        return false;
     }
-    void Image::setWidth( const int& width ){
-        mWidth=width;
-        return;
+    if (column >= mWidth || column < 0)
+    {
+        return false;
     }
-    void Image::setChannel( const int& row, const int& column, const int& channel, const int& value ){
-        if indexValid(row,column,channel) {
-            pixelvector[index(row,column,channel)]= value;
-        }
+    if (channel > 2 || channel < 0)
+    {
+        return false;
     }
-    bool Image::indexValid( const int& row, const int& column, const int& channel ) const{
-        if (row >= mHeight || row <0){
-            return false;
-        }
-        if (column >= mWidth || column <0){
-            return false;
-        }
-        if (channel > 2 || channel <0){
-            return false;
-        }
-        else {
+    else
+    {
         return true;
-        }
-
     }
-    int Image::index( const int& row, const int& column, const int& channel ) const{
-        return (row * mWidth * 3 + column * 3) + channel;
-    }
+}
+int Image::index(const int &row, const int &column, const int &channel) const
+{
+    return (row * mWidth * 3 + column * 3) + channel;
+}
