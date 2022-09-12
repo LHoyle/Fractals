@@ -2,7 +2,7 @@
 
 int main()
 {
-    int A2 = assignment2(is, os)
+    int A2 = assignment2(std::cin, std::cout);
 
-        return A2
+    return A2;
 }
