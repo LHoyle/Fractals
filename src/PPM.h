@@ -1,4 +1,7 @@
 //class PPM
+#ifndef _PPM_H_
+#define _PPM_H_
+#include <fstream>
 class PPM
 {
 public:

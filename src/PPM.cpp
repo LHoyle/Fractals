@@ -1,5 +1,4 @@
-#ifndef _PPM_H_
-#define _PPM_H_
+
 #include "image_menu.h"
 // Data! implementation of PPM.h
 PPM::PPM()
@@ -53,4 +52,5 @@ void writeStream(std::ostream &os) const
     os << "P6 WIDTH HEIGHT MAX_COLOR_VALUE" << std::endl;
     os << "BINARY REPRESENTATION OF COLORS FOR EACH PIXEL IN THE SAME ORDER AS THE COLOR FILE
           "<<std::endl;
+
 }
