@@ -60,3 +60,8 @@ void drawAsciiImage(std::istream &is, std::ostream &os, const Image &image)
         os << std::endl;
     }
 }
+
+void writeUserImage( std::istream& is, std::ostream& os, const PPM& p ){
+    std::string prompt = "Output filename? ";
+    std::string outname = getString(is,os,prompt);
+}

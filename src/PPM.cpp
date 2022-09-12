@@ -3,7 +3,7 @@
 // Data! implementation of PPM.h
 PPM::PPM()
 {
-    base = Image::Image();
+    Image base = Image::Image();
     MCV = 1;
 }
 PPM::PPM(const int &height, const int &width)
@@ -50,7 +50,6 @@ void setPixel(const int &row, const int &column, const int &red, const int &gree
 void writeStream(std::ostream &os) const
 {
     os << "P6 WIDTH HEIGHT MAX_COLOR_VALUE" << std::endl;
-    os << "BINARY REPRESENTATION OF COLORS FOR EACH PIXEL IN THE SAME ORDER AS THE COLOR FILE
-          "<<std::endl;
+    os << "BINARY REPRESENTATION OF COLORS FOR EACH PIXEL IN THE SAME ORDER AS THE COLOR FILE"<<std::endl;
 
 }
