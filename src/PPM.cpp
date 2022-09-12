@@ -11,11 +11,11 @@ PPM::PPM(const int &height, const int &width)
     base = Image::Image(height, width);
     MCV = 1;
 }
-int getMaxColorValue() const
+int PPM::getMaxColorValue() const
 {
     return MCV;
 }
-bool valueValid(const int &value) const
+bool PPM::valueValid(const int &value) const
 {
     if (value >= 0 && value < MCV)
     {
@@ -24,28 +24,28 @@ bool valueValid(const int &value) const
     return false;
     
 }
-void setMaxColorValue(const int &max_color_value)
+void PPM::setMaxColorValue(const int &max_color_value)
 {
     if (max_color_value >= 0 && max_color_value < 255)
     {
         MCV = max_color_value;
     }
 }
-void setChannel(const int &row, const int &column, const int &channel, const int &value)
+void PPM::setChannel(const int &row, const int &column, const int &channel, const int &value)
 {
     if (valueValid(value))
     {
         base.setChannel(row, column, channel);
     }
 }
-void setPixel(const int &row, const int &column, const int &red, const int &green, const int &blue)
+void PPM::setPixel(const int &row, const int &column, const int &red, const int &green, const int &blue)
 {
     setChannel(row, column, 0, red);
     setChannel(row, column, 1, green);
     setChannel(row, column, 2, blue);
 }
 
-void writeStream(std::ostream &os)
+void PPM::writeStream(std::ostream &os) const
 {
     os << "P6 WIDTH HEIGHT MAX_COLOR_VALUE" << std::endl;
     os << "BINARY REPRESENTATION OF COLORS FOR EACH PIXEL IN THE SAME ORDER AS THE COLOR FILE"<<std::endl;

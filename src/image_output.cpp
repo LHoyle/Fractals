@@ -4,11 +4,13 @@ void writeUserImage( std::istream& is, std::ostream& os, const PPM& p ){
     std::string prompt = "Output filename? ";
     std::string outname = getString(is,os,prompt);
     std::ofstream fout(outname);
-    std::vector<std::int> pixels = {}; //somehow you need to get the image byte by byte. which I don't quite know how to do.
+    std::vector<std::int> pixels = p; //somehow you need to get the image byte by byte. which I don't quite know how to do.
     int i; //an int is a 4 byte entity. 
-    for ( i = 0; i < 256; i++)
+    for ( i = 0; i < p.get; i++)
     { fout <<pixels[i]<< " ";
     }
+    fout<<std::endl;
+    fout.close()
 }
 
 void drawAsciiImage(std::istream &is, std::ostream &os, const Image &image)

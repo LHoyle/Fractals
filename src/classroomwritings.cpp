@@ -9,7 +9,7 @@ int maim(){
     for ( i = 0; i < 256; i++)
     { fout <<words[i]<< " ";
     }
-    fou<<std::endl;
+    fout<<std::endl;
     fout.close()
     return 0;
 }
