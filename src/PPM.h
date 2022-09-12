@@ -18,3 +18,8 @@ private:
     int mWidth;
     int MCV;
 };
+#endif
+/*IMAGE_H_
+Local Variables:
+mode:c++
+End: */

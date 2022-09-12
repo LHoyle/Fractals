@@ -1,3 +1,5 @@
+#ifndef _PPM_H_
+#define _PPM_H_
 #include "image_menu.h"
 // Data! implementation of PPM.h
 PPM::PPM()
