@@ -4,10 +4,10 @@ void writeUserImage( std::istream& is, std::ostream& os, const PPM& p ){
     std::string prompt = "Output filename? ";
     std::string outname = getString(is,os,prompt);
     std::ofstream fout(outname);
-    std::vector<std::string> words = {"the","quick","brown","fox"};
+    std::vector<std::int> pixels = {}; //somehow you need to get the image byte by byte. which I don't quite know how to do.
     int i; //an int is a 4 byte entity. 
     for ( i = 0; i < 256; i++)
-    { fout <<words[i]<< " ";
+    { fout <<pixels[i]<< " ";
     }
 }
 

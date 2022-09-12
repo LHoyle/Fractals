@@ -43,7 +43,7 @@ Image.o: Image.cpp Image.h
 
 
 PPM: PPM.o image_output.o image_drawing.o controllers.o image_file.o
-	g++ -g -o PPM 
+	g++ -g -o PPM PPM.o image_output.o image_drawing.o controllers.o image_file.o
 
 PPM.o: PPM.cpp image_menu.h PPM.h Image.h
 	g++ -g -c PPM.cpp

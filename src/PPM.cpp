@@ -37,7 +37,7 @@ void setChannel(const int &row, const int &column, const int &channel, const int
 {
     if (valueValid(value))
     {
-        Image::setChannel(row, column, channel);
+        base.setChannel(row, column, channel);
     }
 }
 void setPixel(const int &row, const int &column, const int &red, const int &green, const int &blue)
