@@ -8,7 +8,7 @@ PPM::PPM()
 }
 PPM::PPM(const int &height, const int &width)
 {
-    base = Image::Image(height, width);
+    Image base = Image(height, width);
     MCV = 1;
 }
 int PPM::getMaxColorValue() const
@@ -35,7 +35,7 @@ void PPM::setChannel(const int &row, const int &column, const int &channel, cons
 {
     if (valueValid(value))
     {
-        base.setChannel(row, column, channel);
+        setChannel(row, column, channel);
     }
 }
 void PPM::setPixel(const int &row, const int &column, const int &red, const int &green, const int &blue)
