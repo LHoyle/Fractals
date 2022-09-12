@@ -1,4 +1,4 @@
-CXXFLAGS := -std=c++11
+CXXFLAGS := -std=c++11 -Wall -Werror -Wextra -Wpedantic
 
 all: hello questions_3 ascii_image
 
