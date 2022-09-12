@@ -1,5 +1,5 @@
-//#ifndef _IMAGE_H_
-//#define _IMAGE_H_
+#ifndef _IMAGE_H_
+#define _IMAGE_H_
 #include <vector>
 #include <iostream>
 
@@ -22,7 +22,7 @@ private:
     int mHeight;
     int mWidth;
 };
-//#endif
+#endif
 /*IMAGE_H_
 Local Variables:
 mode:c++

@@ -14,10 +14,10 @@ int assignment2(std::istream &is, std::ostream &os)
     return 0;
 }
 
-int assignment3(std::istream &is, std::ostream &os)
+/*int assignment3(std::istream &is, std::ostream &os)
 {
     PPM ppm = PPM();
     stripedDiagonalPattern(is, os, ppm);
     writeUserImage(is, os, ppm);
     return 0;
-}
+}*/
