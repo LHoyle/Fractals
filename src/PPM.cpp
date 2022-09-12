@@ -22,7 +22,6 @@ bool PPM::valueValid(const int &value) const
         return true;
     }
     return false;
-    
 }
 void PPM::setMaxColorValue(const int &max_color_value)
 {
@@ -35,7 +34,7 @@ void PPM::setChannel(const int &row, const int &column, const int &channel, cons
 {
     if (valueValid(value))
     {
-       Image::setChannel(row, column, channel);
+        Image.setChannel(row, column, channel);
     }
 }
 void PPM::setPixel(const int &row, const int &column, const int &red, const int &green, const int &blue)
@@ -48,6 +47,5 @@ void PPM::setPixel(const int &row, const int &column, const int &red, const int 
 void PPM::writeStream(std::ostream &os) const
 {
     os << "P6 WIDTH HEIGHT MAX_COLOR_VALUE" << std::endl;
-    os << "BINARY REPRESENTATION OF COLORS FOR EACH PIXEL IN THE SAME ORDER AS THE COLOR FILE"<<std::endl;
-
+    os << "BINARY REPRESENTATION OF COLORS FOR EACH PIXEL IN THE SAME ORDER AS THE COLOR FILE" << std::endl;
 }

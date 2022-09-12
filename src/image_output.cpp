@@ -1,17 +1,32 @@
 #include "image_menu.h"
 
-void writeUserImage( std::istream& is, std::ostream& os, const PPM& p ){
+void writeUserImage(std::istream &is, std::ostream &os, const PPM &p)
+{
     std::string prompt = "Output filename? ";
-    std::string outname = getString(is,os,prompt);
+    std::string outname = getString(is, os, prompt);
     std::ofstream fout(outname);
-    std::vector<std::int> pixels = p; //somehow you need to get the image byte by byte. which I don't quite know how to do.
-    int i; //an int is a 4 byte entity. 
-    for ( i = 0; i < p.get; i++)
-    { fout <<pixels[i]<< " ";
+    std::vector<int> pixels = {0,255}; // p somehow you need to get the image byte by byte. which I don't quite know how to do.
+    int rows;                            // an int is a 4 byte entity.
+    int maxR = p.getHeight();
+    int maxC = p.getWidth();
+    int cols;
+    for (rows = 0; rows < maxR; rows++)
+    {
+        for (cols = 0; cols < maxC; cols++){
+            unsigned char byte;           // char is a one byte int. this stores from 0 to 255
+            int fullchannels = p.getChannel(rows,cols,0)+p.getChannel(rows,cols,1)+p.getChannel(rows,cols,2);
+            byte = fullchannels;
+            fout.write((char *)&byte, 1);
+        }
     }
-    fout<<std::endl;
-    fout.close()
+    fout << std::endl;
+    fout.close();
 }
+/*//fout << p[i] << " ";
+        unsigned char byte;           // char is a one byte int. this stores from 0 to 255
+        byte = p[i];                     // this is saving the 4 bites to one, so only the least significant byte will be saved.
+        fout.write((char *)&byte, 1);*/
+
 
 void drawAsciiImage(std::istream &is, std::ostream &os, const Image &image)
 {
@@ -73,4 +88,3 @@ void drawAsciiImage(std::istream &is, std::ostream &os, const Image &image)
         os << std::endl;
     }
 }
-
