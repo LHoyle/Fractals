@@ -21,16 +21,14 @@ bool valueValid(const int &value) const
     {
         return true;
     }
-    else
-    {
-        return false;
-    }
+    return false;
+    
 }
 void setMaxColorValue(const int &max_color_value)
 {
-    if (value >= 0 && value < 255)
+    if (max_color_value >= 0 && max_color_value < 255)
     {
-        MCV = value;
+        MCV = max_color_value;
     }
 }
 void setChannel(const int &row, const int &column, const int &channel, const int &value)
@@ -47,7 +45,7 @@ void setPixel(const int &row, const int &column, const int &red, const int &gree
     setChannel(row, column, 2, blue);
 }
 
-void writeStream(std::ostream &os) const
+void writeStream(std::ostream &os)
 {
     os << "P6 WIDTH HEIGHT MAX_COLOR_VALUE" << std::endl;
     os << "BINARY REPRESENTATION OF COLORS FOR EACH PIXEL IN THE SAME ORDER AS THE COLOR FILE"<<std::endl;
