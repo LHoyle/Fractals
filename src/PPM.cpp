@@ -3,7 +3,7 @@
 // Data! implementation of PPM.h
 PPM::PPM()
 {
-    Image base = Image::Image();
+    Image base = Image();
     MCV = 1;
 }
 PPM::PPM(const int &height, const int &width)

@@ -1,5 +1,16 @@
 #include "image_menu.h"
 
+void writeUserImage( std::istream& is, std::ostream& os, const PPM& p ){
+    std::string prompt = "Output filename? ";
+    std::string outname = getString(is,os,prompt);
+    std::ofstream fout(outname);
+    std::vector<std::string> words = {"the","quick","brown","fox"};
+    int i; //an int is a 4 byte entity. 
+    for ( i = 0; i < 256; i++)
+    { fout <<words[i]<< " ";
+    }
+}
+
 void drawAsciiImage(std::istream &is, std::ostream &os, const Image &image)
 {
     int row = 0;
@@ -61,7 +72,3 @@ void drawAsciiImage(std::istream &is, std::ostream &os, const Image &image)
     }
 }
 
-void writeUserImage( std::istream& is, std::ostream& os, const PPM& p ){
-    std::string prompt = "Output filename? ";
-    std::string outname = getString(is,os,prompt);
-}
