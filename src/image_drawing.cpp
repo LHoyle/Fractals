@@ -1,5 +1,18 @@
 #include "image_menu.h"
 
+void stripedDiagonalPattern( std::istream& is, std::ostream& os, PPM& p ){
+    std::string imagestringpromptone = "Image height? "  ;
+    int height = getInteger(is, os, imagestringpromptone);
+
+    std::string imagestringprompttwo = "Image width? ";
+    int width = getInteger(is, os, imagestringprompttwo);
+}
+
+
+
+
+
+
 void diagonalQuadPattern(std::istream &is, std::ostream &os, Image &image)
 {
     std::string imagestringpromptone = "Image height? "  ;
