@@ -34,8 +34,12 @@ void PPM::setChannel(const int &row, const int &column, const int &channel, cons
 {
     if (valueValid(value))
     {
-        Image::setChannel(row, column, channel);
+        Image::setChannel(row, column, channel,value);
     }
+    (void)row;
+    (void)column;
+    (void)channel;
+    (void)value;
 }
 void PPM::setPixel(const int &row, const int &column, const int &red, const int &green, const int &blue)
 {

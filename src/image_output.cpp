@@ -30,11 +30,12 @@ void writeUserImage(std::istream &is, std::ostream &os, const PPM &p)
 
 void drawAsciiImage(std::istream &is, std::ostream &os, const Image &image)
 {
-    int row = 0;
-    for (row; row < image.getHeight(); row++)
+    (void)is;
+    int row;
+    for (row = 0; row < image.getHeight(); row++)
     {
-        int column = 0;
-        for (column; column < image.getWidth(); column++)
+        int column;
+        for (column=0; column < image.getWidth(); column++)
         {
             int pixel = image.getChannel(row, column, 0) + image.getChannel(row, column, 1) + image.getChannel(row, column, 2);
             double pixelvalue = pixel / 765.0;
