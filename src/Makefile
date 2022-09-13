@@ -1,6 +1,6 @@
 CXXFLAGS := -std=c++11 -Wall -Werror -Wextra -Wpedantic
 
-all: hello questions_3 ascii_image
+all: hello questions_3 ascii_image PPM
 
 
 
@@ -38,21 +38,21 @@ user_io.o: user_io.cpp image_menu.h Image.h  PPM.h
 image_drawing.o: image_drawing.cpp image_menu.h Image.h  PPM.h PPM.cpp Image.cpp
 	g++ $(CXXFLAGS)  -c image_drawing.cpp PPM.cpp Image.cpp
 
-Image.o: Image.cpp Image.h
+Image.o: Image.cpp Image.h PPM.h image_menu.h
 	g++ $(CXXFLAGS)  -c Image.cpp
 
 
-PPM: PPM.o image_output.o image_drawing.o controllers.o image_file.o
-	g++ $(CXXFLAGS) -o PPM PPM.o image_output.o image_drawing.o controllers.o image_file.o
+PPM: PPM.o image_output.o image_drawing.o controllers.o image_file.o user_io.o PPM.h Image.h image_menu.h Image.o
+	g++ $(CXXFLAGS) -o PPM PPM.o image_output.o image_drawing.o controllers.o image_file.o user_io.o Image.o
 
-PPM.o: PPM.cpp image_menu.h PPM.h Image.h
-	g++ $(CXXFLAGS)  -c PPM.cpp
+PPM.o: PPM.cpp image_menu.h PPM.h Image.h Image.cpp
+	g++ $(CXXFLAGS)  -c PPM.cpp Image.cpp
 
-image_output.o: image_output.cpp image_menu.h PPM.h Image.h  
-	g++ $(CXXFLAGS)  -c image_output.cpp
+image_output.o: image_output.cpp image_menu.h PPM.h Image.h PPM.cpp Image.cpp user_io.cpp
+	g++ $(CXXFLAGS)  -c image_output.cpp PPM.cpp Image.cpp user_io.cpp
 
-image_file.o: image_output.cpp image_menu.h PPM.h Image.h 
-	g++ $(CXXFLAGS)  -c image_output.cpp
+image_file.o: image_file.cpp image_menu.h PPM.h Image.h 
+	g++ $(CXXFLAGS)  -c image_file.cpp
 
 clean: 
 	rm *.o
