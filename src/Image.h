@@ -17,7 +17,7 @@ public:
     bool indexValid(const int &row, const int &column, const int &channel) const;
     int index(const int &row, const int &column, const int &channel) const;
 
-private:
+protected:
     std::vector<int> pixelvector;
     int mHeight;
     int mWidth;

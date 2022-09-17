@@ -2,7 +2,9 @@
 #ifndef _PPM_H_
 #define _PPM_H_
 #include <fstream>
-class PPM: public Image
+#include "Image.h"
+//#include "image_menu.h"
+class PPM : public Image
 {
 public:
     PPM();
@@ -15,9 +17,8 @@ public:
     void writeStream(std::ostream &os) const;
 
 private:
-    int mHeight;
-    int mWidth;
     int MCV;
+
 };
 #endif
 /*IMAGE_H_
