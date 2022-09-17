@@ -10,17 +10,21 @@ void writeUserImage(std::istream &is, std::ostream &os, const PPM &p)
     int maxR = p.getHeight();
     int maxC = p.getWidth();
     int cols;
-    os << maxR;
+    int chan;
+    // os << maxR;
     p.writeStream(os);
     for (rows = 0; rows < maxR; rows++)
     {
         for (cols = 0; cols < maxC; cols++)
         {
-            unsigned char byte; // char is a one byte int. this stores from 0 to 255
-            int fullchannels = p.getChannel(rows, cols, 0) + p.getChannel(rows, cols, 1) + p.getChannel(rows, cols, 2);
-            byte = fullchannels;
-            os << maxC;
-            fout.write((char *)&byte, 1);
+            for (chan = 0; chan < 3; chan++)
+            {
+                unsigned char byte; // char is a one byte int. this stores from 0 to 255
+                int channel = p.getChannel(rows, cols, chan);
+                byte = channel;
+                // os << maxC;
+                fout.write((char *)&byte, 1);
+            }
         }
     }
     fout << std::endl;

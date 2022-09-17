@@ -2,12 +2,12 @@
 #include "image_menu.h"
 #include "PPM.h"
 // Data! implementation of PPM.h
-PPM::PPM():Image()
+PPM::PPM() : Image()
 {
 
     MCV = 1;
 }
-PPM::PPM(const int &height, const int &width):Image()
+PPM::PPM(const int &height, const int &width) : Image()
 {
     setHeight(height);
     setWidth(width);
@@ -52,6 +52,23 @@ void PPM::setPixel(const int &row, const int &column, const int &red, const int 
 
 void PPM::writeStream(std::ostream &os) const
 {
-    os << "P6" <<" "<< mWidth <<" "<< mHeight <<" "<< MCV<< std::endl;
+    std::string wWidth = std::to_string(mWidth);
+    std::string hHeight = std::to_string(mHeight);
+    std::string mMCV = std::to_string(MCV);
+    os << "P6"
+       << " " << wWidth << " " << hHeight << " " << mMCV << std::endl;
     os << "BINARY REPRESENTATION OF COLORS FOR EACH PIXEL IN THE SAME ORDER AS THE COLOR FILE" << std::endl;
+    /*int row;
+    int col;
+    int chan;
+    for (row = 0, row < mHeight, row++)
+    {
+        for (col = 0, col < mWidth, col++)
+        {
+            for (chan = 0, chan < 3, chan++)
+            {
+                os.write()
+            }
+        }
+    }*/
 }

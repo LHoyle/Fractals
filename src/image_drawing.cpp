@@ -8,11 +8,12 @@ void stripedDiagonalPattern(std::istream &is, std::ostream &os, PPM &p)
     std::string imagestringprompttwo = "Image width? ";
     int width = getInteger(is, os, imagestringprompttwo);
     p = PPM(height, width);
+    p.setMaxColorValue((height+width)/3);
 
     int rowhalf = (p.getHeight() / 2);
-    os << p.getHeight();
+    //os << p.getHeight();
     int colhalf = (p.getWidth() / 2);
-    os << p.getWidth();
+    //os << p.getWidth();
 
     int maxCV = height * width;
     if (maxCV > 255)
@@ -173,6 +174,7 @@ void diagonalQuadPattern(std::istream &is, std::ostream &os, Image &image)
     int width = getInteger(is, os, imagestringprompttwo);
     image.setHeight(height);
     image.setWidth(width);
+    
     int rowhalf = (image.getHeight() / 2);
     int colhalf = (image.getWidth() / 2);
 
