@@ -52,6 +52,6 @@ void PPM::setPixel(const int &row, const int &column, const int &red, const int 
 
 void PPM::writeStream(std::ostream &os) const
 {
-    os << "P6" << mWidth << mHeight << MCV << std::endl;
+    os << "P6" <<" "<< mWidth <<" "<< mHeight <<" "<< MCV<< std::endl;
     os << "BINARY REPRESENTATION OF COLORS FOR EACH PIXEL IN THE SAME ORDER AS THE COLOR FILE" << std::endl;
 }
