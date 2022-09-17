@@ -184,7 +184,7 @@ void diagonalQuadPattern(std::istream &is, std::ostream &os, Image &image)
         for (column = 0; column < image.getWidth(); column++)
         {
 
-            if (row < rowhalf && column <= colhalf)
+            if (row < rowhalf && column < colhalf)
             {
                 // top left
                 image.setChannel(row, column, 0, 0);
@@ -194,7 +194,7 @@ void diagonalQuadPattern(std::istream &is, std::ostream &os, Image &image)
                 image.setChannel(row, column, 1, (2 * row + 2 * column) % 256);
                 // int = green ( 2*row + 2*column ) % 256;
             }
-            else if (row >= rowhalf && column <= colhalf)
+            else if (row >= rowhalf && column < colhalf)
             {
                 // top right
                 // int red = 0;
@@ -204,7 +204,7 @@ void diagonalQuadPattern(std::istream &is, std::ostream &os, Image &image)
                 // int = green ( 2*row + 2*column ) % 256;
                 image.setChannel(row, column, 1, (2 * row + 2 * column) % 256);
             }
-            else if (row < rowhalf && column > colhalf)
+            else if (row < rowhalf && column >= colhalf)
             {
                 // bottom left
                 // int red = 255;
@@ -214,7 +214,7 @@ void diagonalQuadPattern(std::istream &is, std::ostream &os, Image &image)
                 // int = green ( 2*row + 2*column ) % 256;
                 image.setChannel(row, column, 1, (2 * row + 2 * column) % 256);
             }
-            else if (row >= rowhalf && column > colhalf)
+            else if (row >= rowhalf && column >= colhalf)
             {
                 // bottom right
                 // int red = 255;
