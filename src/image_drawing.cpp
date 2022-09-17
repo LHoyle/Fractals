@@ -198,9 +198,9 @@ void diagonalQuadPattern(std::istream &is, std::ostream &os, Image &image)
             {
                 // top right
                 // int red = 0;
-                image.setChannel(row, column, 0, 0);
+                image.setChannel(row, column, 0, 255);
                 // int blue =255;
-                image.setChannel(row, column, 2, 255);
+                image.setChannel(row, column, 2, 0);
                 // int = green ( 2*row + 2*column ) % 256;
                 image.setChannel(row, column, 1, (2 * row + 2 * column) % 256);
             }
@@ -208,9 +208,9 @@ void diagonalQuadPattern(std::istream &is, std::ostream &os, Image &image)
             {
                 // bottom left
                 // int red = 255;
-                image.setChannel(row, column, 0, 255);
+                image.setChannel(row, column, 0, 0);
                 // int blue =0;
-                image.setChannel(row, column, 2, 0);
+                image.setChannel(row, column, 2, 255);
                 // int = green ( 2*row + 2*column ) % 256;
                 image.setChannel(row, column, 1, (2 * row + 2 * column) % 256);
             }
