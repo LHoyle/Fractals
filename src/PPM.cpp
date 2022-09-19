@@ -52,12 +52,11 @@ void PPM::setPixel(const int &row, const int &column, const int &red, const int 
 
 void PPM::writeStream(std::ostream &os) const
 {
-    std::string wWidth = std::to_string(mWidth);
-    std::string hHeight = std::to_string(mHeight);
-    std::string mMCV = std::to_string(MCV);
     os << "P6"
-       << " " << wWidth << " " << hHeight << " " << mMCV << "\n";
-    os << "BINARY REPRESENTATION OF COLORS FOR EACH PIXEL IN THE SAME ORDER AS THE COLOR FILE" << "\n";
+       << " " << getWidth() << " " << getHeight() << " " << getMaxColorValue() << "\n";
+    //os << "BINARY REPRESENTATION OF COLORS FOR EACH PIXEL IN THE SAME ORDER AS THE COLOR FILE";
+    //os << "BINARY REPRESENTATION OF COLORS FOR EACH PIXEL IN THE SAME ORDER AS THE COLOR FILE" << "\n";
+
 
     int rows; // an int is a 4 byte entity.
     int maxR = getHeight();
