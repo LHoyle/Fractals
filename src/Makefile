@@ -1,4 +1,4 @@
-CXXFLAGS := -std=c++11 -Wall -Werror -Wextra -Wpedantic
+CXXFLAGS := -std=c++11 -Wall -Werror -Wextra -Wpedantic --static
 
 all: hello questions_3 ascii_image PPM
 
@@ -43,7 +43,7 @@ Image.o: Image.cpp Image.h PPM.h image_menu.h
 
 
 PPM: PPM.o image_output.o image_drawing.o controllers.o image_file.o user_io.o Image.o
-	g++ $(CXXFLAGS) --static -o PPM PPM.o image_output.o image_drawing.o controllers.o image_file.o user_io.o Image.o
+	g++ $(CXXFLAGS) -o PPM PPM.o image_output.o image_drawing.o controllers.o image_file.o user_io.o Image.o
 
 PPM.o: PPM.cpp image_menu.h PPM.h Image.h Image.cpp
 	g++ $(CXXFLAGS)  -c PPM.cpp Image.cpp
@@ -52,7 +52,7 @@ image_output.o: image_output.cpp image_menu.h PPM.h Image.h PPM.cpp Image.cpp us
 	g++ $(CXXFLAGS)  -c image_output.cpp PPM.cpp Image.cpp user_io.cpp
 
 image_file.o: image_file.cpp  controllers.cpp PPM.cpp Image.cpp image_menu.h PPM.h Image.h
-	g++ $(CXXFLAGS) --static -c image_file.cpp controllers.cpp PPM.cpp Image.cpp
+	g++ $(CXXFLAGS)  -c image_file.cpp controllers.cpp PPM.cpp Image.cpp
 
 clean: 
 	rm *.o

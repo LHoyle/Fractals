@@ -17,7 +17,8 @@ void stripedDiagonalPattern(std::istream &is, std::ostream &os, PPM &p)
     int g;
     int b;
 
-    int maxCV = height + width / 3;
+    int maxCV = (height + width) / 3;
+    os<<height<<width<<maxCV<<std::endl;
     if (maxCV >= 255)
     {
         p.setMaxColorValue(255);
@@ -29,11 +30,11 @@ void stripedDiagonalPattern(std::istream &is, std::ostream &os, PPM &p)
         //os << p.getMaxColorValue();
     }
     int row;
-    for (row = 0; row < p.getHeight(); row++)
+    for (row = 0; row <= p.getHeight(); row++)
     {
 
         int column;
-        for (column = 0; column < p.getWidth(); column++)
+        for (column = 0; column <= p.getWidth(); column++)
         {
             /*int greensleevesp1(row + p.getWidth() - column - 1);
             int greensleevesp2(p.getMaxColorValue()+1);
@@ -61,7 +62,11 @@ void stripedDiagonalPattern(std::istream &is, std::ostream &os, PPM &p)
                 p.setChannel(row, column, 2, p.getMaxColorValue());
             }*/
 
-            g = (row + width - column - 1) % (p.getMaxColorValue() + 1);
+            int greensleevesp1(row + p.getWidth() - column - 1);
+            int greensleevesp2(p.getMaxColorValue()+1);
+            int greensleeves = greensleevesp1 % greensleevesp2;
+            g = greensleeves;
+            //os<<greensleevesp1<<greensleevesp2<<g<<std::endl;
             if (row < rowhalf)
             {
                 r = 0;

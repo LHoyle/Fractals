@@ -70,7 +70,9 @@ void PPM::writeStream(std::ostream &os) const
             {
                 unsigned char byte; // char is a one byte int. this stores from 0 to 255
                 int channel = getChannel(rows, cols, chan);
+                //std::cout<<channel;
                 byte = channel;
+                //std::cout<<byte;
                 //os << byte<<(char *)&byte;
                 os.write((char *)&byte, sizeof(byte));
                 //os.write((char *)&byte, 1);
