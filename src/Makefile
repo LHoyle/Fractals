@@ -42,7 +42,7 @@ Image.o: Image.cpp Image.h PPM.h image_menu.h
 	g++ $(CXXFLAGS)  -c Image.cpp
 
 
-PPM: PPM.o  PPM.h Image.h image_menu.h  image_output.o image_drawing.o controllers.o image_file.o user_io.o Image.o
+PPM: PPM.o image_output.o image_drawing.o controllers.o image_file.o user_io.o Image.o
 	g++ $(CXXFLAGS) -o PPM PPM.o image_output.o image_drawing.o controllers.o image_file.o user_io.o Image.o
 
 PPM.o: PPM.cpp image_menu.h PPM.h Image.h Image.cpp
