@@ -19,7 +19,7 @@ int PPM::getMaxColorValue() const
 }
 bool PPM::valueValid(const int &value) const
 {
-    if (value >= 0 && value < MCV)
+    if (value > 0 && value < MCV)
     {
         return true;
     }

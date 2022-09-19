@@ -67,7 +67,7 @@ bool Image::indexValid(const int &row, const int &column, const int &channel) co
     {
         return false;
     }
-    else
+    else 
     {
         return true;
     }
