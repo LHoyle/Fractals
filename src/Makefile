@@ -51,8 +51,8 @@ PPM.o: PPM.cpp image_menu.h PPM.h Image.h Image.cpp
 image_output.o: image_output.cpp image_menu.h PPM.h Image.h PPM.cpp Image.cpp user_io.cpp
 	g++ $(CXXFLAGS)  -c image_output.cpp PPM.cpp Image.cpp user_io.cpp
 
-image_file.o: image_file.cpp image_menu.h PPM.h Image.h  controllers.cpp
-	g++ $(CXXFLAGS)  -c image_file.cpp controllers.cpp
+image_file.o: image_file.cpp image_menu.h PPM.h Image.h  controllers.cpp PPM.cpp Image.cpp
+	g++ $(CXXFLAGS)  -c image_file.cpp controllers.cpp PPM.cpp Image.cpp
 
 clean: 
 	rm *.o
