@@ -1,4 +1,8 @@
 #include <string>
+#include<iostream>
+#include <fstream>
+#include <vector>
+#include <iostream>
 #include "Image.h"
 #include "PPM.h"
 

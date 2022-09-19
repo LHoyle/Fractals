@@ -8,7 +8,7 @@ void stripedDiagonalPattern(std::istream &is, std::ostream &os, PPM &p)
     std::string imagestringprompttwo = "Image width? ";
     int width = getInteger(is, os, imagestringprompttwo);
     p = PPM(height, width);
-    p.setMaxColorValue((height + width) / 3);
+    ;
 
     int rowhalf = (p.getHeight() / 2);
     // os << p.getHeight();
@@ -17,10 +17,13 @@ void stripedDiagonalPattern(std::istream &is, std::ostream &os, PPM &p)
     int g;
     int b;
 
-    int maxCV = height * width;
+    int maxCV = height * width/3;
     if (maxCV > 255)
     {
-        maxCV = 255;
+        p.setMaxColorValue(255);
+    }
+    else{
+        p.setMaxColorValue(maxCV);
     }
     int row;
     for (row = 0; row < p.getHeight(); row++)

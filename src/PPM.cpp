@@ -1,4 +1,4 @@
-
+#include <fstream>
 #include "image_menu.h"
 #include "PPM.h"
 // Data! implementation of PPM.h
@@ -75,8 +75,10 @@ void PPM::writeStream(std::ostream &os) const
                 byte = channel;
                 //os << byte<<(char *)&byte;
                 os.write((char *)&byte, sizeof(byte));
+                //os.write((char *)&byte, 1);
             }
         }
+    //os<< "\n";
     }
     /*int row;
     int col;

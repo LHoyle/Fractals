@@ -1,7 +1,7 @@
 // class PPM
 #ifndef _PPM_H_
 #define _PPM_H_
-#include <fstream>
+
 #include "Image.h"
 //#include "image_menu.h"
 class PPM : public Image
