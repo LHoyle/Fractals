@@ -1,5 +1,5 @@
 #include "image_menu.h"
-#include<iostream>
+#include <iostream>
 int main()
 {
     int value = assignment3(std::cin, std::cout);

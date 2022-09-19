@@ -18,7 +18,7 @@ void stripedDiagonalPattern(std::istream &is, std::ostream &os, PPM &p)
     int b;
 
     int maxCV = (height + width) / 3;
-    os<<height<<width<<maxCV<<std::endl;
+    //os<<height<<width<<maxCV<<std::endl;
     if (maxCV >= 255)
     {
         p.setMaxColorValue(255);
