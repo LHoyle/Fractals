@@ -21,3 +21,13 @@ int assignment3(std::istream &is, std::ostream &os)
     writeUserImage(is, os, ppm);
     return 0;
 }
+int buck( std::istream& is, std::ostream& os ){
+    int value = askUncleBuckQuestions (is,os);
+    return value;
+}
+int flag_columbia_ascii(std::istream& is, std::ostream& os){
+    Image Imp =Image();
+    flagColumbiaPattern(is,os,Imp);
+    drawAsciiImage(is, os, Imp);
+    return 0;
+}

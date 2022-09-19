@@ -1,5 +1,5 @@
 #include <string>
-#include<iostream>
+#include <iostream>
 #include <fstream>
 #include <vector>
 #include <iostream>
@@ -27,3 +27,8 @@ void writeUserImage(std::istream &is, std::ostream &os, const PPM &p);
 void stripedDiagonalPattern(std::istream &is, std::ostream &os, PPM &p);
 
 int assignment3(std::istream &is, std::ostream &os);
+
+int askUncleBuckQuestions(std::istream &is, std::ostream &os);
+int buck(std::istream &is, std::ostream &os);
+void flagColumbiaPattern(std::istream &is, std::ostream &os, Image &image);
+int flag_columbia_ascii(std::istream &is, std::ostream &os);

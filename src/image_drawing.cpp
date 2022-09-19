@@ -1,5 +1,58 @@
 #include "image_menu.h"
 
+
+
+void flagColumbiaPattern(std::istream& is, std::ostream& os, Image& image){
+    int Hheight=getInteger(is,os,"Image height? ");
+    image.setHeight(Hheight);
+    int heightcon1 =  Hheight*3;
+    int heightcon2 = heightcon1/2;
+    image.setWidth(heightcon2);
+    
+    int row;
+    int rowhalf = (image.getHeight() / 2);
+    int rowthird = (rowhalf / 2);
+    int rowthirdbottom = rowthird+ rowhalf;
+    for (row = 0; row <= image.getHeight(); row++)
+    {
+
+        int column;
+        for (column = 0; column <= image.getWidth(); column++)
+        {
+            
+            if (row>=rowthirdbottom && row >=rowhalf)
+            
+            {
+                //RGB: Red 206-17-38), ~
+                image.setChannel(row,column,0,206);
+                image.setChannel(row,column,1,17);
+                image.setChannel(row,column,2,38);
+                
+                
+                
+              
+            }
+            else if (row >=rowhalf){
+                 //os<<"got here";
+                image.setChannel(row,column,0,0);
+                image.setChannel(row,column,1,56);
+                image.setChannel(row,column,2,147);
+             //RGB: Blue 0-56-147), -
+             
+               
+            }
+            else{
+                   //RGB: yellow 252-209-22 |
+                    image.setChannel(row,column,0,252);
+                image.setChannel(row,column,1,209);
+                image.setChannel(row,column,2,22);
+                
+            }
+            
+        }
+    }
+}
+
 void stripedDiagonalPattern(std::istream &is, std::ostream &os, PPM &p)
 {
     std::string imagestringpromptone = "Image height? ";

@@ -55,3 +55,20 @@ int askQuestions3(std::istream &is, std::ostream &os)
     // os <<std::endl;
     return intvalue;
 }
+
+
+int askUncleBuckQuestions(std::istream& is, std::ostream& os){
+    std::string in1="Where do you live? ";
+    std::string in2="Own or rent? ";
+    std::string in3="What is your record for consecutive questions asked? ";
+    std::string a1=getString(is,os,in1);
+    std::string a2=getString(is,os,in2);
+    int a3=getInteger(is,os,in3);
+    if (a3>=30){
+        os<<a3 <<" is pretty good. Enjoy "<<a2<<" in the "<<a1<<'.';
+    }
+    else{
+        os<<a3 <<" is okay. Enjoy "<<a2<<" in the "<<a1<<'.';
+    }
+    return a3;
+}
