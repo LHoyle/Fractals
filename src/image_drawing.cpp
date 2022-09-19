@@ -3,17 +3,19 @@
 void stripedDiagonalPattern(std::istream &is, std::ostream &os, PPM &p)
 {
     std::string imagestringpromptone = "Image height? ";
-    int height =getInteger(is, os, imagestringpromptone);
+    int height = getInteger(is, os, imagestringpromptone);
 
     std::string imagestringprompttwo = "Image width? ";
     int width = getInteger(is, os, imagestringprompttwo);
     p = PPM(height, width);
-    p.setMaxColorValue((height+width)/3);
+    p.setMaxColorValue((height + width) / 3);
 
     int rowhalf = (p.getHeight() / 2);
-    //os << p.getHeight();
-    int colhalf = (p.getWidth() / 2);
-    //os << p.getWidth();
+    // os << p.getHeight();
+    // os << p.getWidth();
+    int r;
+    int g;
+    int b;
 
     int maxCV = height * width;
     if (maxCV > 255)
@@ -28,160 +30,34 @@ void stripedDiagonalPattern(std::istream &is, std::ostream &os, PPM &p)
         for (column = 0; column < p.getWidth(); column++)
         {
 
-            if (row < rowhalf && column < colhalf)
+            g = (row + width - column - 1) % (p.getMaxColorValue() + 1);
+            if (row < rowhalf)
             {
-                /* // top left
-                 p.setChannel(row, column, 0, 0);
-                 // int red =0;
-                 if (column < row){
-                     p.setChannel(row, column, 2, 0);
-                 }
-                 else{
-                     p.setChannel(row, column, 2, p.getMaxColorValue());
-                 }
-                 // int blue =0;
-                 p.setChannel(row, column, 1, (row + width - column - 1) % (p.getMaxColorValue()+1));
-                 // int = green ( 2*row + 2*column ) % 256;*/
-                if (column < row)
+                r = 0;
+            }
+            else
+            {
+                if (row % 3 == 0)
                 {
-                    p.setPixel(row, column, 0, 0, (row + width - column - 1) % (p.getMaxColorValue() + 1));
+                    r = 0;
                 }
                 else
                 {
-                    p.setPixel(row, column, 0, p.getMaxColorValue(), (row + width - column - 1) % (p.getMaxColorValue() + 1));
+                    r = p.getMaxColorValue();
                 }
             }
-            else if (row >= rowhalf && column < colhalf)
+            if (column < row)
             {
-                /*// top right
-                // int red = 0;
-                p.setChannel(row, column, 0, 0);
-                // int blue =255;
-                if (column < row){
-                    p.setChannel(row, column, 2, 0);
-                }
-                else{
-                    p.setChannel(row, column, 2, 255);
-                }
-                // int = green ( 2*row + 2*column ) % 256;
-                p.setChannel(row, column, 1, (row + width - column - 1) % (p.getMaxColorValue()+1));
-                */
-                if (column < row)
-                {
-                    p.setPixel(row, column, 0, 0, (row + width - column - 1) % (p.getMaxColorValue() + 1));
-                }
-                else
-                {
-                    p.setPixel(row, column, 0, p.getMaxColorValue(), (row + width - column - 1) % (p.getMaxColorValue() + 1));
-                }
+                b = 0;
             }
-            else if (row < rowhalf && column >= colhalf)
+            else
             {
-
-                /*// bottom left
-                // int red = 255;
-                if (row / 3  == 0){
-                    p.setChannel(row, column, 0, 0);
-                }
-                else{
-                    p.setChannel(row, column, 0, 255);
-                }
-                // int blue =0;
-                if (column < row){
-                    p.setChannel(row, column, 2, 0);
-                }
-                else{
-                    p.setChannel(row, column, 2, 255);
-                }
-
-                // int = green ( 2*row + 2*column ) % 256;
-                p.setChannel(row, column, 1, (row + width - column - 1) % (p.getMaxColorValue()+1));*/
-                if (row / 3 == 0)
-                {
-                    if (column < row)
-                    {
-                        p.setPixel(row, column, p.getMaxColorValue(), (row + width - column - 1) % (p.getMaxColorValue() + 1),0);
-                    }
-                    else
-                    {
-                        p.setPixel(row, column, p.getMaxColorValue(), (row + width - column - 1) % (p.getMaxColorValue() + 1), p.getMaxColorValue());
-                    }
-                }
-                else
-                {
-                    if (column < row)
-                    {
-                        p.setPixel(row, column, 0, (row + width - column - 1) % (p.getMaxColorValue() + 1), 0);
-                    }
-                    else
-                    {
-                        p.setPixel(row, column, 0, (row + width - column - 1) % (p.getMaxColorValue() + 1), p.getMaxColorValue());
-                    }
-                }
+                b = p.getMaxColorValue();
             }
-            else if (row >= rowhalf && column >= colhalf)
-            {
-                /*// bottom right
-                // int red = 255;
-                if (row/3 ==0 ){
-                    p.setChannel(row, column, 0, 0);
-                }
-                else{
-                    p.setChannel(row, column, 0, p.getMaxColorValue());
-                }
-                // int blue =p.getMaxColorValue();
-                if (column < row){
-                    p.setChannel(row, column, 2, 0);
-                }
-                else{
-                    p.setChannel(row, column, 2, p.getMaxColorValue());
-                }
-                // int = green ( 2*row + 2*column ) % 256;
-                p.setChannel(row, column, 1, (row + width - column - 1) % (p.getMaxColorValue()+1));*/
-                if (row / 3 == 0)
-                {
-                    if (column < row)
-                    {
-                        p.setPixel(row, column, p.getMaxColorValue(), (row + width - column - 1) % (p.getMaxColorValue() + 1), 0);
-                    }
-                    else
-                    {
-                        p.setPixel(row, column, p.getMaxColorValue(), (row + width - column - 1) % (p.getMaxColorValue() + 1), p.getMaxColorValue());
-                    }
-                }
-                else
-                {
-                    if (column < row)
-                    {
-                        p.setPixel(row, column, 0, (row + width - column - 1) % (p.getMaxColorValue() + 1), 0);
-                    }
-                    else
-                    {
-                        p.setPixel(row, column, 0, (row + width - column - 1) % (p.getMaxColorValue() + 1), p.getMaxColorValue());
-                    }
-                }
-            }
+            p.setPixel(row, column, r, g, b);
         }
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 void diagonalQuadPattern(std::istream &is, std::ostream &os, Image &image)
 {
@@ -192,7 +68,7 @@ void diagonalQuadPattern(std::istream &is, std::ostream &os, Image &image)
     int width = getInteger(is, os, imagestringprompttwo);
     image.setHeight(height);
     image.setWidth(width);
-    
+
     int rowhalf = (image.getHeight() / 2);
     int colhalf = (image.getWidth() / 2);
 
