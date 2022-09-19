@@ -4,6 +4,8 @@ void writeUserImage(std::istream &is, std::ostream &os, const PPM &p)
 {
     std::string prompt = "Output filename? ";
     std::string outname = getString(is, os, prompt);
+    ///std::string fout=outname;
+    //os<< fout;
     std::ofstream fout(outname);
     // std::vector<int> pixels = {0,255}; // p somehow you need to get the image byte by byte. which I don't quite know how to do.
     int rows; // an int is a 4 byte entity.
@@ -12,7 +14,7 @@ void writeUserImage(std::istream &is, std::ostream &os, const PPM &p)
     int cols;
     int chan;
     // os << maxR;
-    p.writeStream(os);
+    p.writeStream(fout);
     for (rows = 0; rows < maxR; rows++)
     {
         for (cols = 0; cols < maxC; cols++)
@@ -23,11 +25,11 @@ void writeUserImage(std::istream &is, std::ostream &os, const PPM &p)
                 int channel = p.getChannel(rows, cols, chan);
                 byte = channel;
                 //os << byte<<(char *)&byte;
-                os.write((char *)&byte, 1);
+                fout.write((char *)&byte, sizeof(byte));
             }
         }
     }
-    fout << std::endl;
+    fout << "\n";
     fout.close();
 }
 /*//fout << p[i] << " ";

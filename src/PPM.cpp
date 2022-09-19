@@ -56,8 +56,8 @@ void PPM::writeStream(std::ostream &os) const
     std::string hHeight = std::to_string(mHeight);
     std::string mMCV = std::to_string(MCV);
     os << "P6"
-       << " " << wWidth << " " << hHeight << " " << mMCV << std::endl;
-    os << "BINARY REPRESENTATION OF COLORS FOR EACH PIXEL IN THE SAME ORDER AS THE COLOR FILE" << std::endl;
+       << " " << wWidth << " " << hHeight << " " << mMCV << "\n";
+    os << "BINARY REPRESENTATION OF COLORS FOR EACH PIXEL IN THE SAME ORDER AS THE COLOR FILE" << "\n";
     /*int row;
     int col;
     int chan;
