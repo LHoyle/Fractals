@@ -7,22 +7,23 @@ void stripedDiagonalPattern(std::istream &is, std::ostream &os, PPM &p)
 
     std::string imagestringprompttwo = "Image width? ";
     int width = getInteger(is, os, imagestringprompttwo);
-    p = PPM(height, width);
-    ;
+    p.setHeight(height);
+    p.setWidth(width);
 
     int rowhalf = (p.getHeight() / 2);
     // os << p.getHeight();
     // os << p.getWidth();
-    int r;
+    /*int r;
     int g;
-    int b;
+    int b;*/
 
-    int maxCV = height * width/3;
+    int maxCV = height + width / 3;
     if (maxCV > 255)
     {
         p.setMaxColorValue(255);
     }
-    else{
+    else
+    {
         p.setMaxColorValue(maxCV);
     }
     int row;
@@ -32,22 +33,20 @@ void stripedDiagonalPattern(std::istream &is, std::ostream &os, PPM &p)
         int column;
         for (column = 0; column < p.getWidth(); column++)
         {
-            /*p.setChannel(row, column, 1, (row + width - column - 1) % (p.getMaxColorValue() + 1));
-            //g = (row + width - column - 1) % (p.getMaxColorValue() + 1);
+            int greensleeves = (row + p.getWidth() - column - 1) % (p.getMaxColorValue() + 1);
+            p.setChannel(row, column, 1, greensleeves);
+            // g = (row + width - column - 1) % (p.getMaxColorValue() + 1);
             if (row < rowhalf)
+            {
+                p.setChannel(row, column, 0, 0);
+            }
+            else if (row % 3 == 0)
             {
                 p.setChannel(row, column, 0, 0);
             }
             else
             {
-                if (row % 3 == 0)
-                {
-                    p.setChannel(row, column, 0, 0);
-                }
-                else
-                {
-                    p.setChannel(row, column, 0, p.getMaxColorValue());
-                }
+                p.setChannel(row, column, 0, p.getMaxColorValue());
             }
             if (column < row)
             {
@@ -56,35 +55,37 @@ void stripedDiagonalPattern(std::istream &is, std::ostream &os, PPM &p)
             else
             {
                 p.setChannel(row, column, 2, p.getMaxColorValue());
-            }*/
-            g = (row + width - column - 1) % (p.getMaxColorValue() + 1);
-            if (row < rowhalf)
+            }
+        }
+
+        /*g = (row + width - column - 1) % (p.getMaxColorValue() + 1);
+        if (row < rowhalf)
+        {
+            r = 0;
+        }
+        else
+        {
+            if (row % 3 == 0)
             {
                 r = 0;
             }
             else
             {
-                if (row % 3 == 0)
-                {
-                    r = 0;
-                }
-                else
-                {
-                    r = p.getMaxColorValue();
-                }
+                r = p.getMaxColorValue();
             }
-            if (column < row)
-            {
-                b = 0;
-            }
-            else
-            {
-                b = p.getMaxColorValue();
-            }
-            p.setPixel(row, column, r, g, b);
         }
+        if (column < row)
+        {
+            b = 0;
+        }
+        else
+        {
+            b = p.getMaxColorValue();
+        }
+        p.setPixel(row, column, r, g, b);*/
     }
 }
+
 
 void diagonalQuadPattern(std::istream &is, std::ostream &os, Image &image)
 {

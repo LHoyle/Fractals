@@ -54,16 +54,15 @@ void PPM::writeStream(std::ostream &os) const
 {
     os << "P6"
        << " " << getWidth() << " " << getHeight() << " " << getMaxColorValue() << "\n";
-    //os << "BINARY REPRESENTATION OF COLORS FOR EACH PIXEL IN THE SAME ORDER AS THE COLOR FILE";
-    //os << "BINARY REPRESENTATION OF COLORS FOR EACH PIXEL IN THE SAME ORDER AS THE COLOR FILE" << "\n";
-
+    // os << "BINARY REPRESENTATION OF COLORS FOR EACH PIXEL IN THE SAME ORDER AS THE COLOR FILE";
+    // os << "BINARY REPRESENTATION OF COLORS FOR EACH PIXEL IN THE SAME ORDER AS THE COLOR FILE" << "\n";
 
     int rows; // an int is a 4 byte entity.
     int maxR = getHeight();
     int maxC = getWidth();
     int cols;
     int chan;
-     for (rows = 0; rows < maxR; rows++)
+    for (rows = 0; rows < maxR; rows++)
     {
         for (cols = 0; cols < maxC; cols++)
         {
@@ -72,12 +71,12 @@ void PPM::writeStream(std::ostream &os) const
                 unsigned char byte; // char is a one byte int. this stores from 0 to 255
                 int channel = getChannel(rows, cols, chan);
                 byte = channel;
-                //os << byte<<(char *)&byte;
+                // os << byte<<(char *)&byte;
                 os.write((char *)&byte, sizeof(byte));
-                //os.write((char *)&byte, 3);
+                // os.write((char *)&byte, 3);
             }
         }
-    //os<< "\n";
+        // os<< "\n";
     }
     /*int row;
     int col;

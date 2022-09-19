@@ -4,9 +4,9 @@ void writeUserImage(std::istream &is, std::ostream &os, const PPM &p)
 {
     std::string prompt = "Output filename? ";
     std::string outname = getString(is, os, prompt);
-    ///std::string fout=outname;
-    //os<< fout;
-    std::ofstream outout(outname,std::ios::binary);
+    /// std::string fout=outname;
+    // os<< fout;
+    std::ofstream outout(outname, std::ios::binary);
     // std::vector<int> pixels = {0,255}; // p somehow you need to get the image byte by byte. which I don't quite know how to do.
     // os << maxR;
     p.writeStream(outout);
