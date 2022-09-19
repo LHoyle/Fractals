@@ -32,7 +32,31 @@ void stripedDiagonalPattern(std::istream &is, std::ostream &os, PPM &p)
         int column;
         for (column = 0; column < p.getWidth(); column++)
         {
-
+            /*p.setChannel(row, column, 1, (row + width - column - 1) % (p.getMaxColorValue() + 1));
+            //g = (row + width - column - 1) % (p.getMaxColorValue() + 1);
+            if (row < rowhalf)
+            {
+                p.setChannel(row, column, 0, 0);
+            }
+            else
+            {
+                if (row % 3 == 0)
+                {
+                    p.setChannel(row, column, 0, 0);
+                }
+                else
+                {
+                    p.setChannel(row, column, 0, p.getMaxColorValue());
+                }
+            }
+            if (column < row)
+            {
+                p.setChannel(row, column, 2, 0);
+            }
+            else
+            {
+                p.setChannel(row, column, 2, p.getMaxColorValue());
+            }*/
             g = (row + width - column - 1) % (p.getMaxColorValue() + 1);
             if (row < rowhalf)
             {
