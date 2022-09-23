@@ -80,7 +80,7 @@ void PPM::writeStream(std::ostream &os) const
         }
         // os<< "\n";
     }
-    os<< "\n";
+    //os<< "\n";
     /*int row;
     int col;
     int chan;

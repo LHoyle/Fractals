@@ -83,11 +83,11 @@ void stripedDiagonalPattern(std::istream &is, std::ostream &os, PPM &p)
         //os << p.getMaxColorValue();
     }
     int row;
-    for (row = 0; row <= p.getHeight(); row++)
+    for (row = 0; row < p.getHeight(); row++)
     {
 
         int column;
-        for (column = 0; column <= p.getWidth(); column++)
+        for (column = 0; column < p.getWidth(); column++)
         {
             /*int greensleevesp1(row + p.getWidth() - column - 1);
             int greensleevesp2(p.getMaxColorValue()+1);
