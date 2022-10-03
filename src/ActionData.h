@@ -16,4 +16,10 @@ public:
     void setDone();
 
 protected:
+    std::ostream AOS;
+    std::istream AIS;
+    PPM inim1;
+    PPM inim2;
+    PPM oim;
+    bool check;
 };
