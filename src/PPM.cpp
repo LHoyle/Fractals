@@ -70,17 +70,17 @@ void PPM::writeStream(std::ostream &os) const
             {
                 unsigned char byte; // char is a one byte int. this stores from 0 to 255
                 int channel = getChannel(rows, cols, chan);
-                //std::cout<<channel;
+                // std::cout<<channel;
                 byte = channel;
-                //std::cout<<byte;
-                //os << byte<<(char *)&byte;
+                // std::cout<<byte;
+                // os << byte<<(char *)&byte;
                 os.write((char *)&byte, sizeof(byte));
-                //os.write((char *)&byte, 1);
+                // os.write((char *)&byte, 1);
             }
         }
         // os<< "\n";
     }
-    //os<< "\n";
+    // os<< "\n";
     /*int row;
     int col;
     int chan;
@@ -92,14 +92,15 @@ void PPM::writeStream(std::ostream &os) const
             {
                 os.write()
             }
-        }                                   
+        }
     }*/
 }
-void PPM::readStream(std::istream& is){
-    
-    is >> "P6"
-       >> " " >> setWidth() >> " " >> setHeight() >> " " >> setMaxColorValue() >>"\n";
-    int rows;
+void PPM::readStream(std::istream &is)
+{
+    is.readStream() >> setWidth();
+    is.readStream() >>setHeight();
+    is.readStream() >> setMaxColorValue();
+    int rows; 
     int maxR = getHeight();
     int maxC = getWidth();
     int cols;
@@ -114,7 +115,7 @@ void PPM::readStream(std::istream& is){
                 int channel = setChannel(rows, cols, chan);
                 byte = channel;
 
-                is.read();
+                is.readStream();
             }
         }
     }
