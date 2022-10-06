@@ -95,3 +95,27 @@ void PPM::writeStream(std::ostream &os) const
         }                                   
     }*/
 }
+void PPM::readStream(std::istream& is){
+    
+    is >> "P6"
+       >> " " >> setWidth() >> " " >> setHeight() >> " " >> setMaxColorValue() >>"\n";
+    int rows;
+    int maxR = getHeight();
+    int maxC = getWidth();
+    int cols;
+    int chan;
+    for (rows = 0; rows < maxR; rows++)
+    {
+        for (cols = 0; cols < maxC; cols++)
+        {
+            for (chan = 0; chan < 3; chan++)
+            {
+                unsigned char byte; // char is a one byte int. this stores from 0 to 255
+                int channel = setChannel(rows, cols, chan);
+                byte = channel;
+
+                is.read();
+            }
+        }
+    }
+}
