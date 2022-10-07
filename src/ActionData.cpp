@@ -1,27 +1,26 @@
 #include "ActionData.h"
-ActionData::ActionData(is, os)
+
+ActionData::ActionData(std::istream& is, std::ostream& os)
+    :AIS(is), AOS(os), check(false)
 {
-    AIS = is;
-    AOS = os;
-    check = false;
 }
-ActionData::getIS()
+std::istream& ActionData::getIS()
 {
     return AIS;
 }
-ActionData::getOS()
+std::ostream& ActionData::getOS()
 {
     return AOS;
 }
-ActionData::getInputImage1()
+PPM& ActionData::getInputImage1()
 {
     return inim1;
 }
-ActionData::getInputImage2()
+PPM& ActionData::getInputImage2()
 {
     return inim2;
 }
-ActionData::getOutputImage()
+PPM& ActionData::getOutputImage()
 {
     return oim;
 }

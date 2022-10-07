@@ -1,7 +1,10 @@
 #include "MenuData.h"
 
-typedef void (*ActionFunctionType)(ActionData &action_data)
-{
+typedef void (*ActionFunctionType)(ActionData &action_data){
+    std::vector<std::string>;
+    std::map<std::string,ActionFunctionType>;
+    std::map<std::string,std::string>;
+
 }
 MenuData::MenuData()
 {
