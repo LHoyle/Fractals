@@ -5,11 +5,11 @@
 #include <map>
 #include "ActionData.h"
 
-
+typedef void (*ActionFunctionType)(ActionData& action_data);
 class MenuData
 {
 public:
-    typedef void (*ActionFunctionType)(ActionData& action_data);
+    
     MenuData();
     void addAction(const std::string &name, ActionFunctionType func, const std::string& description);
     const std::vector<std::string>& getNames() const;
