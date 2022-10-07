@@ -16,16 +16,18 @@ const std::vector<std::string>& MenuData::getNames() const
 }
 ActionFunctionType MenuData::getFunction(const std::string& name)
 {
-    if (AFT.find(name) ){
-        return AFT.find(name);
+     std::map<std::string, ActionFunctionType>::iterator AFTS= AFT.find(name) ;
+    if (AFTS!=AFT.end()){
+        return AFT[name];
     }
     return 0;
 }
 const std::string& MenuData::getDescription(const std::string& name)
 {
     static std::string lolnope = "";
-    if (mapstring.find(name)){
-        return mapstring.find(name);
+    std::map<std::string, std::string>::iterator found= mapstring.find(name);
+    if (found!=mapstring.end()){
+        return mapstring[name];
     }
     return lolnope;
 }
