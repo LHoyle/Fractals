@@ -71,7 +71,7 @@ flag_columbia_ascii.o: flag_columbia_ascii.cpp image_menu.h PPM.h Image.h
 ActionData.o: ActionData.cpp ActionData.h PPM.h Image.h
 	g++ $(CXXFLAGS) -c  $<
 
-MenuData.o: MenuData.cpp MenuData.H ActionData.h PPM.h Image.h
+MenuData.o: MenuData.cpp MenuData.h ActionData.h PPM.h Image.h
 	g++ $(CXXFLAGS) -c  $<
 
 clean: 
