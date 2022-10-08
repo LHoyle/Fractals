@@ -1,33 +1,33 @@
 #include "image_menu.h"
 
-int assignment1(std::istream &is, std::ostream &os)
+int assignment1(ActionData &action_data)
 {
-    int value = askQuestions3(is, os);
+    int value = askQuestions3(action_data);
     return value;
 }
 
-int assignment2(std::istream &is, std::ostream &os)
+int assignment2(ActionData &action_data)
 {
     Image imag = Image();
-    diagonalQuadPattern(is, os, imag);
-    drawAsciiImage(is, os, imag);
+    diagonalQuadPattern(action_data);
+    drawAsciiImage(action_data);
     return 0;
 }
 
-int assignment3(std::istream &is, std::ostream &os)
+int assignment3(ActionData &action_data)
 {
     PPM ppm = PPM();
-    stripedDiagonalPattern(is, os, ppm);
-    writeUserImage(is, os, ppm);
+    stripedDiagonalPattern(action_data);
+    writeUserImage(action_data;
     return 0;
 }
-int buck( std::istream& is, std::ostream& os ){
-    int value = askUncleBuckQuestions (is,os);
+int buck(ActionData &action_data){
+    int value = askUncleBuckQuestions (action_data);
     return value;
 }
-int flag_columbia_ascii(std::istream& is, std::ostream& os){
+int flag_columbia_ascii(ActionData& action_data){
     Image Imp =Image();
-    flagColumbiaPattern(is,os,Imp);
-    drawAsciiImage(is, os, Imp);
+    flagColumbiaPattern(action_data);
+    drawAsciiImage(action_data);
     return 0;
 }

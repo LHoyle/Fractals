@@ -5,30 +5,35 @@
 #include <iostream>
 #include "Image.h"
 #include "PPM.h"
+#include "ActionData.h"
 
-std::string getString(std::istream &is, std::ostream &os, const std::string &prompt);
+std::string getString(ActionData& action_data, const std::string &prompt);
 
-int getInteger(std::istream &is, std::ostream &os, const std::string &prompt);
+int getInteger(ActionData& action_data, const std::string &prompt);
 
-double getDouble(std::istream &is, std::ostream &os, const std::string &prompt);
+double getDouble(ActionData& action_data, const std::string &prompt);
 
-int askQuestions3(std::istream &is, std::ostream &os);
+int askQuestions3(ActionData& action_data);
 
-int assignment1(std::istream &is, std::ostream &os);
+int assignment1(ActionData &action_data);
 
-void drawAsciiImage(std::istream &is, std::ostream &os, const Image &image);
+void drawAsciiImage(ActionData &action_data, const Image &image);
 
-void diagonalQuadPattern(std::istream &is, std::ostream &os, Image &image);
+void diagonalQuadPattern(ActionData &action_data, Image &image);
 
-int assignment2(std::istream &is, std::ostream &os);
+int assignment2(ActionData &action_data);
 
-void writeUserImage(std::istream &is, std::ostream &os, const PPM &p);
+void writeUserImage(ActionData &action_data, const PPM &p);
 
-void stripedDiagonalPattern(std::istream &is, std::ostream &os, PPM &p);
+void stripedDiagonalPattern(ActionData &action_data, PPM &p);
 
-int assignment3(std::istream &is, std::ostream &os);
+int assignment3(ActionData &action_data);
 
-int askUncleBuckQuestions(std::istream &is, std::ostream &os);
-int buck(std::istream &is, std::ostream &os);
-void flagColumbiaPattern(std::istream &is, std::ostream &os, Image &image);
-int flag_columbia_ascii(std::istream &is, std::ostream &os);
+int askUncleBuckQuestions(ActionData& action_data);
+int buck(ActionData &action_data);
+void flagColumbiaPattern(ActionData &action_data, Image &image);
+int flag_columbia_ascii(ActionData &action_data);
+
+std::string getChoice( ActionData& action_data );
+void commentLine( ActionData& action_data );
+void quit(ActionData& action_data); 

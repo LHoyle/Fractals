@@ -1,65 +1,58 @@
 #include "image_menu.h"
 
+void flagColumbiaPattern(ActionData &action_data)
+{
+    int Hheight = getInteger(action_data, "Image height? ");
+    action_data.getInputImage1().setHeight(Hheight);
+    int heightcon1 = Hheight * 3;
+    int heightcon2 = heightcon1 / 2;
+    action_data.getInputImage1().setWidth(heightcon2);
 
-
-void flagColumbiaPattern(std::istream& is, std::ostream& os, Image& image){
-    int Hheight=getInteger(is,os,"Image height? ");
-    image.setHeight(Hheight);
-    int heightcon1 =  Hheight*3;
-    int heightcon2 = heightcon1/2;
-    image.setWidth(heightcon2);
-    
     int row;
-    int rowhalf = (image.getHeight() / 2);
+    int rowhalf = (action_data.getInputImage1().getHeight() / 2);
     int rowthird = (rowhalf / 2);
-    int rowthirdbottom = rowthird+ rowhalf;
-    for (row = 0; row <= image.getHeight(); row++)
+    int rowthirdbottom = rowthird + rowhalf;
+    for (row = 0; row <= action_data.getInputImage1().getHeight(); row++)
     {
 
         int column;
-        for (column = 0; column <= image.getWidth(); column++)
+        for (column = 0; column <= action_data.getInputImage1().getWidth(); column++)
         {
-            
-            if (row>=rowthirdbottom && row >=rowhalf)
-            
+
+            if (row >= rowthirdbottom && row >= rowhalf)
+
             {
-                //RGB: Red 206-17-38), ~
-                image.setChannel(row,column,0,206);
-                image.setChannel(row,column,1,17);
-                image.setChannel(row,column,2,38);
-                
-                
-                
-              
+                // RGB: Red 206-17-38), ~
+                action_data.getInputImage1().setChannel(row, column, 0, 206);
+                action_data.getInputImage1().setChannel(row, column, 1, 17);
+                action_data.getInputImage1().setChannel(row, column, 2, 38);
             }
-            else if (row >=rowhalf){
-                 //os<<"got here";
-                image.setChannel(row,column,0,0);
-                image.setChannel(row,column,1,56);
-                image.setChannel(row,column,2,147);
-             //RGB: Blue 0-56-147), -
-             
-               
+            else if (row >= rowhalf)
+            {
+                // os<<"got here";
+                action_data.getInputImage1().setChannel(row, column, 0, 0);
+                action_data.getInputImage1().setChannel(row, column, 1, 56);
+                action_data.getInputImage1().setChannel(row, column, 2, 147);
+                // RGB: Blue 0-56-147), -
             }
-            else{
-                   //RGB: yellow 252-209-22 |
-                    image.setChannel(row,column,0,252);
-                image.setChannel(row,column,1,209);
-                image.setChannel(row,column,2,22);
-                
+            else
+            {
+                // RGB: yellow 252-209-22 |
+                action_data.getInputImage1().setChannel(row, column, 0, 252);
+                action_data.getInputImage1().setChannel(row, column, 1, 209);
+                action_data.getInputImage1().setChannel(row, column, 2, 22);
             }
-            
         }
     }
 }
 
-void stripedDiagonalPattern(std::istream &is, std::ostream &os, PPM &p)
+void stripedDiagonalPattern(ActionData &action_data)
 {
     std::string imagestringpromptone = "Image height? ";
-    int height = getInteger(is, os, imagestringpromptone);
+    int height = getInteger(action_data, imagestringpromptone);
 
     std::string imagestringprompttwo = "Image width? ";
-    int width = getInteger(is, os, imagestringprompttwo);
+    int width = getInteger(action_data, imagestringprompttwo);
     p.setHeight(height);
     p.setWidth(width);
 
@@ -71,16 +64,16 @@ void stripedDiagonalPattern(std::istream &is, std::ostream &os, PPM &p)
     int b;
 
     int maxCV = (height + width) / 3;
-    //os<<height<<width<<maxCV<<std::endl;
+    // os<<height<<width<<maxCV<<std::endl;
     if (maxCV >= 255)
     {
         p.setMaxColorValue(255);
-        //os << p.getMaxColorValue();
+        // os << p.getMaxColorValue();
     }
     else
     {
         p.setMaxColorValue(maxCV);
-        //os << p.getMaxColorValue();
+        // os << p.getMaxColorValue();
     }
     int row;
     for (row = 0; row < p.getHeight(); row++)
@@ -116,10 +109,10 @@ void stripedDiagonalPattern(std::istream &is, std::ostream &os, PPM &p)
             }*/
 
             int greensleevesp1(row + p.getWidth() - column - 1);
-            int greensleevesp2(p.getMaxColorValue()+1);
+            int greensleevesp2(p.getMaxColorValue() + 1);
             int greensleeves = greensleevesp1 % greensleevesp2;
             g = greensleeves;
-            //os<<greensleevesp1<<greensleevesp2<<g<<std::endl;
+            // os<<greensleevesp1<<greensleevesp2<<g<<std::endl;
             if (row < rowhalf)
             {
                 r = 0;
@@ -144,30 +137,30 @@ void stripedDiagonalPattern(std::istream &is, std::ostream &os, PPM &p)
                 b = p.getMaxColorValue();
             }
             p.setPixel(row, column, r, g, b);
-            //os<<r<<std::endl<<g<<std::endl<<b<<std::endl;
+            // os<<r<<std::endl<<g<<std::endl<<b<<std::endl;
         }
     }
 }
 
-void diagonalQuadPattern(std::istream &is, std::ostream &os, Image &image)
+void diagonalQuadPattern(ActionData &action_data)
 {
     std::string imagestringpromptone = "Image height? ";
-    int height = getInteger(is, os, imagestringpromptone);
+    int height = getInteger(action_data, imagestringpromptone);
 
     std::string imagestringprompttwo = "Image width? ";
-    int width = getInteger(is, os, imagestringprompttwo);
+    int width = getInteger(action_data, imagestringprompttwo);
     image.setHeight(height);
     image.setWidth(width);
 
-    int rowhalf = (image.getHeight() / 2);
-    int colhalf = (image.getWidth() / 2);
+    int rowhalf = (action_data.getInputImage1().getHeight() / 2);
+    int colhalf = (action_data.getInputImage1().getWidth() / 2);
 
     int row;
-    for (row = 0; row < image.getHeight(); row++)
+    for (row = 0; row < action_data.getInputImage1().getHeight(); row++)
     {
 
         int column;
-        for (column = 0; column < image.getWidth(); column++)
+        for (column = 0; column < action_data.getInputImage1().getWidth(); column++)
         {
 
             if (row < rowhalf && column < colhalf)

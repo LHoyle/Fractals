@@ -2,7 +2,8 @@
 
 int main()
 {
-    int A2 = assignment2(std::cin, std::cout);
+    ActionData action_data=ActionData(std::cin,std::cout);
+    int A2 = assignment2(action_data);
 
     return A2;
 }
