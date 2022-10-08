@@ -8,7 +8,7 @@ int assignment1(ActionData &action_data)
 
 int assignment2(ActionData &action_data)
 {
-    Image imag = Image();
+    //Image imag = Image();
     diagonalQuadPattern(action_data);
     drawAsciiImage(action_data);
     return 0;
@@ -16,9 +16,9 @@ int assignment2(ActionData &action_data)
 
 int assignment3(ActionData &action_data)
 {
-    PPM ppm = PPM();
+    //PPM ppm = PPM();
     stripedDiagonalPattern(action_data);
-    writeUserImage(action_data;
+    writeUserImage(action_data);
     return 0;
 }
 int buck(ActionData &action_data){
@@ -26,7 +26,7 @@ int buck(ActionData &action_data){
     return value;
 }
 int flag_columbia_ascii(ActionData& action_data){
-    Image Imp =Image();
+    //Image Imp =Image();
     flagColumbiaPattern(action_data);
     drawAsciiImage(action_data);
     return 0;

@@ -1,6 +1,7 @@
 #include "image_menu.h"
 int main ()
 {
-    int value = buck(std::cin, std::cout);
+    ActionData action_data=ActionData(std::cin,std::cout);
+    int value = buck(action_data);
     return value;
 }

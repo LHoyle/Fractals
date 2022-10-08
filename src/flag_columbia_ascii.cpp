@@ -1,7 +1,8 @@
 #include "image_menu.h"
 
 int main(){
-    int value = flag_columbia_ascii(std::cin,std::cout);
+    ActionData action_data=ActionData(std::cin,std::cout);
+    int value = flag_columbia_ascii(action_data);
     return value;
 
 }

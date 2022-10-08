@@ -9,7 +9,7 @@ void writeUserImage(ActionData &action_data)
     std::ofstream outout(outname, std::ifstream::binary);
     // std::vector<int> pixels = {0,255}; // p somehow you need to get the image byte by byte. which I don't quite know how to do.
     // os << maxR;
-    p.writeStream(outout);
+    action_data.getInputImage1().writeStream(outout);
 
     outout.close();
 }

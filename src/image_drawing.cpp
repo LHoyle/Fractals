@@ -1,5 +1,41 @@
 #include "image_menu.h"
 
+void setSize(ActionData &action_data)
+{
+}
+
+void setMaxColorValue(ActionData &action_data)
+{
+}
+void setChannel(ActionData &action_data)
+{
+}
+
+void setPixel(ActionData &action_data)
+{
+}
+
+void clearAll(ActionData &action_data)
+{
+    int row;
+    for (row = 0; row <= action_data.getInputImage1().getHeight(); row++)
+    {
+
+        int column;
+        for (column = 0; column <= action_data.getInputImage1().getWidth(); column++)
+        {
+
+            if (row >= rowthirdbottom && row >= rowhalf)
+
+            {
+                // RGB: Red 206-17-38), ~
+                action_data.getInputImage1().setChannel(row, column, 0, 0);
+                action_data.getInputImage1().setChannel(row, column, 1, 0);
+                action_data.getInputImage1().setChannel(row, column, 2, 0);
+            }
+        }
+    }
+}
 void flagColumbiaPattern(ActionData &action_data)
 {
     int Hheight = getInteger(action_data, "Image height? ");
@@ -53,10 +89,10 @@ void stripedDiagonalPattern(ActionData &action_data)
 
     std::string imagestringprompttwo = "Image width? ";
     int width = getInteger(action_data, imagestringprompttwo);
-    p.setHeight(height);
-    p.setWidth(width);
+    action_data.getInputImage1().setHeight(height);
+    action_data.getInputImage1().setWidth(width);
 
-    int rowhalf = (p.getHeight() / 2);
+    int rowhalf = (action_data.getInputImage1().getHeight() / 2);
     // os << p.getHeight();
     // os << p.getWidth();
     int r;
@@ -67,20 +103,20 @@ void stripedDiagonalPattern(ActionData &action_data)
     // os<<height<<width<<maxCV<<std::endl;
     if (maxCV >= 255)
     {
-        p.setMaxColorValue(255);
+        action_data.getInputImage1().setMaxColorValue(255);
         // os << p.getMaxColorValue();
     }
     else
     {
-        p.setMaxColorValue(maxCV);
+        action_data.getInputImage1().setMaxColorValue(maxCV);
         // os << p.getMaxColorValue();
     }
     int row;
-    for (row = 0; row < p.getHeight(); row++)
+    for (row = 0; row < action_data.getInputImage1().getHeight(); row++)
     {
 
         int column;
-        for (column = 0; column < p.getWidth(); column++)
+        for (column = 0; column < action_data.getInputImage1().getWidth(); column++)
         {
             /*int greensleevesp1(row + p.getWidth() - column - 1);
             int greensleevesp2(p.getMaxColorValue()+1);
@@ -108,8 +144,8 @@ void stripedDiagonalPattern(ActionData &action_data)
                 p.setChannel(row, column, 2, p.getMaxColorValue());
             }*/
 
-            int greensleevesp1(row + p.getWidth() - column - 1);
-            int greensleevesp2(p.getMaxColorValue() + 1);
+            int greensleevesp1(row + action_data.getInputImage1().getWidth() - column - 1);
+            int greensleevesp2(action_data.getInputImage1().getMaxColorValue() + 1);
             int greensleeves = greensleevesp1 % greensleevesp2;
             g = greensleeves;
             // os<<greensleevesp1<<greensleevesp2<<g<<std::endl;
@@ -125,7 +161,7 @@ void stripedDiagonalPattern(ActionData &action_data)
                 }
                 else
                 {
-                    r = p.getMaxColorValue();
+                    r = action_data.getInputImage1().getMaxColorValue();
                 }
             }
             if (column < row)
@@ -134,9 +170,9 @@ void stripedDiagonalPattern(ActionData &action_data)
             }
             else
             {
-                b = p.getMaxColorValue();
+                b = action_data.getInputImage1().getMaxColorValue();
             }
-            p.setPixel(row, column, r, g, b);
+            action_data.getInputImage1().setPixel(row, column, r, g, b);
             // os<<r<<std::endl<<g<<std::endl<<b<<std::endl;
         }
     }
@@ -149,8 +185,8 @@ void diagonalQuadPattern(ActionData &action_data)
 
     std::string imagestringprompttwo = "Image width? ";
     int width = getInteger(action_data, imagestringprompttwo);
-    image.setHeight(height);
-    image.setWidth(width);
+    action_data.getInputImage1().setHeight(height);
+    action_data.getInputImage1().setWidth(width);
 
     int rowhalf = (action_data.getInputImage1().getHeight() / 2);
     int colhalf = (action_data.getInputImage1().getWidth() / 2);
@@ -166,42 +202,42 @@ void diagonalQuadPattern(ActionData &action_data)
             if (row < rowhalf && column < colhalf)
             {
                 // top left
-                image.setChannel(row, column, 0, 0);
+                action_data.getInputImage1().setChannel(row, column, 0, 0);
                 // int red =0;
-                image.setChannel(row, column, 2, 0);
+                action_data.getInputImage1().setChannel(row, column, 2, 0);
                 // int blue =0;
-                image.setChannel(row, column, 1, (2 * row + 2 * column) % 256);
+                action_data.getInputImage1().setChannel(row, column, 1, (2 * row + 2 * column) % 256);
                 // int = green ( 2*row + 2*column ) % 256;
             }
             else if (row >= rowhalf && column < colhalf)
             {
                 // top right
                 // int red = 0;
-                image.setChannel(row, column, 0, 255);
+                action_data.getInputImage1().setChannel(row, column, 0, 255);
                 // int blue =255;
-                image.setChannel(row, column, 2, 0);
+                action_data.getInputImage1().setChannel(row, column, 2, 0);
                 // int = green ( 2*row + 2*column ) % 256;
-                image.setChannel(row, column, 1, (2 * row + 2 * column) % 256);
+                action_data.getInputImage1().setChannel(row, column, 1, (2 * row + 2 * column) % 256);
             }
             else if (row < rowhalf && column >= colhalf)
             {
                 // bottom left
                 // int red = 255;
-                image.setChannel(row, column, 0, 0);
+                action_data.getInputImage1().setChannel(row, column, 0, 0);
                 // int blue =0;
-                image.setChannel(row, column, 2, 255);
+                action_data.getInputImage1().setChannel(row, column, 2, 255);
                 // int = green ( 2*row + 2*column ) % 256;
-                image.setChannel(row, column, 1, (2 * row + 2 * column) % 256);
+                action_data.getInputImage1().setChannel(row, column, 1, (2 * row + 2 * column) % 256);
             }
             else if (row >= rowhalf && column >= colhalf)
             {
                 // bottom right
                 // int red = 255;
-                image.setChannel(row, column, 0, 255);
+                action_data.getInputImage1().setChannel(row, column, 0, 255);
                 // int blue =255;
-                image.setChannel(row, column, 2, 255);
+                action_data.getInputImage1().setChannel(row, column, 2, 255);
                 // int = green ( 2*row + 2*column ) % 256;
-                image.setChannel(row, column, 1, (2 * row + 2 * column) % 256);
+                action_data.getInputImage1().setChannel(row, column, 1, (2 * row + 2 * column) % 256);
             }
         }
     }

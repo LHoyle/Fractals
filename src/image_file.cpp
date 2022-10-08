@@ -2,6 +2,7 @@
 #include <iostream>
 int main()
 {
-    int value = assignment3(std::cin, std::cout);
+    ActionData action_data=ActionData(std::cin,std::cout);
+    int value = assignment3(action_data);
     return value;
 }
