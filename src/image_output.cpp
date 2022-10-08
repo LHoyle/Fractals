@@ -1,5 +1,17 @@
 #include "image_menu.h"
 
+void copyImage(ActionData &action_data)
+{
+    action_data.getOutputImage() = action_data.getInputImage1();
+}
+
+void readUserImage1(ActionData &action_data)
+{
+    std::string InName = getString(action_data, "“Input filename? ");
+    std::ifstream intowrite(InName, std::ifstream::binary);
+    action_data.getInputImage1().readStream(intowrite);
+}
+
 void writeUserImage(ActionData &action_data)
 {
     std::string prompt = "Output filename? ";

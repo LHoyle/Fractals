@@ -2,22 +2,44 @@
 
 void setSize(ActionData &action_data)
 {
+    int row = getInteger(action_data, "Height? ");
+    int column = getInteger(action_data, "Width? ");
+    action_data.getInputImage1().setHeight(row);
+    action_data.getInputImage1().setWidth(column);
 }
 
 void setMaxColorValue(ActionData &action_data)
 {
+    int mcv = getInteger(action_data, "Max color value? ");
+    action_data.getInputImage1().setMaxColorValue(mcv);
 }
 void setChannel(ActionData &action_data)
 {
+    int row = getInteger(action_data, "Row? ");
+    int column = getInteger(action_data, "Column? ");
+    int channel = getInteger(action_data, "Channel? ");
+    int value = getInteger(action_data, "Value? ");
+    action_data.getInputImage1().setChannel(row, column, channel, value);
 }
 
 void setPixel(ActionData &action_data)
 {
+    int row = getInteger(action_data, "Row? ");
+    int column = getInteger(action_data, "Column? ");
+    int Red = getInteger(action_data, "Red? ");
+    int Green = getInteger(action_data, "Green? ");
+    int Blue = getInteger(action_data, "Blue? ");
+    action_data.getInputImage1().setChannel(row, column, 0, Red);
+    action_data.getInputImage1().setChannel(row, column, 1, Green);
+    action_data.getInputImage1().setChannel(row, column, 2, Blue);
 }
 
 void clearAll(ActionData &action_data)
 {
     int row;
+    int rowhalf = (action_data.getInputImage1().getHeight() / 2);
+    int rowthird = (rowhalf / 2);
+    int rowthirdbottom = rowthird + rowhalf;
     for (row = 0; row <= action_data.getInputImage1().getHeight(); row++)
     {
 
