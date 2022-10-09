@@ -37,9 +37,6 @@ void setPixel(ActionData &action_data)
 void clearAll(ActionData &action_data)
 {
     int row;
-    int rowhalf = (action_data.getInputImage1().getHeight() / 2);
-    int rowthird = (rowhalf / 2);
-    int rowthirdbottom = rowthird + rowhalf;
     for (row = 0; row <= action_data.getInputImage1().getHeight(); row++)
     {
 
@@ -47,14 +44,9 @@ void clearAll(ActionData &action_data)
         for (column = 0; column <= action_data.getInputImage1().getWidth(); column++)
         {
 
-            if (row >= rowthirdbottom && row >= rowhalf)
-
-            {
-                // RGB: Red 206-17-38), ~
-                action_data.getInputImage1().setChannel(row, column, 0, 0);
-                action_data.getInputImage1().setChannel(row, column, 1, 0);
-                action_data.getInputImage1().setChannel(row, column, 2, 0);
-            }
+            action_data.getInputImage1().setChannel(row, column, 0, 0);
+            action_data.getInputImage1().setChannel(row, column, 1, 0);
+            action_data.getInputImage1().setChannel(row, column, 2, 0);
         }
     }
 }
@@ -209,6 +201,7 @@ void diagonalQuadPattern(ActionData &action_data)
     int width = getInteger(action_data, imagestringprompttwo);
     action_data.getInputImage1().setHeight(height);
     action_data.getInputImage1().setWidth(width);
+    action_data.getInputImage1().setMaxColorValue(255);
 
     int rowhalf = (action_data.getInputImage1().getHeight() / 2);
     int colhalf = (action_data.getInputImage1().getWidth() / 2);

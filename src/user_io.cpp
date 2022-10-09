@@ -91,12 +91,10 @@ void commentLine(ActionData &action_data)
 
     unsigned char byte; // char is a one byte int. this stores from 0 to 255
     action_data.getIS().read((char *)&byte, sizeof(byte));
-    while (byte != '\n')
+    while (action_data.getIS().good() && byte != '\n')
     {
-        if (action_data.getIS().good())
-        {
-            action_data.getIS().read((char *)&byte, sizeof(byte));
-        }
+
+        action_data.getIS().read((char *)&byte, sizeof(byte));
     }
 }
 void quit(ActionData &action_data)

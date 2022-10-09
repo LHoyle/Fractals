@@ -21,8 +21,8 @@ hello.o: hello.cpp
 questions_3: questions_3.o user_io.o controllers.o image_output.o Image.o image_drawing.o PPM.o ActionData.o MenuData.o
 	g++ $(CXXFLAGS) -o questions_3 questions_3.o user_io.o controllers.o image_output.o Image.o image_drawing.o PPM.o ActionData.o MenuData.o
 
-questions_3.o: questions_3.cpp image_menu.h Image.h PPM.h ActionData.h
-	g++ $(CXXFLAGS) -c questions_3.cpp 
+questions_3.o: questions_3.cpp image_menu.h Image.h PPM.h ActionData.h  ActionData.cpp
+	g++ $(CXXFLAGS) -c questions_3.cpp   ActionData.cpp
 
 
 

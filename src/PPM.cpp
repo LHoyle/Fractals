@@ -102,10 +102,9 @@ void PPM::readStream(std::istream &is)
     int heighth;
     int mcvc;
     std::string garbage;
-    is >> garbage;
-    is >> widthw;
-    is >> heighth;
-    is >> mcvc;
+    is >> garbage >> widthw >> heighth >> mcvc;
+    unsigned char byte; // char is a one byte int. this stores from 0 to 255
+    is.read((char * ) &byte,1);
     setWidth(widthw);
     setHeight(heighth);
     setMaxColorValue(mcvc);
@@ -114,17 +113,17 @@ void PPM::readStream(std::istream &is)
     int maxC = getWidth();
     int cols;
     int chan;
-    unsigned char byte; // char is a one byte int. this stores from 0 to 255
-    is.read((char * ) &byte,sizeof(byte));
     for (rows = 0; rows < maxR; rows++)
     {
         for (cols = 0; cols < maxC; cols++)
         {
             for (chan = 0; chan < 3; chan++)
             {
-                is.read((char * ) &byte,sizeof(byte));
+                //std::cout << "("<<rows <<", of a max of" <<maxR<<")" << "("<<cols <<", of a max of" <<maxC<<")" << "("<<chan <<", of a max of" <<chan<<")"<<std::endl;
+                is.read((char * ) &byte,1);
                 setChannel(rows,cols,chan,byte);
             }
         }
     }
+    return;
 }

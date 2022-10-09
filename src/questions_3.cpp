@@ -1,8 +1,7 @@
 #include "image_menu.h"
 
 int main(){
-    ActionData action_data=ActionData(std::cin,std::cout);
-    int value = assignment1(action_data);
+    int value = assignment1(std::cin,std::cout);
     
     return value;
 }

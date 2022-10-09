@@ -7,9 +7,10 @@ void copyImage(ActionData &action_data)
 
 void readUserImage1(ActionData &action_data)
 {
-    std::string InName = getString(action_data, "“Input filename? ");
+    std::string InName = getString(action_data, "Input filename? ");
     std::ifstream intowrite(InName, std::ifstream::binary);
     action_data.getInputImage1().readStream(intowrite);
+    
 }
 
 void writeUserImage(ActionData &action_data)
@@ -21,7 +22,7 @@ void writeUserImage(ActionData &action_data)
     std::ofstream outout(outname, std::ifstream::binary);
     // std::vector<int> pixels = {0,255}; // p somehow you need to get the image byte by byte. which I don't quite know how to do.
     // os << maxR;
-    action_data.getInputImage1().writeStream(outout);
+    action_data.getOutputImage().writeStream(outout);
 
     outout.close();
 }
@@ -34,12 +35,12 @@ void drawAsciiImage(ActionData &action_data)
 {
     (void)action_data;
     int row;
-    for (row = 0; row < action_data.getInputImage1().getHeight(); row++)
+    for (row = 0; row < action_data.getOutputImage().getHeight(); row++)
     {
         int column;
-        for (column = 0; column < action_data.getInputImage1().getWidth(); column++)
+        for (column = 0; column < action_data.getOutputImage().getWidth(); column++)
         {
-            int pixel = action_data.getInputImage1().getChannel(row, column, 0) + action_data.getInputImage1().getChannel(row, column, 1) + action_data.getInputImage1().getChannel(row, column, 2);
+            int pixel = action_data.getOutputImage().getChannel(row, column, 0) + action_data.getOutputImage().getChannel(row, column, 1) + action_data.getOutputImage().getChannel(row, column, 2);
             double pixelvalue = pixel / 765.0;
             char displayvalue;
             if (pixelvalue >= 1.0)

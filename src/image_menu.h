@@ -43,24 +43,24 @@ double getDouble(ActionData &action_data, const std::string &prompt);
 
 int askQuestions3(ActionData &action_data);
 
-int assignment1(ActionData &action_data);
+int assignment1(std::istream &is, std::ostream &os);
 
 void drawAsciiImage(ActionData &action_data);
 
 void diagonalQuadPattern(ActionData &action_data);
 
-int assignment2(ActionData &action_data);
+int assignment2(std::istream &is, std::ostream &os);
 
 void writeUserImage(ActionData &action_data);
 
 void stripedDiagonalPattern(ActionData &action_data);
 
-int assignment3(ActionData &action_data);
+int assignment3(std::istream &is, std::ostream &os);
 
 int askUncleBuckQuestions(ActionData &action_data);
 
-int buck(ActionData &action_data);
+int buck(std::istream &is, std::ostream &os);
 
 void flagColumbiaPattern(ActionData &action_data);
 
-int flag_columbia_ascii(ActionData &action_data);
+int flag_columbia_ascii(std::istream &is, std::ostream &os);
