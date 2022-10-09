@@ -2,22 +2,19 @@
 
 void drawCircle(ActionData &action_data)
 {
-    int colcent = getInteger(action_data, "Center Row? ");
-    int rowcent = getInteger(action_data, "Center Column? ");
-    int radius = getInteger(action_data, "Radius? ");
+    int rowcent = getInteger(action_data, "Center Row? ");
+    int colcent = getInteger(action_data, "Center Column? ");
+    double radius = getDouble(action_data, "Radius? ");
     int r = getInteger(action_data, "Red? ");
     int g = getInteger(action_data, "Green? ");
     int b = getInteger(action_data, "Blue? ");
-    int colstart = colcent + radius;
-    int colend = colcent - radius;
-    int rowstart = rowcent + radius;
-    int rowend = rowcent - radius;
-    for (int row = rowstart; row <= rowend; row++)
+
+    for (int row = 0; row < action_data.getInputImage1().getHeight(); row++)
     {
-        for (int col = colstart; col <= colend; col++)
+        for (int col = 0; col < action_data.getInputImage1().getWidth(); col++)
         {
 
-            if (radius <= int(std::sqrt(std::pow(row - rowcent, 2) + std::pow(col - colcent, 2))))
+            if (radius >= std::sqrt(std::pow(row - rowcent, 2) + std::pow(col - colcent, 2)))
             {
                 action_data.getInputImage1().setPixel(row, col, r, g, b);
             }
@@ -26,8 +23,8 @@ void drawCircle(ActionData &action_data)
 }
 void drawBox(ActionData &action_data)
 {
-    int colstart = getInteger(action_data, "Top Row? ");
-    int rowstart = getInteger(action_data, "Left Column? ");
+    int rowstart = getInteger(action_data, "Top Row? ");
+    int colstart = getInteger(action_data, "Left Column? ");
     int rowend = getInteger(action_data, "Bottom Row? ");
     int colend = getInteger(action_data, "Right Column? ");
     int r = getInteger(action_data, "Red? ");
