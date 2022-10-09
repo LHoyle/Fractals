@@ -19,6 +19,8 @@ void copyImage(ActionData &action_data);
 
 void readUserImage1(ActionData &action_data);
 
+void readUserImage2(ActionData &action_data);
+
 void setSize(ActionData &action_data);
 
 void setMaxColorValue(ActionData &action_data);

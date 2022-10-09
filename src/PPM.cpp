@@ -104,11 +104,11 @@ void PPM::readStream(std::istream &is)
     std::string garbage;
     is >> garbage >> widthw >> heighth >> mcvc;
     unsigned char byte; // char is a one byte int. this stores from 0 to 255
-    is.read((char * ) &byte,1);
+    is.read((char *)&byte, 1);
     setWidth(widthw);
     setHeight(heighth);
     setMaxColorValue(mcvc);
-    int rows; 
+    int rows;
     int maxR = getHeight();
     int maxC = getWidth();
     int cols;
@@ -119,11 +119,355 @@ void PPM::readStream(std::istream &is)
         {
             for (chan = 0; chan < 3; chan++)
             {
-                //std::cout << "("<<rows <<", of a max of" <<maxR<<")" << "("<<cols <<", of a max of" <<maxC<<")" << "("<<chan <<", of a max of" <<chan<<")"<<std::endl;
-                is.read((char * ) &byte,1);
-                setChannel(rows,cols,chan,byte);
+                // std::cout << "("<<rows <<", of a max of" <<maxR<<")" << "("<<cols <<", of a max of" <<maxC<<")" << "("<<chan <<", of a max of" <<chan<<")"<<std::endl;
+                is.read((char *)&byte, 1);
+                setChannel(rows, cols, chan, byte);
             }
         }
     }
     return;
 }
+
+bool  PPM::operator==(const PPM &rhs) const
+{
+    int size = getHeight() * getWidth();
+    int rsize = rhs.getHeight() * rhs.getWidth();
+    if (size == rsize)
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+}
+bool  PPM::operator!=(const PPM &rhs) const
+{
+    int size = getHeight() * getWidth();
+    int rsize = rhs.getHeight() * rhs.getWidth();
+    if (size != rsize)
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+}
+bool  PPM::operator<(const PPM &rhs) const
+{
+    int size = getHeight() * getWidth();
+    int rsize = rhs.getHeight() * rhs.getWidth();
+    if (size < rsize)
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+}
+bool  PPM::operator<=(const PPM &rhs) const
+{
+    int size = getHeight() * getWidth();
+    int rsize = rhs.getHeight() * rhs.getWidth();
+    if (size <= rsize)
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+}
+bool  PPM::operator>(const PPM &rhs) const
+{
+    int size = getHeight() * getWidth();
+    int rsize = rhs.getHeight() * rhs.getWidth();
+    if (size > rsize)
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+}
+bool  PPM::operator>=(const PPM &rhs) const
+{
+    int size = getHeight() * getWidth();
+    int rsize = rhs.getHeight() * rhs.getWidth();
+    if (size >= rsize)
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+}
+PPM&  PPM::operator+=(const PPM &rhs)
+{
+    int row =0;
+    int col =0;
+    int chan=0;
+    int op1=0;
+    int op2=0;
+    int com=0;
+    for (row=0; row <= getHeight(); row++)
+    {
+        for (col =0; col <= getWidth(); col++)
+        {
+            for (chan =0; chan <= 2; chan++)
+            {
+                op1 = getChannel(row, col, chan);
+                op2 = rhs.getChannel(row, col, chan);
+                com = op1 + op2;
+                if (com > getMaxColorValue())
+                {
+                    setChannel(row, col, chan, getMaxColorValue());
+                }
+                else
+                {
+                    setChannel(row, col, chan, com);
+                }
+            }
+        }
+    }
+    return *this;
+}
+PPM&  PPM::operator-=(const PPM &rhs)
+{
+    int row =0;
+    int col =0;
+    int chan=0;
+    int op1=0;
+    int op2=0;
+    int com=0;
+    for (row=0; row <= getHeight(); row++)
+    {
+        for (col =0; col <= getWidth(); col++)
+        {
+            for (chan =0; chan <= 2; chan++)
+            {
+                op1 = getChannel(row, col, chan);
+                op2 = rhs.getChannel(row, col, chan);
+                com = op1 - op2;
+                if (com < 0)
+                {
+                    setChannel(row, col, chan, 0);
+                }
+                else
+                {
+                    setChannel(row, col, chan, com);
+                }
+            }
+        }
+    }
+    return *this;
+}
+PPM&  PPM::operator*=(const double &rhs)
+{
+    int row =0;
+    int col =0;
+    int chan=0;
+    int op1=0;
+    int op2=0;
+    int com=0;
+    for (row=0; row <= getHeight(); row++)
+    {
+        for (col =0; col <= getWidth(); col++)
+        {
+            for (chan =0; chan <= 2; chan++)
+            {
+                op1 = getChannel(row, col, chan);
+                op2 = rhs.getChannel(row, col, chan);
+                com = op1 * op2;
+                if (com < 0)
+                {
+                    setChannel(row, col, chan, 0);
+                }
+                else if (com > getMaxColorValue())
+                {
+                    setChannel(row, col, chan, getMaxColorValue());
+                }
+                else
+                {
+                    setChannel(row, col, chan, com);
+                }
+            }
+        }
+    }
+    return *this;
+}
+PPM&  PPM::operator/=(const double &rhs)
+{
+    int row =0;
+    int col =0;
+    int chan=0;
+    int op1=0;
+    int op2=0;
+    int com=0;
+    for (row=0; row <= getHeight(); row++)
+    {
+        for (col =0; col <= getWidth(); col++)
+        {
+            for (chan =0; chan <= 2; chan++)
+            {
+                op1 = getChannel(row, col, chan);
+                op2 =  rhs.getChannel(row, col, chan);
+                com = op1 / op2;
+                if (com < 0)
+                {
+                    setChannel(row, col, chan, 0);
+                }
+                else if (com > getMaxColorValue())
+                {
+                    setChannel(row, col, chan, getMaxColorValue());
+                }
+                else
+                {
+                    setChannel(row, col, chan, com);
+                }
+            }
+        }
+    }
+    return *this;
+}
+PPM  PPM::operator+(const PPM &rhs) const
+{
+    PPM newby = PPM(getHeight(), getWidth());
+    newby.setMaxColorValue(getMaxColorValue());
+     int row =0;
+    int col =0;
+    int chan=0;
+    int op1=0;
+    int op2=0;
+    int com=0;
+    for (row=0; row <= newby.getHeight(); row++)
+    {
+        for (col=0; col <= newby.getWidth(); col++)
+        {
+            for (chan=0; chan <= 2; chan++)
+            {
+                op1 =  getChannel(row, col, chan);
+                op2 = rhs.getChannel(row, col, chan);
+                com = op1 + op2;
+                if (com > newby.getMaxColorValue())
+                {
+                    newby.setChannel(row, col, chan, newby.getMaxColorValue());
+                }
+                else
+                {
+                    newby.setChannel(row, col, chan, com);
+                }
+            }
+        }
+    }
+    return newby;
+}
+PPM  PPM::operator-(const PPM &rhs) const
+{
+    PPM newby = PPM( getHeight(),  getWidth());
+    newby.setMaxColorValue( getMaxColorValue());
+     int row =0;
+    int col =0;
+    int chan=0;
+    int op1=0;
+    int op2=0;
+    int com=0;
+    for (row=0; row <= newby.getHeight(); row++)
+    {
+        for (col=0; col <= newby.getWidth(); col++)
+        {
+            for (chan=0; chan <= 2; chan++)
+            {
+                op1 =  getChannel(row, col, chan);
+                op2 =  rhs.getChannel(row, col, chan);
+                com = op1 - op2;
+                if (com < 0)
+                {
+                    newby.setChannel(row, col, chan, 0);
+                }
+                else
+                {
+                    newby.setChannel(row, col, chan, com);
+                }
+            }
+        }
+    }
+    return newby;
+}
+PPM  PPM::operator*(const double &rhs) const 
+{
+    PPM newby = PPM( getHeight(),  getWidth());
+    newby.setMaxColorValue( getMaxColorValue());
+    int row =0;
+    int col =0;
+    int chan=0;
+    int op1=0;
+    int op2=0;
+    int com=0;
+    for (row=0; row <= newby.getHeight(); row++)
+    {
+        for (col=0; col <= newby.getWidth(); col++)
+        {
+            for (chan=0; chan <= 2; chan++)
+            {
+                op1 =  getChannel(row, col, chan);
+                op2 =  rhs.getChannel(row, col, chan);
+                com = op1 * op2;
+                if (com < 0)
+                {
+                   newby.setChannel(row, col, chan, 0);
+                }
+                else if (com > newby.getMaxColorValue())
+                {
+                    newby.setChannel(row, col, chan, newby.getMaxColorValue());
+                }
+                else
+                {
+                    newby.setChannel(row, col, chan, com);
+                }
+            }
+        }
+    }
+    return newby;
+
+}
+PPM  PPM::operator/(const double &rhs) const 
+{
+    PPM newby = PPM( getHeight(),  getWidth());
+    newby.setMaxColorValue( getMaxColorValue());
+    int row =0;
+    int col =0;
+    int chan=0;
+    int op1=0;
+    int op2=0;
+    int com=0;
+    for (row=0; row <= newby.getHeight(); row++)
+    {
+        for (col=0; col <= newby.getWidth(); col++)
+        {
+            for (chan=0; chan <= 2; chan++)
+            {
+                op1 =  getChannel(row, col, chan);
+                op2 =  rhs.getChannel(row, col, chan);
+                com = op1 / op2;
+                if (com < 0)
+                {
+                    newby.setChannel(row, col, chan, 0);
+                }
+                else if (com > newby.getMaxColorValue())
+                {
+                   newby.setChannel(row, col, chan, newby.getMaxColorValue());
+                }
+                else
+                {
+                    newby.setChannel(row, col, chan, com);
+                }
+            }
+        }
+    }
+    return newby;
+    }

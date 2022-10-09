@@ -12,6 +12,13 @@ void readUserImage1(ActionData &action_data)
     action_data.getInputImage1().readStream(intowrite);
     
 }
+void readUserImage2(ActionData &action_data)
+{
+    std::string InName = getString(action_data, "Input filename? ");
+    std::ifstream intowrite(InName, std::ifstream::binary);
+    action_data.getInputImage2().readStream(intowrite);
+    
+}
 
 void writeUserImage(ActionData &action_data)
 {
