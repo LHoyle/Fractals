@@ -52,6 +52,14 @@ void configureMenu(MenuData &menu_data)
 int imageMenu(std::istream &is, std::ostream &os)
 {
     ActionData  ac = ActionData(is,os);
+    MenuData menu= MenuData();
+    configureMenu(menu);
+    std::string choice;
+    while (ac.getDone()==false){
+choice = getChoice(ac);
+takeAction(choice,menu,ac);
+    }
+    return 0;
 }
 
 int assignment1(ActionData &action_data)

@@ -1,9 +1,13 @@
 CXXFLAGS := -std=c++11 -Wall -Werror -Wextra -Wpedantic 
 
-all: hello questions_3 ascii_image image_file buck flag_columbia_ascii ActionData.o MenuData.o
+all: hello questions_3 ascii_image image_file buck flag_columbia_ascii ActionData.o MenuData.o ppm_menu
 
 
+ppm_menu: ppm_menu.o image_output.o image_drawing.o controllers.o  user_io.o Image.o ActionData.o MenuData.o PPM.o
+	g++ $(CXXFLAGS) -o ppm_menu $^
 
+ppm_menu.o: ppm_menu.cpp  ActionData.h PPM.h Image.h MenuData.h
+	g++ $(CXXFLAGS)  -c $<
 
 hello: hello.o
 	g++ $(CXXFLAGS) -o hello hello.o
@@ -48,8 +52,8 @@ image_file: PPM.o image_output.o image_drawing.o controllers.o image_file.o user
 PPM.o: PPM.cpp image_menu.h PPM.h Image.h ActionData.h MenuData.h
 	g++ $(CXXFLAGS) -c $<
 
-image_output.o: image_output.cpp image_menu.h PPM.h Image.h  ActionData.h MenuData.h
-	g++ $(CXXFLAGS) -c image_output.cpp 
+image_output.o: image_output.cpp image_menu.h PPM.h Image.h  ActionData.h MenuData.h PPM.cpp ActionData.cpp
+	g++ $(CXXFLAGS) -c image_output.cpp PPM.cpp ActionData.cpp
 
 image_file.o: image_file.cpp image_menu.h PPM.h Image.h ActionData.h MenuData.h
 	g++ $(CXXFLAGS) -c image_file.cpp
@@ -68,8 +72,8 @@ flag_columbia_ascii: flag_columbia_ascii.o controllers.o user_io.o Image.o PPM.o
 flag_columbia_ascii.o: flag_columbia_ascii.cpp image_menu.h PPM.h Image.h ActionData.h MenuData.h
 	g++ $(CXXFLAGS) -c flag_columbia_ascii.cpp
 	
-ActionData.o: ActionData.cpp ActionData.h PPM.h Image.h MenuData.h
-	g++ $(CXXFLAGS) -c  $<
+ActionData.o: ActionData.cpp PPM.cpp ActionData.h PPM.h Image.h MenuData.h
+	g++ $(CXXFLAGS) -c  ActionData.cpp PPM.cpp 
 
 MenuData.o: MenuData.cpp MenuData.h ActionData.h PPM.h Image.h
 	g++ $(CXXFLAGS) -c  $<
