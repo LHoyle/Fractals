@@ -3,10 +3,23 @@
 #include <fstream>
 #include <vector>
 #include <iostream>
+#include <cmath>
 #include "Image.h"
 #include "PPM.h"
 #include "ActionData.h"
 #include "MenuData.h"
+
+void drawCircle(ActionData& action_data);
+
+void drawBox(ActionData& action_data);
+
+void grayFromRed(ActionData& action_data);
+
+void grayFromGreen(ActionData& action_data);
+
+void grayFromBlue(ActionData& action_data);
+
+void grayFromLinearColorimetric(ActionData& action_data);
 
 void plusEquals(ActionData &action_data);
 

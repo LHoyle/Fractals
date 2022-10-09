@@ -469,3 +469,57 @@ PPM PPM::operator/(const double &rhs) const
     }
     return newby;
 }
+
+void PPM::grayFromChannel(PPM &dst, const int &src_channel) const
+{
+    dst.setHeight(getHeight());
+    dst.setWidth(getWidth());
+    dst.setMaxColorValue(getMaxColorValue());
+    for (int row = 0; row <= dst.getHeight(); row++)
+    {
+        for (int col = 0; col <= dst.getWidth(); col++)
+        {
+            int valued= getChannel(row,col,src_channel);
+            dst.setPixel(row, col, valued,valued,valued);
+
+        }
+    }
+}
+void PPM::grayFromRed(PPM &dst) const
+{
+    grayFromChannel(dst, 0);
+}
+void PPM::grayFromGreen(PPM &dst) const
+{
+
+    grayFromChannel(dst, 1);
+}
+void PPM::grayFromBlue(PPM &dst) const
+{
+
+    grayFromChannel(dst, 2);
+}
+double PPM::linearColorimetricPixelValue(const int &row, const int &column) const
+{
+    double brightness;
+    int red = getChannel(row, column, 0);
+    int green = getChannel(row, column, 1);
+    int blue = getChannel(row, column, 2);
+    brightness = 0.2126 * red + 0.7152 * green + 0.0722 * blue;
+    return brightness;
+}
+void PPM::grayFromLinearColorimetric(PPM &dst) const
+{
+    dst.setHeight(getHeight());
+    dst.setWidth(getWidth());
+    dst.setMaxColorValue(getMaxColorValue());
+    double brightness;
+    for (int row = 0; row <= dst.getHeight(); row++)
+    {
+        for (int col = 0; col <= dst.getWidth(); col++)
+        {
+            brightness = linearColorimetricPixelValue(row, col);
+            dst.setPixel(row, col, brightness,brightness,brightness);
+        }
+    }
+}

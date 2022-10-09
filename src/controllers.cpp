@@ -1,6 +1,5 @@
 #include "image_menu.h"
 
-
 void showMenu(MenuData &menu_data, ActionData &action_data)
 {
     int current = 0;
@@ -57,6 +56,13 @@ void configureMenu(MenuData &menu_data)
     menu_data.addAction("*=", timesEquals, "Set input image 1 by multiplying by a number.");
     menu_data.addAction("/", divide, "Set output image from input image 1 divided by a number.");
     menu_data.addAction("/=", divideEquals, "Set input image 1 by dividing by a number.");
+    menu_data.addAction("red-gray", grayFromRed, "Set output image by grayscale from red on input image 1.");
+    menu_data.addAction("green-gray", grayFromGreen, "Set output image by grayscale from green on input image 1.");
+    menu_data.addAction("blue-gray", grayFromBlue, "Set output image by grayscale from blue on input image 1.");
+    menu_data.addAction("linear-gray", grayFromLinearColorimetric, "Set output image by linear colorimetric grayscale on input image 1.");
+    menu_data.addAction("circle", drawCircle, "Draw a circle shape in input image 1.");
+    menu_data.addAction("box", drawBox, "Draw a box shape in input image 1.");
+    // menu_data.addAction("q", q, "");
 }
 int imageMenu(std::istream &is, std::ostream &os)
 {
@@ -64,10 +70,9 @@ int imageMenu(std::istream &is, std::ostream &os)
     MenuData menu = MenuData();
     configureMenu(menu);
     std::string choice;
-    //showMenu(menu,ac);
+    // showMenu(menu,ac);
     while (ac.getDone() == false && ac.getIS().good())
     {
-     
 
         choice = getChoice(ac);
         takeAction(choice, menu, ac);
@@ -79,7 +84,7 @@ int assignment1(std::istream &is, std::ostream &os)
 {
     ActionData ac = ActionData(is, os);
     int value = askQuestions3(ac);
-    
+
     return value;
 }
 
@@ -88,7 +93,7 @@ int assignment2(std::istream &is, std::ostream &os)
     // Image imag = Image();
     ActionData ac = ActionData(is, os);
     diagonalQuadPattern(ac);
-    ac.getOutputImage() =ac.getInputImage1();
+    ac.getOutputImage() = ac.getInputImage1();
     drawAsciiImage(ac);
     return 0;
 }
@@ -98,7 +103,7 @@ int assignment3(std::istream &is, std::ostream &os)
     // PPM ppm = PPM();
     ActionData ac = ActionData(is, os);
     stripedDiagonalPattern(ac);
-    ac.getOutputImage() =ac.getInputImage1();
+    ac.getOutputImage() = ac.getInputImage1();
     writeUserImage(ac);
     return 0;
 }
