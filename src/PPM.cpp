@@ -128,7 +128,7 @@ void PPM::readStream(std::istream &is)
     return;
 }
 
-bool  PPM::operator==(const PPM &rhs) const
+bool PPM::operator==(const PPM &rhs) const
 {
     int size = getHeight() * getWidth();
     int rsize = rhs.getHeight() * rhs.getWidth();
@@ -141,7 +141,7 @@ bool  PPM::operator==(const PPM &rhs) const
         return false;
     }
 }
-bool  PPM::operator!=(const PPM &rhs) const
+bool PPM::operator!=(const PPM &rhs) const
 {
     int size = getHeight() * getWidth();
     int rsize = rhs.getHeight() * rhs.getWidth();
@@ -154,7 +154,7 @@ bool  PPM::operator!=(const PPM &rhs) const
         return false;
     }
 }
-bool  PPM::operator<(const PPM &rhs) const
+bool PPM::operator<(const PPM &rhs) const
 {
     int size = getHeight() * getWidth();
     int rsize = rhs.getHeight() * rhs.getWidth();
@@ -167,7 +167,7 @@ bool  PPM::operator<(const PPM &rhs) const
         return false;
     }
 }
-bool  PPM::operator<=(const PPM &rhs) const
+bool PPM::operator<=(const PPM &rhs) const
 {
     int size = getHeight() * getWidth();
     int rsize = rhs.getHeight() * rhs.getWidth();
@@ -180,7 +180,7 @@ bool  PPM::operator<=(const PPM &rhs) const
         return false;
     }
 }
-bool  PPM::operator>(const PPM &rhs) const
+bool PPM::operator>(const PPM &rhs) const
 {
     int size = getHeight() * getWidth();
     int rsize = rhs.getHeight() * rhs.getWidth();
@@ -193,7 +193,7 @@ bool  PPM::operator>(const PPM &rhs) const
         return false;
     }
 }
-bool  PPM::operator>=(const PPM &rhs) const
+bool PPM::operator>=(const PPM &rhs) const
 {
     int size = getHeight() * getWidth();
     int rsize = rhs.getHeight() * rhs.getWidth();
@@ -206,19 +206,19 @@ bool  PPM::operator>=(const PPM &rhs) const
         return false;
     }
 }
-PPM&  PPM::operator+=(const PPM &rhs)
+PPM &PPM::operator+=(const PPM &rhs)
 {
-    int row =0;
-    int col =0;
-    int chan=0;
-    int op1=0;
-    int op2=0;
-    int com=0;
-    for (row=0; row <= getHeight(); row++)
+    int row = 0;
+    int col = 0;
+    int chan = 0;
+    int op1 = 0;
+    int op2 = 0;
+    int com = 0;
+    for (row = 0; row <= getHeight(); row++)
     {
-        for (col =0; col <= getWidth(); col++)
+        for (col = 0; col <= getWidth(); col++)
         {
-            for (chan =0; chan <= 2; chan++)
+            for (chan = 0; chan <= 2; chan++)
             {
                 op1 = getChannel(row, col, chan);
                 op2 = rhs.getChannel(row, col, chan);
@@ -236,19 +236,19 @@ PPM&  PPM::operator+=(const PPM &rhs)
     }
     return *this;
 }
-PPM&  PPM::operator-=(const PPM &rhs)
+PPM &PPM::operator-=(const PPM &rhs)
 {
-    int row =0;
-    int col =0;
-    int chan=0;
-    int op1=0;
-    int op2=0;
-    int com=0;
-    for (row=0; row <= getHeight(); row++)
+    int row = 0;
+    int col = 0;
+    int chan = 0;
+    int op1 = 0;
+    int op2 = 0;
+    int com = 0;
+    for (row = 0; row <= getHeight(); row++)
     {
-        for (col =0; col <= getWidth(); col++)
+        for (col = 0; col <= getWidth(); col++)
         {
-            for (chan =0; chan <= 2; chan++)
+            for (chan = 0; chan <= 2; chan++)
             {
                 op1 = getChannel(row, col, chan);
                 op2 = rhs.getChannel(row, col, chan);
@@ -266,23 +266,23 @@ PPM&  PPM::operator-=(const PPM &rhs)
     }
     return *this;
 }
-PPM&  PPM::operator*=(const double &rhs)
+PPM &PPM::operator*=(const double &rhs)
 {
-    int row =0;
-    int col =0;
-    int chan=0;
-    int op1=0;
-    int op2=0;
-    int com=0;
-    for (row=0; row <= getHeight(); row++)
+    int row = 0;
+    int col = 0;
+    int chan = 0;
+    int op1 = 0;
+    // int op2=0;
+    int com = 0;
+    for (row = 0; row <= getHeight(); row++)
     {
-        for (col =0; col <= getWidth(); col++)
+        for (col = 0; col <= getWidth(); col++)
         {
-            for (chan =0; chan <= 2; chan++)
+            for (chan = 0; chan <= 2; chan++)
             {
                 op1 = getChannel(row, col, chan);
-                op2 = rhs.getChannel(row, col, chan);
-                com = op1 * op2;
+
+                com = op1 * rhs;
                 if (com < 0)
                 {
                     setChannel(row, col, chan, 0);
@@ -300,23 +300,23 @@ PPM&  PPM::operator*=(const double &rhs)
     }
     return *this;
 }
-PPM&  PPM::operator/=(const double &rhs)
+PPM &PPM::operator/=(const double &rhs)
 {
-    int row =0;
-    int col =0;
-    int chan=0;
-    int op1=0;
-    int op2=0;
-    int com=0;
-    for (row=0; row <= getHeight(); row++)
+    int row = 0;
+    int col = 0;
+    int chan = 0;
+    int op1 = 0;
+    // int op2=0;
+    int com = 0;
+    for (row = 0; row <= getHeight(); row++)
     {
-        for (col =0; col <= getWidth(); col++)
+        for (col = 0; col <= getWidth(); col++)
         {
-            for (chan =0; chan <= 2; chan++)
+            for (chan = 0; chan <= 2; chan++)
             {
                 op1 = getChannel(row, col, chan);
-                op2 =  rhs.getChannel(row, col, chan);
-                com = op1 / op2;
+
+                com = op1 / rhs;
                 if (com < 0)
                 {
                     setChannel(row, col, chan, 0);
@@ -334,23 +334,23 @@ PPM&  PPM::operator/=(const double &rhs)
     }
     return *this;
 }
-PPM  PPM::operator+(const PPM &rhs) const
+PPM PPM::operator+(const PPM &rhs) const
 {
     PPM newby = PPM(getHeight(), getWidth());
     newby.setMaxColorValue(getMaxColorValue());
-     int row =0;
-    int col =0;
-    int chan=0;
-    int op1=0;
-    int op2=0;
-    int com=0;
-    for (row=0; row <= newby.getHeight(); row++)
+    int row = 0;
+    int col = 0;
+    int chan = 0;
+    int op1 = 0;
+    int op2 = 0;
+    int com = 0;
+    for (row = 0; row <= newby.getHeight(); row++)
     {
-        for (col=0; col <= newby.getWidth(); col++)
+        for (col = 0; col <= newby.getWidth(); col++)
         {
-            for (chan=0; chan <= 2; chan++)
+            for (chan = 0; chan <= 2; chan++)
             {
-                op1 =  getChannel(row, col, chan);
+                op1 = getChannel(row, col, chan);
                 op2 = rhs.getChannel(row, col, chan);
                 com = op1 + op2;
                 if (com > newby.getMaxColorValue())
@@ -366,24 +366,24 @@ PPM  PPM::operator+(const PPM &rhs) const
     }
     return newby;
 }
-PPM  PPM::operator-(const PPM &rhs) const
+PPM PPM::operator-(const PPM &rhs) const
 {
-    PPM newby = PPM( getHeight(),  getWidth());
-    newby.setMaxColorValue( getMaxColorValue());
-     int row =0;
-    int col =0;
-    int chan=0;
-    int op1=0;
-    int op2=0;
-    int com=0;
-    for (row=0; row <= newby.getHeight(); row++)
+    PPM newby = PPM(getHeight(), getWidth());
+    newby.setMaxColorValue(getMaxColorValue());
+    int row = 0;
+    int col = 0;
+    int chan = 0;
+    int op1 = 0;
+    int op2 = 0;
+    int com = 0;
+    for (row = 0; row <= newby.getHeight(); row++)
     {
-        for (col=0; col <= newby.getWidth(); col++)
+        for (col = 0; col <= newby.getWidth(); col++)
         {
-            for (chan=0; chan <= 2; chan++)
+            for (chan = 0; chan <= 2; chan++)
             {
-                op1 =  getChannel(row, col, chan);
-                op2 =  rhs.getChannel(row, col, chan);
+                op1 = getChannel(row, col, chan);
+                op2 = rhs.getChannel(row, col, chan);
                 com = op1 - op2;
                 if (com < 0)
                 {
@@ -398,28 +398,28 @@ PPM  PPM::operator-(const PPM &rhs) const
     }
     return newby;
 }
-PPM  PPM::operator*(const double &rhs) const 
+PPM PPM::operator*(const double &rhs) const
 {
-    PPM newby = PPM( getHeight(),  getWidth());
-    newby.setMaxColorValue( getMaxColorValue());
-    int row =0;
-    int col =0;
-    int chan=0;
-    int op1=0;
-    int op2=0;
-    int com=0;
-    for (row=0; row <= newby.getHeight(); row++)
+    PPM newby = PPM(getHeight(), getWidth());
+    newby.setMaxColorValue(getMaxColorValue());
+    int row = 0;
+    int col = 0;
+    int chan = 0;
+    int op1 = 0;
+    // int op2=0;
+    int com = 0;
+    for (row = 0; row <= newby.getHeight(); row++)
     {
-        for (col=0; col <= newby.getWidth(); col++)
+        for (col = 0; col <= newby.getWidth(); col++)
         {
-            for (chan=0; chan <= 2; chan++)
+            for (chan = 0; chan <= 2; chan++)
             {
-                op1 =  getChannel(row, col, chan);
-                op2 =  rhs.getChannel(row, col, chan);
-                com = op1 * op2;
+                op1 = getChannel(row, col, chan);
+
+                com = op1 * rhs;
                 if (com < 0)
                 {
-                   newby.setChannel(row, col, chan, 0);
+                    newby.setChannel(row, col, chan, 0);
                 }
                 else if (com > newby.getMaxColorValue())
                 {
@@ -433,34 +433,32 @@ PPM  PPM::operator*(const double &rhs) const
         }
     }
     return newby;
-
 }
-PPM  PPM::operator/(const double &rhs) const 
+PPM PPM::operator/(const double &rhs) const
 {
-    PPM newby = PPM( getHeight(),  getWidth());
-    newby.setMaxColorValue( getMaxColorValue());
-    int row =0;
-    int col =0;
-    int chan=0;
-    int op1=0;
-    int op2=0;
-    int com=0;
-    for (row=0; row <= newby.getHeight(); row++)
+    PPM newby = PPM(getHeight(), getWidth());
+    newby.setMaxColorValue(getMaxColorValue());
+    int row = 0;
+    int col = 0;
+    int chan = 0;
+    int op1 = 0;
+    // int op2=0;
+    int com = 0;
+    for (row = 0; row <= newby.getHeight(); row++)
     {
-        for (col=0; col <= newby.getWidth(); col++)
+        for (col = 0; col <= newby.getWidth(); col++)
         {
-            for (chan=0; chan <= 2; chan++)
+            for (chan = 0; chan <= 2; chan++)
             {
-                op1 =  getChannel(row, col, chan);
-                op2 =  rhs.getChannel(row, col, chan);
-                com = op1 / op2;
+                op1 = getChannel(row, col, chan);
+                com = op1 / rhs;
                 if (com < 0)
                 {
                     newby.setChannel(row, col, chan, 0);
                 }
                 else if (com > newby.getMaxColorValue())
                 {
-                   newby.setChannel(row, col, chan, newby.getMaxColorValue());
+                    newby.setChannel(row, col, chan, newby.getMaxColorValue());
                 }
                 else
                 {
@@ -470,4 +468,4 @@ PPM  PPM::operator/(const double &rhs) const
         }
     }
     return newby;
-    }
+}

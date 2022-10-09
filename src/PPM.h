@@ -15,26 +15,24 @@ public:
     void setChannel(const int &row, const int &column, const int &channel, const int &value);
     void setPixel(const int &row, const int &column, const int &red, const int &green, const int &blue);
     void writeStream(std::ostream &os) const;
-    void readStream(std::istream& is);
-    bool operator==( const PPM& rhs ) const;
-    bool operator!=( const PPM& rhs ) const;
-    bool operator<( const PPM& rhs ) const;
-    bool operator<=( const PPM& rhs ) const;
-    bool operator>( const PPM& rhs ) const;
-    bool operator>=( const PPM& rhs ) const;
-    PPM& operator+=( const PPM& rhs );
-    PPM& operator-=( const PPM& rhs );
-    PPM& operator*=( const double& rhs );
-    PPM& operator/=( const double& rhs );
-    PPM operator+( const PPM& rhs ) const;
-    PPM operator-( const PPM& rhs ) const;
-    PPM operator*( const double& rhs ) const;
-    PPM operator/( const double& rhs ) const;
+    void readStream(std::istream &is);
+    bool operator==(const PPM &rhs) const;
+    bool operator!=(const PPM &rhs) const;
+    bool operator<(const PPM &rhs) const;
+    bool operator<=(const PPM &rhs) const;
+    bool operator>(const PPM &rhs) const;
+    bool operator>=(const PPM &rhs) const;
+    PPM &operator+=(const PPM &rhs);
+    PPM &operator-=(const PPM &rhs);
+    PPM &operator*=(const double &rhs);
+    PPM &operator/=(const double &rhs);
+    PPM operator+(const PPM &rhs) const;
+    PPM operator-(const PPM &rhs) const;
+    PPM operator*(const double &rhs) const;
+    PPM operator/(const double &rhs) const;
 
 private:
     int MCV;
-
-
 };
 #endif
 /*IMAGE_H_

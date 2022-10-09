@@ -1,5 +1,5 @@
 #include "image_menu.h"
-#include <stdexcept>
+
 
 void showMenu(MenuData &menu_data, ActionData &action_data)
 {
@@ -48,6 +48,15 @@ void configureMenu(MenuData &menu_data)
     menu_data.addAction("pixel", setPixel, "Set a pixel's 3 values in input image 1.");
     menu_data.addAction("clear", clearAll, "Set all pixels to 0,0,0 in input image 1.");
     menu_data.addAction("quit", quit, "Quit.");
+    menu_data.addAction("read2", readUserImage2, "Read file into input image 2.");
+    menu_data.addAction("+", plus, "Set output image from sum of input image 1 and input image 2.");
+    menu_data.addAction("+=", plusEquals, "Set input image 1 by adding in input image 2.");
+    menu_data.addAction("-", minus, "Set output image from difference of input image 1 and input image 2.");
+    menu_data.addAction("-=", minusEquals, "Set input image 1 by subtracting input image 2.");
+    menu_data.addAction("*", times, "Set output image from input image 1 multiplied by a number.");
+    menu_data.addAction("*=", timesEquals, "Set input image 1 by multiplying by a number.");
+    menu_data.addAction("/", divide, "Set output image from input image 1 divided by a number.");
+    menu_data.addAction("/=", divideEquals, "Set input image 1 by dividing by a number.");
 }
 int imageMenu(std::istream &is, std::ostream &os)
 {

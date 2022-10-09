@@ -7,13 +7,30 @@
 #include "PPM.h"
 #include "ActionData.h"
 #include "MenuData.h"
-void showMenu( MenuData& menu_data, ActionData& action_data );
 
-void takeAction(const std::string& choice, MenuData& menu_data, ActionData& action_data);
+void plusEquals(ActionData &action_data);
 
-void configureMenu( MenuData& menu_data );
+void minusEquals(ActionData &action_data);
 
-int imageMenu(std::istream& is, std::ostream& os);
+void timesEquals(ActionData &action_data);
+
+void divideEquals(ActionData &action_data);
+
+void plus(ActionData &action_data);
+
+void minus(ActionData &action_data);
+
+void times(ActionData &action_data);
+
+void divide(ActionData &action_data);
+
+void showMenu(MenuData &menu_data, ActionData &action_data);
+
+void takeAction(const std::string &choice, MenuData &menu_data, ActionData &action_data);
+
+void configureMenu(MenuData &menu_data);
+
+int imageMenu(std::istream &is, std::ostream &os);
 
 void copyImage(ActionData &action_data);
 

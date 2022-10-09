@@ -3,7 +3,7 @@ CXXFLAGS := -std=c++11 -Wall -Werror -Wextra -Wpedantic
 all: hello questions_3 ascii_image image_file buck flag_columbia_ascii ActionData.o MenuData.o ppm_menu
 
 
-ppm_menu: ppm_menu.o image_output.o image_drawing.o controllers.o  user_io.o Image.o ActionData.o MenuData.o PPM.o
+ppm_menu: ppm_menu.o image_output.o image_drawing.o controllers.o  user_io.o Image.o ActionData.o MenuData.o PPM.o image_filters.o
 	g++ $(CXXFLAGS) -o ppm_menu $^
 
 ppm_menu.o: ppm_menu.cpp  ActionData.h PPM.h Image.h MenuData.h
@@ -18,8 +18,8 @@ hello.o: hello.cpp
 
 
 
-questions_3: questions_3.o user_io.o controllers.o image_output.o Image.o image_drawing.o PPM.o ActionData.o MenuData.o
-	g++ $(CXXFLAGS) -o questions_3 questions_3.o user_io.o controllers.o image_output.o Image.o image_drawing.o PPM.o ActionData.o MenuData.o
+questions_3: questions_3.o user_io.o controllers.o image_output.o Image.o image_drawing.o PPM.o ActionData.o MenuData.o image_filters.o
+	g++ $(CXXFLAGS) -o questions_3 questions_3.o user_io.o controllers.o image_output.o Image.o image_drawing.o PPM.o ActionData.o MenuData.o image_filters.o
 
 questions_3.o: questions_3.cpp image_menu.h Image.h PPM.h ActionData.h  ActionData.cpp
 	g++ $(CXXFLAGS) -c questions_3.cpp   ActionData.cpp
@@ -27,14 +27,14 @@ questions_3.o: questions_3.cpp image_menu.h Image.h PPM.h ActionData.h  ActionDa
 
 
 
-ascii_image:   ascii_image.o image_output.o image_drawing.o user_io.o controllers.o Image.o PPM.o ActionData.o MenuData.o
-	g++ $(CXXFLAGS) -o ascii_image  ascii_image.o Image.o image_output.o image_drawing.o user_io.o controllers.o PPM.o ActionData.o MenuData.o
+ascii_image:   ascii_image.o image_output.o image_drawing.o user_io.o controllers.o Image.o PPM.o ActionData.o MenuData.o image_filters.o
+	g++ $(CXXFLAGS) -o ascii_image  ascii_image.o Image.o image_output.o image_drawing.o user_io.o controllers.o PPM.o ActionData.o MenuData.o image_filters.o
 
 ascii_image.o: ascii_image.cpp image_menu.h Image.h PPM.h ActionData.h MenuData.h
 	g++ $(CXXFLAGS) -c ascii_image.cpp
 
-controllers.o: controllers.cpp image_menu.h Image.h PPM.h ActionData.h ActionData.cpp MenuData.h MenuData.cpp
-	g++ $(CXXFLAGS) -c controllers.cpp ActionData.cpp MenuData.cpp
+controllers.o: controllers.cpp image_menu.h Image.h PPM.h ActionData.h ActionData.cpp image_filters.cpp MenuData.h MenuData.cpp
+	g++ $(CXXFLAGS) -c controllers.cpp ActionData.cpp MenuData.cpp image_filters.cpp
 
 user_io.o: user_io.cpp image_menu.h Image.h  PPM.h ActionData.h MenuData.h
 	g++ $(CXXFLAGS) -c user_io.cpp
@@ -46,8 +46,8 @@ Image.o: Image.cpp Image.h PPM.h image_menu.h ActionData.h MenuData.h
 	g++ $(CXXFLAGS) -c Image.cpp
 
 
-image_file: PPM.o image_output.o image_drawing.o controllers.o image_file.o user_io.o Image.o ActionData.o MenuData.o
-	g++ $(CXXFLAGS) -o image_file PPM.o image_output.o image_drawing.o controllers.o image_file.o user_io.o Image.o ActionData.o MenuData.o
+image_file: PPM.o image_output.o image_drawing.o controllers.o image_file.o user_io.o Image.o ActionData.o MenuData.o image_filters.o
+	g++ $(CXXFLAGS) -o image_file PPM.o image_output.o image_drawing.o controllers.o image_file.o user_io.o Image.o ActionData.o MenuData.o image_filters.o
 
 PPM.o: PPM.cpp image_menu.h PPM.h Image.h ActionData.h MenuData.h
 	g++ $(CXXFLAGS) -c $<
@@ -57,17 +57,15 @@ image_output.o: image_output.cpp image_menu.h PPM.h Image.h  ActionData.h MenuDa
 
 image_file.o: image_file.cpp image_menu.h PPM.h Image.h ActionData.h MenuData.h
 	g++ $(CXXFLAGS) -c image_file.cpp
-
-
-
-buck: buck.o controllers.o user_io.o Image.o PPM.o image_drawing.o image_output.o ActionData.o MenuData.o
-	g++ $(CXXFLAGS) -o buck  buck.o controllers.o user_io.o Image.o PPM.o image_drawing.o image_output.o ActionData.o MenuData.o
+ 
+buck: buck.o controllers.o user_io.o Image.o PPM.o image_drawing.o image_output.o ActionData.o MenuData.o image_filters.o
+	g++ $(CXXFLAGS) -o buck  buck.o controllers.o user_io.o Image.o PPM.o image_drawing.o image_output.o ActionData.o MenuData.o image_filters.o
 
 buck.o: buck.cpp image_menu.h PPM.h Image.h ActionData.h MenuData.h
 	g++ $(CXXFLAGS) -c buck.cpp
 
-flag_columbia_ascii: flag_columbia_ascii.o controllers.o user_io.o Image.o PPM.o image_drawing.o image_output.o ActionData.o MenuData.o
-	g++ $(CXXFLAGS) -o flag_columbia_ascii flag_columbia_ascii.o controllers.o user_io.o Image.o PPM.o image_drawing.o image_output.o ActionData.o MenuData.o
+flag_columbia_ascii: flag_columbia_ascii.o controllers.o user_io.o Image.o PPM.o image_drawing.o image_output.o ActionData.o MenuData.o image_filters.o
+	g++ $(CXXFLAGS) -o flag_columbia_ascii flag_columbia_ascii.o controllers.o user_io.o Image.o PPM.o image_drawing.o image_output.o ActionData.o MenuData.o image_filters.o
 
 flag_columbia_ascii.o: flag_columbia_ascii.cpp image_menu.h PPM.h Image.h ActionData.h MenuData.h
 	g++ $(CXXFLAGS) -c flag_columbia_ascii.cpp
@@ -78,6 +76,8 @@ ActionData.o: ActionData.cpp PPM.cpp ActionData.h PPM.h Image.h MenuData.h
 MenuData.o: MenuData.cpp MenuData.h ActionData.h PPM.h Image.h
 	g++ $(CXXFLAGS) -c  $<
 
+image_filters.o:  image_filters.cpp MenuData.h ActionData.h PPM.h Image.h
+	g++ $(CXXFLAGS) -c  $<
 clean: 
-	rm *.o
-
+	rm *.o rm -f hello questions_3 ascii_image image_file buck flag_columbia_ascii ppm_menu
+ 
