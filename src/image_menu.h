@@ -11,7 +11,7 @@ void showMenu( MenuData& menu_data, ActionData& action_data );
 
 void takeAction(const std::string& choice, MenuData& menu_data, ActionData& action_data);
 
-oid configureMenu( MenuData& menu_data );
+void configureMenu( MenuData& menu_data );
 
 int imageMenu(std::istream& is, std::ostream& os);
 
