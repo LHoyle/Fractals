@@ -64,7 +64,8 @@ void configureMenu(MenuData &menu_data)
     menu_data.addAction("box", drawBox, "Draw a box shape in input image 1.");
     menu_data.addAction("square", drawSquare, "Draw a square shape in input image 1.");
     menu_data.addAction("orange", orangeFilter, "Set output image from orange filter on input image 1.");
-    // menu_data.addAction("q", q, "");
+    menu_data.addAction("*=-ppm", timesEqualsPPM, "Set input image 1 by multiplying by input image 2.");
+    // menu_data.addAction("q", q, ""); 
 }
 int imageMenu(std::istream &is, std::ostream &os)
 {

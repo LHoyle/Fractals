@@ -554,3 +554,39 @@ void PPM::orangeFilter(PPM &dst) const
         }
     }
 }
+PPM &PPM::operator*=(const PPM &rhs)
+{
+    int row = 0;
+    int col = 0;
+    int chan = 0;
+    int op1 = 0;
+    int op2 = 0;
+    int com = 0;
+    int com2;
+    for (row = 0; row < getHeight(); row++)
+    {
+        for (col = 0; col < getWidth(); col++)
+        {
+            for (chan = 0; chan <= 2; chan++)
+            {
+                op1 = getChannel(row, col, chan);
+                op2 = rhs.getChannel(row, col, chan);
+                com = op1 * op2;
+                com2 = int(com/rhs.getMaxColorValue());
+                if (com2 < 0)
+                {
+                    setChannel(row, col, chan, 0);
+                }
+                else if (com2 > getMaxColorValue())
+                {
+                    setChannel(row, col, chan, getMaxColorValue());
+                }
+                else
+                {
+                    setChannel(row, col, chan, com2);
+                }
+            }
+        }
+    }
+    return *this;
+}

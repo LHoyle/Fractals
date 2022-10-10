@@ -9,6 +9,8 @@
 #include "ActionData.h"
 #include "MenuData.h"
 
+void timesEqualsPPM(ActionData& action_data);
+
 void orangeFilter(ActionData& action_data);
 
 void drawSquare(ActionData& action_data);

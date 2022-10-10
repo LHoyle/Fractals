@@ -30,14 +30,14 @@ public:
     PPM operator-(const PPM &rhs) const;
     PPM operator*(const double &rhs) const;
     PPM operator/(const double &rhs) const;
-    void grayFromChannel( PPM& dst, const int& src_channel ) const;
-    void grayFromRed( PPM& dst ) const;
-    void grayFromGreen( PPM& dst ) const;
-    void grayFromBlue( PPM& dst ) const;
-    double linearColorimetricPixelValue( const int& row, const int& column ) const;
-    void grayFromLinearColorimetric( PPM& dst ) const;
-    void orangeFilter(PPM& dst) const;
-
+    void grayFromChannel(PPM &dst, const int &src_channel) const;
+    void grayFromRed(PPM &dst) const;
+    void grayFromGreen(PPM &dst) const;
+    void grayFromBlue(PPM &dst) const;
+    double linearColorimetricPixelValue(const int &row, const int &column) const;
+    void grayFromLinearColorimetric(PPM &dst) const;
+    void orangeFilter(PPM &dst) const;
+    PPM& operator*=(const PPM &rhs);
 
 private:
     int MCV;

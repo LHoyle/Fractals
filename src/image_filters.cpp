@@ -1,5 +1,9 @@
 #include "image_menu.h"
 
+void timesEqualsPPM(ActionData& action_data){
+    action_data.getInputImage1() *= action_data.getInputImage2();
+}
+
 void orangeFilter(ActionData& action_data){
     action_data.getInputImage1().orangeFilter(action_data.getOutputImage());
 
