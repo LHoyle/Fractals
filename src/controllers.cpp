@@ -62,6 +62,7 @@ void configureMenu(MenuData &menu_data)
     menu_data.addAction("linear-gray", grayFromLinearColorimetric, "Set output image by linear colorimetric grayscale on input image 1.");
     menu_data.addAction("circle", drawCircle, "Draw a circle shape in input image 1.");
     menu_data.addAction("box", drawBox, "Draw a box shape in input image 1.");
+    menu_data.addAction("square", drawSquare, "Draw a square shape in input image 1.");
     // menu_data.addAction("q", q, "");
 }
 int imageMenu(std::istream &is, std::ostream &os)
@@ -118,6 +119,7 @@ int flag_columbia_ascii(std::istream &is, std::ostream &os)
     // Image Imp =Image();
     ActionData ac = ActionData(is, os);
     flagColumbiaPattern(ac);
+    ac.getOutputImage() = ac.getInputImage1();
     drawAsciiImage(ac);
     return 0;
 }

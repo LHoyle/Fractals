@@ -9,6 +9,8 @@
 #include "ActionData.h"
 #include "MenuData.h"
 
+void drawSquare(ActionData& action_data);
+
 void drawCircle(ActionData& action_data);
 
 void drawBox(ActionData& action_data);

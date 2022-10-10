@@ -344,9 +344,9 @@ PPM PPM::operator+(const PPM &rhs) const
     int op1 = 0;
     int op2 = 0;
     int com = 0;
-    for (row = 0; row <= newby.getHeight(); row++)
+    for (row = 0; row < newby.getHeight(); row++)
     {
-        for (col = 0; col <= newby.getWidth(); col++)
+        for (col = 0; col < newby.getWidth(); col++)
         {
             for (chan = 0; chan <= 2; chan++)
             {
@@ -376,9 +376,9 @@ PPM PPM::operator-(const PPM &rhs) const
     int op1 = 0;
     int op2 = 0;
     int com = 0;
-    for (row = 0; row <= newby.getHeight(); row++)
+    for (row = 0; row < newby.getHeight(); row++)
     {
-        for (col = 0; col <= newby.getWidth(); col++)
+        for (col = 0; col < newby.getWidth(); col++)
         {
             for (chan = 0; chan <= 2; chan++)
             {
@@ -408,9 +408,9 @@ PPM PPM::operator*(const double &rhs) const
     int op1 = 0;
     // int op2=0;
     int com = 0;
-    for (row = 0; row <= newby.getHeight(); row++)
+    for (row = 0; row < newby.getHeight(); row++)
     {
-        for (col = 0; col <= newby.getWidth(); col++)
+        for (col = 0; col < newby.getWidth(); col++)
         {
             for (chan = 0; chan <= 2; chan++)
             {
@@ -444,9 +444,9 @@ PPM PPM::operator/(const double &rhs) const
     int op1 = 0;
     // int op2=0;
     int com = 0;
-    for (row = 0; row <= newby.getHeight(); row++)
+    for (row = 0; row < newby.getHeight(); row++)
     {
-        for (col = 0; col <= newby.getWidth(); col++)
+        for (col = 0; col < newby.getWidth(); col++)
         {
             for (chan = 0; chan <= 2; chan++)
             {

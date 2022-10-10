@@ -78,6 +78,7 @@ MenuData.o: MenuData.cpp MenuData.h ActionData.h PPM.h Image.h
 
 image_filters.o:  image_filters.cpp MenuData.h ActionData.h PPM.h Image.h
 	g++ $(CXXFLAGS) -c  $<
+	
 clean: 
-	rm *.o rm -f hello questions_3 ascii_image image_file buck flag_columbia_ascii ppm_menu
+	rm *.o *.ppm rm -f hello questions_3 ascii_image image_file buck flag_columbia_ascii ppm_menu
  

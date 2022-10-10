@@ -9,6 +9,10 @@ void readUserImage1(ActionData &action_data)
 {
     std::string InName = getString(action_data, "Input filename? ");
     std::ifstream intowrite(InName, std::ifstream::binary);
+    if (!intowrite){
+        action_data.getOS() <<"'"<< InName << "' could not be opened."<<std::endl;
+    return;
+    }
     action_data.getInputImage1().readStream(intowrite);
     
 }
@@ -16,6 +20,10 @@ void readUserImage2(ActionData &action_data)
 {
     std::string InName = getString(action_data, "Input filename? ");
     std::ifstream intowrite(InName, std::ifstream::binary);
+    if (!intowrite){
+        action_data.getOS() <<"'"<< InName << "' could not be opened."<<std::endl;
+    return;
+    }
     action_data.getInputImage2().readStream(intowrite);
     
 }

@@ -1,5 +1,23 @@
 #include "image_menu.h"
 
+void drawSquare(ActionData &action_data)
+{
+    int rowing = getInteger(action_data, "Row? ");
+    int colups = getInteger(action_data, "Column? ");
+    int size = getInteger(action_data, "Size? ");
+    int r = getInteger(action_data, "Red? ");
+    int g = getInteger(action_data, "Green? ");
+    int b = getInteger(action_data, "Blue? ");
+    int halfsies= size/2;
+    for (int row = rowing-halfsies; row <= rowing+halfsies; row++)
+    {
+        for (int col = colups-halfsies; col <= colups+halfsies; col++)
+        {
+            action_data.getInputImage1().setPixel(row, col, r, g, b);
+        }
+    }
+}
+
 void drawCircle(ActionData &action_data)
 {
     int rowcent = getInteger(action_data, "Center Row? ");
