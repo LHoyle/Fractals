@@ -1,5 +1,10 @@
 #include "image_menu.h"
 
+void orangeFilter(ActionData& action_data){
+    action_data.getInputImage1().orangeFilter(action_data.getOutputImage());
+
+}
+
 void grayFromRed(ActionData &action_data)
 {
     action_data.getInputImage1().grayFromRed(action_data.getOutputImage());

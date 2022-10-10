@@ -479,9 +479,8 @@ void PPM::grayFromChannel(PPM &dst, const int &src_channel) const
     {
         for (int col = 0; col <= dst.getWidth(); col++)
         {
-            int valued= getChannel(row,col,src_channel);
-            dst.setPixel(row, col, valued,valued,valued);
-
+            int valued = getChannel(row, col, src_channel);
+            dst.setPixel(row, col, valued, valued, valued);
         }
     }
 }
@@ -519,7 +518,39 @@ void PPM::grayFromLinearColorimetric(PPM &dst) const
         for (int col = 0; col <= dst.getWidth(); col++)
         {
             brightness = linearColorimetricPixelValue(row, col);
-            dst.setPixel(row, col, brightness,brightness,brightness);
+            dst.setPixel(row, col, brightness, brightness, brightness);
+        }
+    }
+}
+void PPM::orangeFilter(PPM &dst) const
+{
+    dst.setHeight(getHeight());
+    dst.setWidth(getWidth());
+    dst.setMaxColorValue(getMaxColorValue());
+
+    for (int row = 0; row <= dst.getHeight(); row++)
+    {
+        for (int col = 0; col <= dst.getWidth(); col++)
+        {
+            int old_red = getChannel(row, col, 0);
+            int old_green = getChannel(row, col, 1);
+            int old_blue = getChannel(row, col, 2);
+            int new_red = int(2 * (2 * old_red + old_green) / 3);
+            if (new_red > dst.getMaxColorValue())
+            {
+                new_red = dst.getMaxColorValue();
+            }
+            int new_green = int(2 * (2 * old_red + old_green) / 6);
+            if (new_green > dst.getMaxColorValue())
+            {
+                new_green = dst.getMaxColorValue();
+            }
+            int new_blue = int(old_blue / 2);
+            if (new_blue > dst.getMaxColorValue())
+            {
+                new_blue = dst.getMaxColorValue();
+            }
+            dst.setPixel(row, col, new_red, new_green, new_blue);
         }
     }
 }
