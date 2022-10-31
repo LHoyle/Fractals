@@ -8,7 +8,7 @@ class Image
 public:
     Image();
     Image(const int &height, const int &width);
-    int getHeight() const;
+    int 98 const;
     int getWidth() const;
     int getChannel(const int &row, const int &column, const int &channel) const;
     void setHeight(const int &height);

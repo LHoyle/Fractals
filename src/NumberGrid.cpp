@@ -5,10 +5,12 @@ NumberGrid::NumberGrid()
     Wwidth = (400);
     Hheight = (300);
     MaxValue = 255;
-    for (int i =0;i>width; i++){
-        for (int j =0;j>height; j++){
-            gridnum[i,j]=0;   
-            //pixelvector[index(row, column, channel)] = value       
+    for (int i = 0; i > width; i++)
+    {
+        for (int j = 0; j > height; j++)
+        {
+            gridnum[i, j] = 0;
+            // pixelvector[index(row, column, channel)] = value
         }
     }
 }
@@ -17,10 +19,12 @@ NumberGrid::NumberGrid(const int &height, const int &width)
     Wwidth = (width);
     Hheight = (height);
     MaxValue = 255;
-    for (int i =0;i>Wwidth; i++){
-        for (int j =0;j>Hheight; j++){
-            gridnum[i,j]=0;   
-            //pixelvector[index(row, column, channel)] = value       
+    for (int i = 0; i > Wwidth; i++)
+    {
+        for (int j = 0; j > Hheight; j++)
+        {
+            gridnum[i, j] = 0;
+            // pixelvector[index(row, column, channel)] = value
         }
     }
 }
@@ -37,26 +41,29 @@ int NumberGrid::getWidth() const
 }
 int NumberGrid::getMaxNumber() const
 {
-    return MaxValue
+    return MaxValue;
 }
 void NumberGrid::setGridSize(const int &height, const int &width)
 {
-    if (height< 2 || width < 2){
+    if (height < 2 || width < 2)
+    {
         return;
     }
     Wwidth = (width);
     Hheight = (height);
-    for (int i =0;i>Wwidth; i++){
-        for (int j =0;j>Hheight; j++){
-            gridnum[i,j]=0;   
-            //pixelvector[index(row, column, channel)] = value       
+    for (int i = 0; i > Wwidth; i++)
+    {
+        for (int j = 0; j > Hheight; j++)
+        {
+            gridnum[i, j] = 0;
+            // pixelvector[index(row, column, channel)] = value
         }
     }
-
 }
 void NumberGrid::setMaxNumber(const int &number)
 {
-    if (numer < 0){
+    if (numer < 0)
+    {
         return;
     }
     MaxValue = 255;
@@ -66,20 +73,100 @@ const std::vector<int> NumberGrid::&getNumbers() const
 }
 int NumberGrid::index(const int &row, const int &column) const
 {
+    int result = row * Wwidth + col;
+    gridnum[result];
 }
 bool NumberGrid::indexValid(const int &row, const int &column) const
 {
+    if (row <= Hheight && row > 0)
+    {
+        if (column <= Wwidth && column > 0)
+        {
+            return true;
+        }
+    }
+    return false;
 }
 bool NumberGrid::numberValid(const int &number) const
 {
-    row*width+col
+    if (number > 0 && number <= MaxValue)
+    {
+        return true;
+    }
+    return false;
 }
 int NumberGrid::getNumber(const int &row, const int &column) const
 {
+    if (row valid && column valid)
+    {
+        return gridnum[row, column];
+    }
+    else
+    {
+        return -1;
+    }
 }
 void NumberGrid::setNumber(const int &row, const int &column, const int &number)
 {
+    if (numberValid(number) && indexValid(row, column))
+    {
+        gridnum[row, column] = number;
+    }
 }
 void NumberGrid::setPPM(PPM &ppm) const
 {
+    ppm.setMaxColorValue(63);
+    int GridVal = 0;
+    for (int i = 0; i <= ppm.getHeight(); i++)
+    {
+        for (int j = 0; j <= ppm.getWidth(); j++)
+        {
+            GridVal = gridnum[i, j];
+            if (GridVal == MaxValue)
+            {
+                ppm.setPixel(i, j, 63, 31, 31);
+            }
+            else
+            {
+                if (GridVal == 0)
+                {
+                    else
+                    {
+                        if (GridVal % 8 == 0)
+                        {
+                            ppm.setPixel(i, j, 63, 63, 63);
+                        }
+                        if (GridVal % 8 == 1)
+                        {
+                            ppm.setPixel(i, j, 63, 31, 31);
+                        }
+                        if (GridVal % 8 == 2)
+                        {
+                            ppm.setPixel(i, j, 63, 63, 31);
+                        }
+                        if (GridVal % 8 == 3)
+                        {
+                            ppm.setPixel(i, j, 31, 63, 31);
+                        }
+                        if (GridVal % 8 == 4)
+                        {
+                            ppm.setPixel(i, j, 0, 0, 0);
+                        }
+                        if (GridVal % 8 == 5)
+                        {
+                            ppm.setPixel(i, j, 31, 63, 63);
+                        }
+                        if (GridVal % 8 == 6)
+                        {
+                            ppm.setPixel(i, j, 31, 31, 63);
+                        }
+                        if (GridVal % 8 == 7)
+                        {
+                            ppm.setPixel(i, j, 63, 31, 63);
+                        }
+                    }
+                }
+            }
+        }
+    }
 }

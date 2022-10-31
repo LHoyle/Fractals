@@ -1,23 +1,26 @@
 #include "image_menu.h"
 
-void configureGrid(ActionData& action_data){
-    
- int height = getInteger(action_data, "Grid Height? ");
+void configureGrid(ActionData &action_data)
+{
+
+    int height = getInteger(action_data, "Grid Height? ");
     int width = getInteger(action_data, "Grid Width? ");
     int Val = getInteger(action_data, "Grid Value? ");
-    action_data.setGrid() = NumberGrid(height,width);
+    action_data.setGrid() = NumberGrid(height, width);
     action_data.getGrid().setMaxNumber(Val);
 }
 
-void setGrid(ActionData& action_data){
+void setGrid(ActionData &action_data)
+{
     int rowing = getInteger(action_data, "Grid Row? ");
     int colups = getInteger(action_data, "Grid Column? ");
     int Val = getInteger(action_data, "Grid Value? ");
-    action_data.getGrid().setNumber(rowing,colups,Val);
+    action_data.getGrid().setNumber(rowing, colups, Val);
 }
 
-void applyGrid(ActionData& action_data){
-    action_data.getOutputImage() = numbergrid;
+void applyGrid(ActionData &action_data)
+{
+    action_data.getOutputImage() = action_data.getGrid();
 }
 
 void drawSquare(ActionData &action_data)
@@ -28,10 +31,10 @@ void drawSquare(ActionData &action_data)
     int r = getInteger(action_data, "Red? ");
     int g = getInteger(action_data, "Green? ");
     int b = getInteger(action_data, "Blue? ");
-    int halfsies= size/2;
-    for (int row = rowing-halfsies; row <= rowing+halfsies; row++)
+    int halfsies = size / 2;
+    for (int row = rowing - halfsies; row <= rowing + halfsies; row++)
     {
-        for (int col = colups-halfsies; col <= colups+halfsies; col++)
+        for (int col = colups - halfsies; col <= colups + halfsies; col++)
         {
             action_data.getInputImage1().setPixel(row, col, r, g, b);
         }
