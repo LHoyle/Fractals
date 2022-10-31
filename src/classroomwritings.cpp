@@ -54,3 +54,13 @@ int main(){
 
     return 0;
 }*/
+
+
+void other_function(const ptrbag& b)
+{
+    data d = b.getdata(); //this is a syntax error because it wants to change something that we declared was const
+}
+
+int main() {
+
+}

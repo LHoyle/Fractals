@@ -9,6 +9,12 @@
 #include "ActionData.h"
 #include "MenuData.h"
 
+void configureGrid(ActionData& action_data);
+
+void setGrid(ActionData& action_data);
+
+void applyGrid(ActionData& action_data);
+
 void timesEqualsPPM(ActionData& action_data);
 
 void orangeFilter(ActionData& action_data);

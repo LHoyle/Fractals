@@ -1,5 +1,25 @@
 #include "image_menu.h"
 
+void configureGrid(ActionData& action_data){
+    
+ int height = getInteger(action_data, "Grid Height? ");
+    int width = getInteger(action_data, "Grid Width? ");
+    int Val = getInteger(action_data, "Grid Value? ");
+    action_data.setGrid() = NumberGrid(height,width);
+    action_data.getGrid().setMaxNumber(Val);
+}
+
+void setGrid(ActionData& action_data){
+    int rowing = getInteger(action_data, "Grid Row? ");
+    int colups = getInteger(action_data, "Grid Column? ");
+    int Val = getInteger(action_data, "Grid Value? ");
+    action_data.getGrid().setNumber(rowing,colups,Val);
+}
+
+void applyGrid(ActionData& action_data){
+    action_data.getOutputImage() = numbergrid;
+}
+
 void drawSquare(ActionData &action_data)
 {
     int rowing = getInteger(action_data, "Row? ");

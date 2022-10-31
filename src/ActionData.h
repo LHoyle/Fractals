@@ -2,6 +2,7 @@
 #ifndef _ActionData_H_
 #define _ActionData_H_
 #include "PPM.h"
+#include "NumberGrid.h"
 
 class ActionData
 {
@@ -14,7 +15,9 @@ public:
     PPM& getOutputImage();
     bool getDone() const;
     void setDone();
-
+    ~ActionData();
+    NumberGrid& getGrid();
+    void setGrid(NumberGrid *grid);
 protected:
     std::istream& AIS;
     std::ostream& AOS;
@@ -22,6 +25,7 @@ protected:
     PPM inim2;
     PPM oim;
     bool check;
+    NumberGrid * Numpoint;
 };
 
 #endif

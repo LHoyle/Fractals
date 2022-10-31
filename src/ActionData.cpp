@@ -1,7 +1,7 @@
 #include "ActionData.h"
 
 ActionData::ActionData(std::istream& is, std::ostream& os)
-    :AIS(is), AOS(os), check(false)
+    :AIS(is), AOS(os), check(false), Numpoint(0)
 {
 }
 std::istream& ActionData::getIS()
@@ -31,4 +31,19 @@ bool ActionData::getDone() const
 void ActionData::setDone()
 {
     check = true;
+}
+~ActionData(){
+    if (Numpoint!=0){
+        delete;
+    }
+}
+NumberGrid& getGrid(){
+ return *Numpoint;
+}
+void setGrid(NumberGrid *grid){
+    
+    if (*grid != 0){
+        ~ActionData();
+    }
+    Numpoint = grid;
 }
