@@ -73,6 +73,7 @@ void configureMenu(MenuData &menu_data)
 int imageMenu(std::istream &is, std::ostream &os)
 {
     ActionData ac = ActionData(is, os);
+    ac.setGrid(new NumberGrid());
     MenuData menu = MenuData();
     configureMenu(menu);
     std::string choice;

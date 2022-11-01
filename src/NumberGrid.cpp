@@ -1,34 +1,17 @@
 #include "NumberGrid.h"
 
 NumberGrid::NumberGrid()
+    : Wwidth(400), Hheight(300), MaxValue(255)
 {
-    Wwidth = (400);
-    Hheight = (300);
-    MaxValue = 255;
-    for (int i = 0; i > width; i++)
-    {
-        for (int j = 0; j > height; j++)
-        {
-            gridnum[i, j] = 0;
-            // pixelvector[index(row, column, channel)] = value
-        }
-    }
+    gridnum.assign((Wwidth * Hheight), 0);
+    // pixelvector[index(row, column, channel)] = value
 }
 NumberGrid::NumberGrid(const int &height, const int &width)
+    : Wwidth(width), Hheight(height), MaxValue(255)
 {
-    Wwidth = (width);
-    Hheight = (height);
-    MaxValue = 255;
-    for (int i = 0; i > Wwidth; i++)
-    {
-        for (int j = 0; j > Hheight; j++)
-        {
-            gridnum[i, j] = 0;
-            // pixelvector[index(row, column, channel)] = value
-        }
-    }
+    gridnum.assign((Wwidth * Hheight), 0);
 }
-virtual NumberGrid::~NumberGrid()
+NumberGrid::~NumberGrid()
 {
 }
 int NumberGrid::getHeight() const
@@ -55,26 +38,27 @@ void NumberGrid::setGridSize(const int &height, const int &width)
     {
         for (int j = 0; j > Hheight; j++)
         {
-            gridnum[i, j] = 0;
+            setNumber(i, j, 0);
             // pixelvector[index(row, column, channel)] = value
         }
     }
 }
 void NumberGrid::setMaxNumber(const int &number)
 {
-    if (numer < 0)
+    if (number < 0)
     {
         return;
     }
     MaxValue = 255;
 }
-const std::vector<int> NumberGrid::&getNumbers() const
+const std::vector<int>& NumberGrid::getNumbers() const
 {
+    return gridnum;
 }
 int NumberGrid::index(const int &row, const int &column) const
 {
-    int result = row * Wwidth + col;
-    gridnum[result];
+    int result = row * Wwidth + column;
+    return gridnum[result];
 }
 bool NumberGrid::indexValid(const int &row, const int &column) const
 {
@@ -97,9 +81,9 @@ bool NumberGrid::numberValid(const int &number) const
 }
 int NumberGrid::getNumber(const int &row, const int &column) const
 {
-    if (row valid && column valid)
+    if (indexValid (row,column))
     {
-        return gridnum[row, column];
+        return index(row, column);
     }
     else
     {
@@ -110,7 +94,7 @@ void NumberGrid::setNumber(const int &row, const int &column, const int &number)
 {
     if (numberValid(number) && indexValid(row, column))
     {
-        gridnum[row, column] = number;
+        gridnum[index(row, column)] = number;
     }
 }
 void NumberGrid::setPPM(PPM &ppm) const
@@ -121,7 +105,7 @@ void NumberGrid::setPPM(PPM &ppm) const
     {
         for (int j = 0; j <= ppm.getWidth(); j++)
         {
-            GridVal = gridnum[i, j];
+            GridVal = getNumber(i,j);
             if (GridVal == MaxValue)
             {
                 ppm.setPixel(i, j, 63, 31, 31);
@@ -130,7 +114,9 @@ void NumberGrid::setPPM(PPM &ppm) const
             {
                 if (GridVal == 0)
                 {
-                    else
+                    ppm.setPixel(i, j, 0, 0,0);
+                }
+                else
                     {
                         if (GridVal % 8 == 0)
                         {
@@ -169,4 +155,3 @@ void NumberGrid::setPPM(PPM &ppm) const
             }
         }
     }
-}

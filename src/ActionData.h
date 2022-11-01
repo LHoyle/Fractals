@@ -25,7 +25,7 @@ protected:
     PPM inim2;
     PPM oim;
     bool check;
-    NumberGrid * Numpoint;
+    NumberGrid *Numpoint;
 };
 
 #endif

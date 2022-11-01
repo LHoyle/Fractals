@@ -32,18 +32,18 @@ void ActionData::setDone()
 {
     check = true;
 }
-~ActionData(){
+ActionData::~ActionData(){
     if (Numpoint!=0){
-        delete;
+        delete Numpoint;
     }
 }
-NumberGrid& getGrid(){
+NumberGrid& ActionData::getGrid(){
  return *Numpoint;
 }
-void setGrid(NumberGrid *grid){
+void ActionData::setGrid(NumberGrid *grid){
     
-    if (*grid != 0){
-        ~ActionData();
+    if (grid != 0){
+        delete Numpoint;
     }
     Numpoint = grid;
 }

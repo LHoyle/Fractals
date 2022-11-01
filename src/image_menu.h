@@ -8,6 +8,7 @@
 #include "PPM.h"
 #include "ActionData.h"
 #include "MenuData.h"
+#include "NumberGrid.h"
 
 void configureGrid(ActionData& action_data);
 

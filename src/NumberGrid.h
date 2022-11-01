@@ -1,7 +1,7 @@
 // class PPM
-#ifndef _image_menu_H_
-#define _image_menu_H_
-#include "image_menu.h"
+#ifndef _NumberGrid_H_
+#define _NumberGrid_H_
+#include "PPM.h"
 #include <vector>
 class NumberGrid
 {
@@ -28,5 +28,5 @@ protected:
     int Hheight;
     int MaxValue;
     std::vector<int> gridnum;
-}
+};
 #endif

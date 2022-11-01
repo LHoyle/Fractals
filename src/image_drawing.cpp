@@ -6,7 +6,8 @@ void configureGrid(ActionData &action_data)
     int height = getInteger(action_data, "Grid Height? ");
     int width = getInteger(action_data, "Grid Width? ");
     int Val = getInteger(action_data, "Grid Value? ");
-    action_data.setGrid() = NumberGrid(height, width);
+    NumberGrid numpy = NumberGrid(height, width);
+    action_data.setGrid(&numpy);
     action_data.getGrid().setMaxNumber(Val);
 }
 
@@ -20,7 +21,8 @@ void setGrid(ActionData &action_data)
 
 void applyGrid(ActionData &action_data)
 {
-    action_data.getOutputImage() = action_data.getGrid();
+    action_data.getGrid().setPPM(action_data.getOutputImage());
+    
 }
 
 void drawSquare(ActionData &action_data)
