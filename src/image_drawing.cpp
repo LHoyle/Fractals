@@ -2,12 +2,11 @@
 
 void configureGrid(ActionData &action_data)
 {
-
+   
     int height = getInteger(action_data, "Grid Height? ");
     int width = getInteger(action_data, "Grid Width? ");
-    int Val = getInteger(action_data, "Grid Value? ");
-    NumberGrid numpy = NumberGrid(height, width);
-    action_data.setGrid(&numpy);
+    int Val = getInteger(action_data, "Grid Max Value? ");
+    action_data.getGrid().setGridSize(height, width);
     action_data.getGrid().setMaxNumber(Val);
 }
 
