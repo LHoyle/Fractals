@@ -6,7 +6,7 @@ all: hello questions_3 ascii_image image_file buck flag_columbia_ascii ActionDat
 
 
 ppm_menu:ppm_menu.o $(OoFiles)
-	g++ $(CXXFLAGS) -o ppm_menu  $^ $(OoFiles)
+	g++ $(CXXFLAGS) -o ppm_menu  $^ 
 
 ppm_menu.o: ppm_menu.cpp  $(HhFiles)
 	g++ $(CXXFLAGS)  -c $<
