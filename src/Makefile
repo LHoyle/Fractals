@@ -1,6 +1,6 @@
 CXXFLAGS := -std=c++11 -Wall -Werror -Wextra -Wpedantic 
 HhFiles :=   image_menu.h PPM.h Image.h ActionData.h MenuData.h NumberGrid.h ColorTable.h
-OoFiles :=   image_output.o image_drawing.o controllers.o  user_io.o Image.o ActionData.o MenuData.o PPM.o image_filters.o NumberGrid.o ColorTable.o
+OoFiles :=   image_output.o image_drawing.o controllers.o  user_io.o Image.o ActionData.o MenuData.o PPM.o image_filters.o NumberGrid.o ColorTable.o ComplexFractal.o
 
 all: hello questions_3 ascii_image image_file buck flag_columbia_ascii ActionData.o MenuData.o ppm_menu.o 
 
@@ -88,7 +88,10 @@ NumberGrid.o:  NumberGrid.cpp $(HhFiles)
 
 ColorTable.o: ColorTable.cpp $(HhFiles)
 	g++ $(CXXFLAGS) -c $<
-	
+
+ComplexFractal.o: ComplexFractal.cpp $(HhFiles)
+	g++ $(CXXFLAGS) -c $<
+
 clean: 
 	rm *.o *.ppm rm -f hello questions_3 ascii_image image_file buck flag_columbia_ascii ppm_menu
  

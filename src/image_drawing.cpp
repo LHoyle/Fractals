@@ -1,5 +1,26 @@
 #include "image_menu.h"
 
+void setFractalPlaneSize(ActionData &action_data)
+{
+    ComplexFractal *Mists = dynamic_cast<ComplexFractal *>(&action_data.getGrid());
+    if (0 != Mists)
+    {
+        double MinX = getDouble(action_data, "Min X? ");
+        double MaxX = getDouble(action_data, "Max X? ");
+        double MinY = getDouble(action_data, "Min Y? ");
+        double MaxY = getDouble(action_data, "Max Y? ");
+        Mists->setPlaneSize(MinX, MaxX, MinY, MaxY);
+        Mists->calculateAllNumbers();
+        return;
+    }
+    action_data.getOS() << "Not a ComplexFractal object. Can't set plane size." << std::endl;
+    return;
+}
+void calculateFractal(ActionData &action_data)
+{
+    action_data.getGrid().calculateAllNumbers();
+}
+
 void setColorTableSize(ActionData &action_data)
 {
     int Size = getInteger(action_data, "Size? ");
@@ -67,7 +88,7 @@ void setGrid(ActionData &action_data)
 
 void applyGrid(ActionData &action_data)
 {
-    action_data.getGrid().setPPM(action_data.getOutputImage(),action_data.getTable());
+    action_data.getGrid().setPPM(action_data.getOutputImage());
 }
 
 void drawSquare(ActionData &action_data)

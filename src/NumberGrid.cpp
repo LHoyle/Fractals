@@ -134,12 +134,12 @@ void NumberGrid::setPPM(PPM &ppm, const ColorTable &colors) const
             GridVal = getNumber(i, j);
             if (GridVal == MaxValue)
             {
-                ppm.setPixel(i, j, colors[colors.getNumberOfColors() - 1].getRed(),colors[colors.getNumberOfColors() - 1].getGreen(),colors[colors.getNumberOfColors() - 1].getBlue());
+                ppm.setPixel(i, j, colors[colors.getNumberOfColors() - 1].getRed(), colors[colors.getNumberOfColors() - 1].getGreen(), colors[colors.getNumberOfColors() - 1].getBlue());
             }
             else
             {
                 int GridIndex = GridVal % colors.getNumberOfColors();
-                ppm.setPixel(i, j, colors[GridIndex].getRed(),colors[GridIndex].getGreen(),colors[GridIndex].getBlue());
+                ppm.setPixel(i, j, colors[GridIndex].getRed(), colors[GridIndex].getGreen(), colors[GridIndex].getBlue());
                 /*'''if (GridVal == 0)
                 {
                     ppm.setPixel(i, j, 0, 0, 0);
@@ -147,7 +147,7 @@ void NumberGrid::setPPM(PPM &ppm, const ColorTable &colors) const
                 else
                 {
                     '''
-                        
+
 
                         '''if (GridVal % 8 == 0)
                     {
@@ -183,6 +183,79 @@ void NumberGrid::setPPM(PPM &ppm, const ColorTable &colors) const
                     }
                 }
                 '''*/
+            }
+        }
+    }
+}
+
+void NumberGrid::calculateAllNumbers()
+{
+    for (int row = 0; row < Hheight; row++)
+    {
+        for (int col = 0; col < Wwidth; col++)
+        {
+            int result = calculateNumber(row, col);
+            setNumber(row, col, result);
+        }
+    }
+}
+
+void NumberGrid::setPPM(PPM &ppm) const
+{
+    ppm.setMaxColorValue(63);
+    ppm.setWidth(Wwidth);
+    ppm.setHeight(Hheight);
+    int GridVal = 0;
+    for (int i = 0; i <= ppm.getHeight(); i++)
+    {
+        for (int j = 0; j <= ppm.getWidth(); j++)
+        {
+            GridVal = getNumber(i, j);
+            if (GridVal == MaxValue)
+            {
+                ppm.setPixel(i, j, 63, 31, 31);
+            }
+            else
+            {
+                if (GridVal == 0)
+                {
+                    ppm.setPixel(i, j, 0, 0, 0);
+                }
+                else
+                {
+                    if (GridVal % 8 == 0)
+                    {
+                        ppm.setPixel(i, j, 63, 63, 63);
+                    }
+                    if (GridVal % 8 == 1)
+                    {
+                        ppm.setPixel(i, j, 63, 31, 31);
+                    }
+                    if (GridVal % 8 == 2)
+                    {
+                        ppm.setPixel(i, j, 63, 63, 31);
+                    }
+                    if (GridVal % 8 == 3)
+                    {
+                        ppm.setPixel(i, j, 31, 63, 31);
+                    }
+                    if (GridVal % 8 == 4)
+                    {
+                        ppm.setPixel(i, j, 0, 0, 0);
+                    }
+                    if (GridVal % 8 == 5)
+                    {
+                        ppm.setPixel(i, j, 31, 63, 63);
+                    }
+                    if (GridVal % 8 == 6)
+                    {
+                        ppm.setPixel(i, j, 31, 31, 63);
+                    }
+                    if (GridVal % 8 == 7)
+                    {
+                        ppm.setPixel(i, j, 63, 31, 63);
+                    }
+                }
             }
         }
     }

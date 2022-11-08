@@ -12,6 +12,11 @@
 #include "MenuData.h"
 #include "NumberGrid.h"
 #include "ColorTable.h"
+#include "ComplexFractal.h"
+
+void setFractalPlaneSize(ActionData& action_data);
+
+void calculateFractal(ActionData& action_data);
 
 void setColorTableSize(ActionData& action_data);
 
