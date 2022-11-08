@@ -4,7 +4,7 @@ NumberGrid::NumberGrid()
     : Wwidth(400), Hheight(300), MaxValue(255)
 {
     gridnum.assign((Wwidth * Hheight), 0);
-    gridnum.resize(Wwidth*Hheight);
+    gridnum.resize(Wwidth * Hheight);
     gridnum.assign((Wwidth * Hheight), 0);
     // pixelvector[index(row, column, channel)] = value
 }
@@ -12,7 +12,7 @@ NumberGrid::NumberGrid(const int &height, const int &width)
     : Wwidth(width), Hheight(height), MaxValue(255)
 {
     gridnum.assign((Wwidth * Hheight), 0);
-    gridnum.resize(Wwidth*Hheight);
+    gridnum.resize(Wwidth * Hheight);
     gridnum.assign((Wwidth * Hheight), 0);
 }
 NumberGrid::~NumberGrid()
@@ -24,7 +24,7 @@ int NumberGrid::getHeight() const
 }
 int NumberGrid::getWidth() const
 {
-    return  Wwidth;
+    return Wwidth;
 }
 int NumberGrid::getMaxNumber() const
 {
@@ -38,7 +38,7 @@ void NumberGrid::setGridSize(const int &height, const int &width)
     }
     Wwidth = (width);
     Hheight = (height);
-    gridnum.resize(width*height);
+    gridnum.resize(width * height);
     for (int i = 0; i > Wwidth; i++)
     {
         for (int j = 0; j > Hheight; j++)
@@ -55,21 +55,23 @@ void NumberGrid::setMaxNumber(const int &number)
     {
         return;
     }
-    else{
-    MaxValue = number;
-    }
-     for (int i = 0; i <= getHeight() ; i++)
+    else
     {
-        for (int j = 0; j <= getWidth() ; j++)
+        MaxValue = number;
+    }
+    for (int i = 0; i <= getHeight(); i++)
+    {
+        for (int j = 0; j <= getWidth(); j++)
         {
-            GridVal = getNumber(i,j);
-            if (GridVal > MaxValue){
-                 gridnum[index(i, j)] = MaxValue;
+            GridVal = getNumber(i, j);
+            if (GridVal > MaxValue)
+            {
+                gridnum[index(i, j)] = MaxValue;
             }
         }
     }
 }
-const std::vector<int>& NumberGrid::getNumbers() const
+const std::vector<int> &NumberGrid::getNumbers() const
 {
     return gridnum;
 }
@@ -99,9 +101,9 @@ bool NumberGrid::numberValid(const int &number) const
 }
 int NumberGrid::getNumber(const int &row, const int &column) const
 {
-    if (indexValid (row,column))
+    if (indexValid(row, column))
     {
-        return   gridnum[index(row, column)] ;
+        return gridnum[index(row, column)];
     }
     else
     {
@@ -115,9 +117,13 @@ void NumberGrid::setNumber(const int &row, const int &column, const int &number)
         gridnum[index(row, column)] = number;
     }
 }
-void NumberGrid::setPPM(PPM &ppm) const
+void NumberGrid::setPPM(PPM &ppm, const ColorTable &colors) const
 {
-    ppm.setMaxColorValue(63);
+    if (colors.getNumberOfColors() < 2)
+    {
+        return;
+    }
+    ppm.setMaxColorValue(colors.getMaxChannelValue());
     ppm.setWidth(Wwidth);
     ppm.setHeight(Hheight);
     int GridVal = 0;
@@ -125,53 +131,59 @@ void NumberGrid::setPPM(PPM &ppm) const
     {
         for (int j = 0; j <= ppm.getWidth(); j++)
         {
-            GridVal = getNumber(i,j);
+            GridVal = getNumber(i, j);
             if (GridVal == MaxValue)
             {
-                ppm.setPixel(i, j, 63, 31, 31);
+                ppm.setPixel(i, j, colors[colors.getNumberOfColors() - 1].getRed(),colors[colors.getNumberOfColors() - 1].getGreen(),colors[colors.getNumberOfColors() - 1].getBlue());
             }
             else
             {
-                if (GridVal == 0)
+                int GridIndex = GridVal % colors.getNumberOfColors();
+                ppm.setPixel(i, j, colors[GridIndex].getRed(),colors[GridIndex].getGreen(),colors[GridIndex].getBlue());
+                /*'''if (GridVal == 0)
                 {
-                    ppm.setPixel(i, j, 0, 0,0);
+                    ppm.setPixel(i, j, 0, 0, 0);
                 }
                 else
+                {
+                    '''
+                        
+
+                        '''if (GridVal % 8 == 0)
                     {
-                        if (GridVal % 8 == 0)
-                        {
-                            ppm.setPixel(i, j, 63, 63, 63);
-                        }
-                        if (GridVal % 8 == 1)
-                        {
-                            ppm.setPixel(i, j, 63, 31, 31);
-                        }
-                        if (GridVal % 8 == 2)
-                        {
-                            ppm.setPixel(i, j, 63, 63, 31);
-                        }
-                        if (GridVal % 8 == 3)
-                        {
-                            ppm.setPixel(i, j, 31, 63, 31);
-                        }
-                        if (GridVal % 8 == 4)
-                        {
-                            ppm.setPixel(i, j, 0, 0, 0);
-                        }
-                        if (GridVal % 8 == 5)
-                        {
-                            ppm.setPixel(i, j, 31, 63, 63);
-                        }
-                        if (GridVal % 8 == 6)
-                        {
-                            ppm.setPixel(i, j, 31, 31, 63);
-                        }
-                        if (GridVal % 8 == 7)
-                        {
-                            ppm.setPixel(i, j, 63, 31, 63);
-                        }
+                        ppm.setPixel(i, j, 63, 63, 63);
+                    }
+                    if (GridVal % 8 == 1)
+                    {
+                        ppm.setPixel(i, j, 63, 31, 31);
+                    }
+                    if (GridVal % 8 == 2)
+                    {
+                        ppm.setPixel(i, j, 63, 63, 31);
+                    }
+                    if (GridVal % 8 == 3)
+                    {
+                        ppm.setPixel(i, j, 31, 63, 31);
+                    }
+                    if (GridVal % 8 == 4)
+                    {
+                        ppm.setPixel(i, j, 0, 0, 0);
+                    }
+                    if (GridVal % 8 == 5)
+                    {
+                        ppm.setPixel(i, j, 31, 63, 63);
+                    }
+                    if (GridVal % 8 == 6)
+                    {
+                        ppm.setPixel(i, j, 31, 31, 63);
+                    }
+                    if (GridVal % 8 == 7)
+                    {
+                        ppm.setPixel(i, j, 63, 31, 63);
                     }
                 }
+                '''*/
             }
         }
     }
+}

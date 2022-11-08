@@ -1,8 +1,11 @@
 #include "ActionData.h"
 
 ActionData::ActionData(std::istream& is, std::ostream& os)
-    :AIS(is), AOS(os), check(false), Numpoint(0)
-{
+    :AIS(is), AOS(os), check(false), Numpoint(0),CTable(ColorTable(16))
+{//ColorTable CTable = (ColorTable(16));
+Color C1 = Color(0,255,0);
+Color C2 = Color(255,0,255);
+    CTable.insertGradient(C1,C2,0,15);
 }
 std::istream& ActionData::getIS()
 {
@@ -46,4 +49,7 @@ void ActionData::setGrid(NumberGrid *grid){
         delete Numpoint;
     }
     Numpoint = grid;
+}
+ColorTable& ActionData::getTable(){
+    return CTable;
 }

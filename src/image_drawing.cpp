@@ -1,8 +1,55 @@
 #include "image_menu.h"
 
+void setColorTableSize(ActionData &action_data)
+{
+    int Size = getInteger(action_data, "Size? ");
+    action_data.getTable().setNumberOfColors(Size);
+}
+void setColor(ActionData &action_data)
+{
+    Color MantisShrimp;
+    int POS = getInteger(action_data, "Position? ");
+    int FirstRed = getInteger(action_data, "Red? ");
+    int FirstGreen = getInteger(action_data, "Green? ");
+    int FirstBlue = getInteger(action_data, "Blue? ");
+    MantisShrimp.setRed(FirstRed);
+    MantisShrimp.setGreen(FirstGreen);
+    MantisShrimp.setBlue(FirstBlue);
+    action_data.getTable()[POS] = MantisShrimp;
+}
+void setRandomColor(ActionData &action_data)
+{
+    int POS = getInteger(action_data, "Position? ");
+    action_data.getTable().setRandomColor(255, POS);
+}
+void setColorGradient(ActionData &action_data)
+{
+    Color MantisShrimp;
+    Color BloodSoakedRainbows;
+    int POS = getInteger(action_data, "First Position? ");
+    int FirstRed = getInteger(action_data, "First Red? ");
+    int FirstGreen = getInteger(action_data, "First Green? ");
+    int FirstBlue = getInteger(action_data, "First Blue? ");
+    int POS2 = getInteger(action_data, "Second Position? ");
+    int SecondRed = getInteger(action_data, "Second Red? ");
+    int SecondGreen = getInteger(action_data, "Second Green? ");
+    int SecondBlue = getInteger(action_data, "Second Blue? ");
+    MantisShrimp.setRed(FirstRed);
+    MantisShrimp.setGreen(FirstGreen);
+    MantisShrimp.setBlue(FirstBlue);
+    BloodSoakedRainbows.setRed(SecondRed);
+    BloodSoakedRainbows.setGreen(SecondGreen);
+    BloodSoakedRainbows.setBlue(SecondBlue);
+    action_data.getTable().insertGradient(MantisShrimp, BloodSoakedRainbows, POS, POS2);
+}
+void applyGridColorTable(ActionData &action_data)
+{
+    action_data.getGrid().setPPM(action_data.getOutputImage(), action_data.getTable());
+}
+
 void configureGrid(ActionData &action_data)
 {
-   
+
     int height = getInteger(action_data, "Grid Height? ");
     int width = getInteger(action_data, "Grid Width? ");
     int Val = getInteger(action_data, "Grid Max Value? ");
@@ -20,8 +67,7 @@ void setGrid(ActionData &action_data)
 
 void applyGrid(ActionData &action_data)
 {
-    action_data.getGrid().setPPM(action_data.getOutputImage());
-    
+    action_data.getGrid().setPPM(action_data.getOutputImage(),action_data.getTable());
 }
 
 void drawSquare(ActionData &action_data)

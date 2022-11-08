@@ -2,6 +2,7 @@
 #ifndef _NumberGrid_H_
 #define _NumberGrid_H_
 #include "PPM.h"
+#include "ColorTable.h"
 #include <vector>
 class NumberGrid
 {
@@ -21,7 +22,7 @@ public:
     bool numberValid(const int &number) const;
     int getNumber(const int &row, const int &column) const;
     void setNumber(const int &row, const int &column, const int &number);
-    void setPPM(PPM &ppm) const;
+    void setPPM(PPM &ppm, const ColorTable& colors) const;
 
 protected:
     int Wwidth;

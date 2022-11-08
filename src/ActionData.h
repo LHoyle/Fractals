@@ -2,6 +2,7 @@
 #ifndef _ActionData_H_
 #define _ActionData_H_
 #include "PPM.h"
+#include "ColorTable.h"
 #include "NumberGrid.h"
 
 class ActionData
@@ -18,6 +19,7 @@ public:
     ~ActionData();
     NumberGrid& getGrid();
     void setGrid(NumberGrid *grid);
+    ColorTable& getTable();
 protected:
     std::istream& AIS;
     std::ostream& AOS;
@@ -26,6 +28,7 @@ protected:
     PPM oim;
     bool check;
     NumberGrid *Numpoint;
+    ColorTable CTable;
 };
 
 #endif

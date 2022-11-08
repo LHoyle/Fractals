@@ -4,11 +4,24 @@
 #include <vector>
 #include <iostream>
 #include <cmath>
+#include <ctime>
+#include <cstdlib>
 #include "Image.h"
 #include "PPM.h"
 #include "ActionData.h"
 #include "MenuData.h"
 #include "NumberGrid.h"
+#include "ColorTable.h"
+
+void setColorTableSize(ActionData& action_data);
+
+void setColor(ActionData& action_data);
+
+void setRandomColor(ActionData& action_data);
+
+void setColorGradient(ActionData& action_data);
+
+void applyGridColorTable(ActionData& action_data);
 
 void configureGrid(ActionData& action_data);
 
