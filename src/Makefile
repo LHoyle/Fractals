@@ -23,8 +23,8 @@ hello.o: hello.cpp
 questions_3: questions_3.o $(OoFiles)
 	g++ $(CXXFLAGS) -o questions_3 questions_3.o $(OoFiles)
 
-questions_3.o: questions_3.cpp $(HhFiles)  ActionData.cpp 
-	g++ $(CXXFLAGS) -c questions_3.cpp   ActionData.cpp
+questions_3.o: questions_3.cpp $(HhFiles) 
+	g++ $(CXXFLAGS) -c questions_3.cpp
 
 
 
@@ -35,8 +35,8 @@ ascii_image:   ascii_image.o $(OoFiles)
 ascii_image.o: ascii_image.cpp $(HhFiles)
 	g++ $(CXXFLAGS) -c ascii_image.cpp
 
-controllers.o: controllers.cpp $(HhFiles) ActionData.cpp image_filters.cpp MenuData.cpp
-	g++ $(CXXFLAGS) -c controllers.cpp ActionData.cpp MenuData.cpp image_filters.cpp
+controllers.o: controllers.cpp $(HhFiles)
+	g++ $(CXXFLAGS) -c controllers.cpp 
 
 user_io.o: user_io.cpp $(HhFiles)
 	g++ $(CXXFLAGS) -c user_io.cpp
@@ -54,8 +54,8 @@ image_file: ppm_menu.o $(OoFiles)
 PPM.o: PPM.cpp $(HhFiles)
 	g++ $(CXXFLAGS) -c $<
 
-image_output.o: image_output.cpp $(HhFiles) PPM.cpp ActionData.cpp
-	g++ $(CXXFLAGS) -c image_output.cpp PPM.cpp ActionData.cpp
+image_output.o: image_output.cpp $(HhFiles) 
+	g++ $(CXXFLAGS) -c image_output.cpp 
 
 image_file.o: image_file.cpp $(HhFiles)
 	g++ $(CXXFLAGS) -c image_file.cpp
@@ -72,8 +72,8 @@ flag_columbia_ascii: flag_columbia_ascii.o $(OoFiles)
 flag_columbia_ascii.o: flag_columbia_ascii.cpp $(HhFiles)
 	g++ $(CXXFLAGS) -c flag_columbia_ascii.cpp
 	
-ActionData.o: ActionData.cpp PPM.cpp $(HhFiles)
-	g++ $(CXXFLAGS) -c  ActionData.cpp PPM.cpp 
+ActionData.o: ActionData.cpp  $(HhFiles)
+	g++ $(CXXFLAGS) -c  ActionData.cpp 
 
 MenuData.o: MenuData.cpp $(HhFiles)
 	g++ $(CXXFLAGS) -c  $<
