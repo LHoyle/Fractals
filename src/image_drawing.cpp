@@ -26,14 +26,14 @@ void setColorGradient(ActionData &action_data)
 {
     Color MantisShrimp;
     Color BloodSoakedRainbows;
-    int POS = getInteger(action_data, "First Position? ");
-    int FirstRed = getInteger(action_data, "First Red? ");
-    int FirstGreen = getInteger(action_data, "First Green? ");
-    int FirstBlue = getInteger(action_data, "First Blue? ");
-    int POS2 = getInteger(action_data, "Second Position? ");
-    int SecondRed = getInteger(action_data, "Second Red? ");
-    int SecondGreen = getInteger(action_data, "Second Green? ");
-    int SecondBlue = getInteger(action_data, "Second Blue? ");
+    int POS = getInteger(action_data, "First position? ");
+    int FirstRed = getInteger(action_data, "First red? ");
+    int FirstGreen = getInteger(action_data, "First green? ");
+    int FirstBlue = getInteger(action_data, "First blue? ");
+    int POS2 = getInteger(action_data, "Second position? ");
+    int SecondRed = getInteger(action_data, "Second red? ");
+    int SecondGreen = getInteger(action_data, "Second green? ");
+    int SecondBlue = getInteger(action_data, "Second blue? ");
     MantisShrimp.setRed(FirstRed);
     MantisShrimp.setGreen(FirstGreen);
     MantisShrimp.setBlue(FirstBlue);
