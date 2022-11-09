@@ -38,21 +38,27 @@ int JuliaSet::calculatePlaneEscapeCount(const double &x0, const double &y0) cons
     int timeloops;
     double EscapeeX = x0;
     double EscapeeY = y0;
-    if (x0 >2 || x0<-2 || y0 > 2 || y0<-2){
+    double radius = 2;
+    //if (radius >= std::sqrt(std::pow(row - rowcent, 2) + std::pow(col - colcent, 2)))
+            //{
+              //  action_data.getInputImage1().setPixel(row, col, r, g, b);
+            //} 
+
+    /*if (x0 >2 || x0<-2 || y0 > 2 || y0 < -2 ){
         return 0;
-    }
+    }*/
     calculateNextPoint(EscapeeX, EscapeeY, EscapeeX, EscapeeY);
     //double Repeatx =EscapeeX;
     //double Repeaty =EscapeeY;
-    if (EscapeeX >2 || EscapeeX<-2 || EscapeeY > 2 || EscapeeY<-2){
+    if (radius >std::sqrt(std::pow(EscapeeY - 0, 2) + std::pow(EscapeeX- 0, 2))){
         return 0;
     }
-    for(timeloops=1;timeloops<=NumberGrid::getMaxNumber();timeloops++){
+    for(timeloops=0;timeloops<=NumberGrid::getMaxNumber();timeloops++){
         calculateNextPoint(EscapeeX, EscapeeY, EscapeeX, EscapeeY);
         /*calculateNextPoint(Repeatx, Repeaty, EscapeeX, EscapeeY);
         Repeatx = EscapeeX;
         Repeaty = EscapeeY;*/
-        if (EscapeeX>2.0 || EscapeeX<-2.0 ||EscapeeY>2.0 || EscapeeY<-2.0){
+        if (radius >std::sqrt(std::pow(EscapeeY - 0, 2) + std::pow(EscapeeX - 0, 2))){
             return timeloops;
         }   
     }
