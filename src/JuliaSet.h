@@ -21,3 +21,15 @@ double ParaB;
 };
 
 #endif
+#ifndef _JuliaSetFour_H_
+#define _JuliaSetFour_H_
+#include "ComplexFractal.h"
+
+class JuliaSetFour :public JuliaSet
+{
+public:
+JuliaSetFour();
+virtual ~JuliaSetFour();
+virtual void calculateNextPoint(const double x0, const double y0, double& x1, double &y1) const;
+};
+#endif

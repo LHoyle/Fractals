@@ -16,6 +16,8 @@
 #include "JuliaSet.h"
 #include "MandelbrotSet.h"
 
+void setJuliaFourFractal(ActionData& action_data);
+
 void setMandelbrotPowerFractal(ActionData& action_data);
 
 void setMandelbrotPower(ActionData& action_data);

@@ -30,35 +30,33 @@ void JuliaSet::setParameters(const double &a, const double &b)
 }
 void JuliaSet::calculateNextPoint(const double x0, const double y0, double &x1, double &y1) const
 {
-    x1 = x0*x0 - y0*y0 + ParaA;
-    y1 = 2*x0*y0 + ParaB;
+    x1 = x0 * x0 - y0 * y0 + ParaA;
+    y1 = 2 * x0 * y0 + ParaB;
 }
 int JuliaSet::calculatePlaneEscapeCount(const double &x0, const double &y0) const
 {
-    int timeloops=0;
+    int timeloops = 0;
     double EscapeeX = x0;
     double EscapeeY = y0;
     double radius = 2;
-   // if()
-    while( radius >= std::sqrt(std::pow(EscapeeY, 2) + std::pow(EscapeeX, 2)) && timeloops<NumberGrid::getMaxNumber()){
+    // if()
+    while (radius >= std::sqrt(std::pow(EscapeeY, 2) + std::pow(EscapeeX, 2)) && timeloops < NumberGrid::getMaxNumber())
+    {
         calculateNextPoint(EscapeeX, EscapeeY, EscapeeX, EscapeeY);
-        timeloops = timeloops+1;
-
-
-
+        timeloops = timeloops + 1;
     }
     return timeloops;
     /*for(timeloops=0;timeloops<=NumberGrid::getMaxNumber();timeloops++){
         if (std::pow(radius,2) >(std::pow(EscapeeY - 0, 2) + std::pow(EscapeeX - 0, 2))){
             return timeloops;
-        }   
+        }
         calculateNextPoint(EscapeeX, EscapeeY, EscapeeX, EscapeeY);
     }
     return NumberGrid::getMaxNumber();*/
-    //if (radius >= std::sqrt(std::pow(row - rowcent, 2) + std::pow(col - colcent, 2)))
-            //{
-              //  action_data.getInputImage1().setPixel(row, col, r, g, b);
-            //} 
+    // if (radius >= std::sqrt(std::pow(row - rowcent, 2) + std::pow(col - colcent, 2)))
+    //{
+    //   action_data.getInputImage1().setPixel(row, col, r, g, b);
+    //}
 
     /*if (x0 >2 || x0<-2 || y0 > 2 || y0 < -2 ){
         return 0;
@@ -69,9 +67,9 @@ int JuliaSet::calculatePlaneEscapeCount(const double &x0, const double &y0) cons
     if (std::pow(radius,2)>std::sqrt(std::pow(EscapeeY - 0, 2) + std::pow(EscapeeX- 0, 2))){
         return 0;
     }*/
-        /*calculateNextPoint(Repeatx, Repeaty, EscapeeX, EscapeeY);
-        Repeatx = EscapeeX;
-        Repeaty = EscapeeY;*/
+    /*calculateNextPoint(Repeatx, Repeaty, EscapeeX, EscapeeY);
+    Repeatx = EscapeeX;
+    Repeaty = EscapeeY;*/
     /*while (EscapeeX <= 2.0 && EscapeeX >= -2.0 && EscapeeY <= 2 && EscapeeY >= -2 && timeloops<=NumberGrid::getMaxNumber())
     {
         timeloops = timeloops + 1;
@@ -86,12 +84,26 @@ int JuliaSet::calculateNumber(const int &row, const int &column) const
     if (row >= 0 && row < Hheight && column >= 0 && column < Wwidth)
     {
         int result;
-        double x=0;
-        double y=0;
-        calculatePlaneCoordinatesFromPixelCoordinates(row,column,x,y);
+        double x = 0;
+        double y = 0;
+        calculatePlaneCoordinatesFromPixelCoordinates(row, column, x, y);
         result = calculatePlaneEscapeCount(x, y);
-        
+
         return result;
     }
     return -1;
+}
+
+
+JuliaSetFour::JuliaSetFour()
+:JuliaSet()
+{
+}
+JuliaSetFour::~JuliaSetFour()
+{
+}
+void JuliaSetFour::calculateNextPoint(const double x0, const double yNone, double &x1, double &y1) const
+{
+    x1=(std::pow(x0,4) - 6 *std::pow(x0,2)* std::pow( yNone ,2) + std::pow(yNone,4) + ParaA);
+    y1 = (4*std::pow(x0,3) * yNone - 4 *x0* std::pow(yNone,3) + ParaB);
 }
