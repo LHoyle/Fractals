@@ -21,5 +21,22 @@ protected:
 
 #endif
 
-#include "JuliaSet.h"
-#include <cmath>
+
+#ifndef _MandelbrotSetPower_H_
+#define _MandelbrotSetPower_H_
+#include "ComplexFractal.h"
+ class MandelbrotPower  : public MandelbrotSet
+ {
+ public:
+    MandelbrotPower();
+    ~MandelbrotPower();
+    double getPower() const;
+    void setPower(const double& power);
+    virtual void calculateNextPoint(const double x0, const double y0, const double& a, const double& b, double& x1, double &y1) const;
+ protected:
+    double UnlimitedPower;/* data */
+ };
+ 
+ 
+
+#endif

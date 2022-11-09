@@ -2,7 +2,7 @@ CXXFLAGS := -std=c++11 -Wall -Werror -Wextra -Wpedantic
 HhFiles :=   image_menu.h PPM.h Image.h ActionData.h MenuData.h NumberGrid.h ColorTable.h
 OoFiles :=   image_output.o image_drawing.o controllers.o  user_io.o Image.o ActionData.o MenuData.o PPM.o image_filters.o NumberGrid.o ColorTable.o ComplexFractal.o MandelbrotSet.o JuliaSet.o
 
-all: hello questions_3 ascii_image image_file buck flag_columbia_ascii ActionData.o MenuData.o ppm_menu.o 
+all: hello questions_3 ascii_image image_file buck flag_columbia_ascii ActionData.o MenuData.o ppm_menu.o ppm_menu
 
 
 ppm_menu:ppm_menu.o $(OoFiles)

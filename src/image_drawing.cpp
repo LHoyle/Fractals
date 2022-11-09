@@ -1,5 +1,18 @@
 #include "image_menu.h"
 
+void setMandelbrotPower(ActionData &action_data)
+{
+    MandelbrotPower *Mists = dynamic_cast<MandelbrotPower *>(&action_data.getGrid());
+    if (0 != Mists)
+    {
+        double Ppower = getDouble(action_data, "Power? ");
+        Mists->setPower(Ppower);
+        return;
+    }
+    action_data.getOS() << "Not a MandelbrotPower object. Can't set power." << std::endl;
+    return;
+}
+
 void setJuliaParameters(ActionData &action_data)
 {
     JuliaSet *Mists = dynamic_cast<JuliaSet *>(&action_data.getGrid());

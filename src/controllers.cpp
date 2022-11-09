@@ -79,6 +79,8 @@ void configureMenu(MenuData &menu_data)
     menu_data.addAction("complex-fractal", setComplexFractal, "Choose to make a complex plane.");
     menu_data.addAction("julia", setJuliaFractal, "Choose to make a Julia set.");
     menu_data.addAction("mandelbrot", setMandelbrotFractal, "Choose to make a Mandelbrot set.");
+    menu_data.addAction("mandelbrot-power", setMandelbrotPowerFractal, "Choose to make a Mandelbrot set with the power function.");
+    menu_data.addAction("set-mandelbrot-power", setMandelbrotPower, "Choose a power for the Mandelbrot power function.");
     // menu_data.addAction("q", q, "");
 }
 int imageMenu(std::istream &is, std::ostream &os)
@@ -151,4 +153,8 @@ int flag_columbia_ascii(std::istream &is, std::ostream &os)
 
 void setMandelbrotFractal( ActionData& action_data ){
     action_data.setGrid(new MandelbrotSet);
+}
+
+void setMandelbrotPowerFractal(ActionData& action_data){
+    action_data.setGrid(new MandelbrotPower);
 }
