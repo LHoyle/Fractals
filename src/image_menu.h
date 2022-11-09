@@ -13,6 +13,13 @@
 #include "NumberGrid.h"
 #include "ColorTable.h"
 #include "ComplexFractal.h"
+#include "JuliaSet.h"
+
+void setJuliaParameters(ActionData& action_data);
+
+void setComplexFractal( ActionData& action_data );
+
+void setJuliaFractal( ActionData& action_data );
 
 void setFractalPlaneSize(ActionData& action_data);
 

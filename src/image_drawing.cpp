@@ -1,5 +1,19 @@
 #include "image_menu.h"
 
+void setJuliaParameters(ActionData &action_data)
+{
+    JuliaSet *Mists = dynamic_cast<JuliaSet *>(&action_data.getGrid());
+    if (0 != Mists)
+    {
+        double ParaA = getDouble(action_data, "Parameter a? ");
+        double ParaB = getDouble(action_data, "Parameter b? ");
+        Mists->setParameters(ParaA, ParaB);
+        return;
+    }
+    action_data.getOS() << "Not a JuliaSet object. Can't set parameters." << std::endl;
+    return;
+}
+
 void setFractalPlaneSize(ActionData &action_data)
 {
     ComplexFractal *Mists = dynamic_cast<ComplexFractal *>(&action_data.getGrid());

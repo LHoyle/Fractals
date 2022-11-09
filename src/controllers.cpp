@@ -65,17 +65,20 @@ void configureMenu(MenuData &menu_data)
     menu_data.addAction("square", drawSquare, "Draw a square shape in input image 1.");
     menu_data.addAction("orange", orangeFilter, "Set output image from orange filter on input image 1.");
     menu_data.addAction("*=-ppm", timesEqualsPPM, "Set input image 1 by multiplying by input image 2.");
-    menu_data.addAction("grid", configureGrid, "Configure the grid."); 
-    menu_data.addAction("grid-set", setGrid, "Set a single value in the grid."); 
-    menu_data.addAction("grid-apply", applyGrid, "Use the grid values to set colors in the output image."); 
+    menu_data.addAction("grid", configureGrid, "Configure the grid.");
+    menu_data.addAction("grid-set", setGrid, "Set a single value in the grid.");
+    menu_data.addAction("grid-apply", applyGrid, "Use the grid values to set colors in the output image.");
     menu_data.addAction("set-color-table-size", setColorTableSize, "Change the number of slots in the color table.");
     menu_data.addAction("set-color", setColor, "Set the RGB values for one slot in the color table.");
     menu_data.addAction("set-random-color", setRandomColor, "Randomly set the RGB values for one slot in the color table.");
     menu_data.addAction("set-color-gradient", setColorGradient, "Smoothly set the RGB values for a range of slots in the color table.");
     menu_data.addAction("grid-apply-color-table", applyGridColorTable, "Use the grid values to set colors in the output image using the color table.");
-    menu_data.addAction("fractal-plane-size", setFractalPlaneSize, "Set the dimensions of the grid in the complex plane."); 
-    menu_data.addAction("fractal-calculate", calculateFractal, "Calculate the escape values for the fractal."); 
-    // menu_data.addAction("q", q, ""); 
+    menu_data.addAction("fractal-plane-size", setFractalPlaneSize, "Set the dimensions of the grid in the complex plane.");
+    menu_data.addAction("fractal-calculate", calculateFractal, "Calculate the escape values for the fractal.");
+    menu_data.addAction("julia-parameters", setJuliaParameters, "Set the parameters of the Julia Set function.");
+        menu_data.addAction("complex-fractal", setComplexFractal, "Choose to make a complex plane.");
+            menu_data.addAction("julia", setJuliaFractal, "Choose to make a Julia set.");
+    // menu_data.addAction("q", q, "");
 }
 int imageMenu(std::istream &is, std::ostream &os)
 {
@@ -92,6 +95,14 @@ int imageMenu(std::istream &is, std::ostream &os)
         takeAction(choice, menu, ac);
     }
     return 0;
+}
+void setComplexFractal(ActionData &action_data)
+{
+    action_data.setGrid(new ComplexFractal);
+}
+void setJuliaFractal(ActionData &action_data)
+{
+    action_data.setGrid(new JuliaSet);
 }
 
 int assignment1(std::istream &is, std::ostream &os)
