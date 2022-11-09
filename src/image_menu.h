@@ -14,6 +14,8 @@
 #include "ColorTable.h"
 #include "ComplexFractal.h"
 #include "JuliaSet.h"
+#include "MandelbrotSet.h"
+void setMandelbrotFractal( ActionData& action_data );
 
 void setJuliaParameters(ActionData& action_data);
 

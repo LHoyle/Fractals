@@ -76,8 +76,9 @@ void configureMenu(MenuData &menu_data)
     menu_data.addAction("fractal-plane-size", setFractalPlaneSize, "Set the dimensions of the grid in the complex plane.");
     menu_data.addAction("fractal-calculate", calculateFractal, "Calculate the escape values for the fractal.");
     menu_data.addAction("julia-parameters", setJuliaParameters, "Set the parameters of the Julia Set function.");
-        menu_data.addAction("complex-fractal", setComplexFractal, "Choose to make a complex plane.");
-            menu_data.addAction("julia", setJuliaFractal, "Choose to make a Julia set.");
+    menu_data.addAction("complex-fractal", setComplexFractal, "Choose to make a complex plane.");
+    menu_data.addAction("julia", setJuliaFractal, "Choose to make a Julia set.");
+    menu_data.addAction("mandelbrot", setMandelbrotFractal, "Choose to make a Mandelbrot set.");
     // menu_data.addAction("q", q, "");
 }
 int imageMenu(std::istream &is, std::ostream &os)
@@ -146,4 +147,8 @@ int flag_columbia_ascii(std::istream &is, std::ostream &os)
     ac.getOutputImage() = ac.getInputImage1();
     drawAsciiImage(ac);
     return 0;
+}
+
+void setMandelbrotFractal( ActionData& action_data ){
+    action_data.setGrid(new MandelbrotSet);
 }
