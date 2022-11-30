@@ -82,8 +82,11 @@ void configureMenu(MenuData &menu_data)
     menu_data.addAction("mandelbrot-power", setMandelbrotPowerFractal, "Choose to make a Mandelbrot set with the power function.");
     menu_data.addAction("set-mandelbrot-power", setMandelbrotPower, "Choose a power for the Mandelbrot power function.");
     menu_data.addAction("julia-four", setJuliaFourFractal, "Choose to make a Julia set with the fourth power function.");
+    //menu_data.addAction("fractal-calculate", calculateFractal, "Calculate the escape values for the fractal.");
+    menu_data.addAction("fractal-calculate-single-thread", calculateFractalSingleThread, "Calculate the escape values for the fractal, single-thread.");
     // menu_data.addAction("q", q, "");
 }
+
 int imageMenu(std::istream &is, std::ostream &os)
 {
     ActionData ac = ActionData(is, os);

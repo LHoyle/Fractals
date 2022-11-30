@@ -1,5 +1,9 @@
 #include "image_menu.h"
 
+void calculateFractalSingleThread(ActionData& action_data){
+    action_data.getGrid().NumberGrid::calculateAllNumbers();
+}
+
 void setMandelbrotPower(ActionData &action_data)
 {
     MandelbrotPower *Mists = dynamic_cast<MandelbrotPower *>(&action_data.getGrid());

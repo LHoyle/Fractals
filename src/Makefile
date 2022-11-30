@@ -1,12 +1,13 @@
 CXXFLAGS := -std=c++11 -Wall -Werror -Wextra -Wpedantic 
-HhFiles :=   image_menu.h PPM.h Image.h ActionData.h MenuData.h NumberGrid.h ColorTable.h
-OoFiles :=   image_output.o image_drawing.o controllers.o  user_io.o Image.o ActionData.o MenuData.o PPM.o image_filters.o NumberGrid.o ColorTable.o ComplexFractal.o MandelbrotSet.o JuliaSet.o
+HhFiles :=   image_menu.h PPM.h Image.h ActionData.h MenuData.h NumberGrid.h ColorTable.h ThreadedGrid.h ThreadedVector.h
+OoFiles :=   image_output.o image_drawing.o controllers.o  user_io.o Image.o ActionData.o MenuData.o PPM.o image_filters.o NumberGrid.o ColorTable.o ComplexFractal.o MandelbrotSet.o JuliaSet.o ThreadedGrid.o ThreadedVector.h
+LDFLAGS := -lpthread
 
 all: hello questions_3 ascii_image image_file buck flag_columbia_ascii ActionData.o MenuData.o ppm_menu.o ppm_menu
 
 
-ppm_menu:ppm_menu.o $(OoFiles)
-	g++ $(CXXFLAGS) -o ppm_menu  $^ 
+ppm_menu:ppm_menu.o $(OoFiles) 
+	g++ $(CXXFLAGS) -o ppm_menu $^ $(LDFLAGS)  
 
 ppm_menu.o: ppm_menu.cpp  $(HhFiles)
 	g++ $(CXXFLAGS)  -c $<
@@ -21,7 +22,7 @@ hello.o: hello.cpp
 
 
 questions_3: questions_3.o $(OoFiles)
-	g++ $(CXXFLAGS) -o questions_3 questions_3.o $(OoFiles)
+	g++ $(CXXFLAGS) -o questions_3 questions_3.o $(OoFiles) $(LDFLAGS)
 
 questions_3.o: questions_3.cpp $(HhFiles) 
 	g++ $(CXXFLAGS) -c questions_3.cpp
@@ -30,7 +31,7 @@ questions_3.o: questions_3.cpp $(HhFiles)
 
 
 ascii_image:   ascii_image.o $(OoFiles)
-	g++ $(CXXFLAGS) -o ascii_image  ascii_image.o $(OoFiles)
+	g++ $(CXXFLAGS) -o ascii_image  ascii_image.o $(OoFiles) $(LDFLAGS)
 
 ascii_image.o: ascii_image.cpp $(HhFiles)
 	g++ $(CXXFLAGS) -c ascii_image.cpp
@@ -49,7 +50,7 @@ Image.o: Image.cpp $(HhFiles)
 
 
 image_file: ppm_menu.o $(OoFiles)
-	g++ $(CXXFLAGS) -o image_file ppm_menu.o $(OoFiles)
+	g++ $(CXXFLAGS) -o image_file ppm_menu.o $(OoFiles) $(LDFLAGS)
 
 PPM.o: PPM.cpp $(HhFiles)
 	g++ $(CXXFLAGS) -c $<
@@ -61,13 +62,13 @@ image_file.o: image_file.cpp $(HhFiles)
 	g++ $(CXXFLAGS) -c image_file.cpp
  
 buck: buck.o $(OoFiles)
-	g++ $(CXXFLAGS) -o buck  buck.o $(OoFiles)
+	g++ $(CXXFLAGS) -o buck  buck.o $(OoFiles) $(LDFLAGS)
 
 buck.o: buck.cpp $(HhFiles)
 	g++ $(CXXFLAGS) -c buck.cpp
 
 flag_columbia_ascii: flag_columbia_ascii.o $(OoFiles)
-	g++ $(CXXFLAGS) -o flag_columbia_ascii flag_columbia_ascii.o $(OoFiles)
+	g++ $(CXXFLAGS) -o flag_columbia_ascii flag_columbia_ascii.o $(OoFiles) $(LDFLAGS)
 
 flag_columbia_ascii.o: flag_columbia_ascii.cpp $(HhFiles)
 	g++ $(CXXFLAGS) -c flag_columbia_ascii.cpp
@@ -96,6 +97,9 @@ JuliaSet.o:JuliaSet.cpp $(HhFiles)
 	g++ $(CXXFLAGS) -c $<
 
 MandelbrotSet.o: MandelbrotSet.cpp $(HhFiles)
+	g++ $(CXXFLAGS) -c $<
+
+ThreadedGrid.o: ThreadedGrid.cpp $(HhFiles)
 	g++ $(CXXFLAGS) -c $<
 
 clean: 

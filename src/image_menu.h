@@ -15,6 +15,7 @@
 #include "ComplexFractal.h"
 #include "JuliaSet.h"
 #include "MandelbrotSet.h"
+void calculateFractalSingleThread(ActionData& action_data);
 
 void setJuliaFourFractal(ActionData& action_data);
 
