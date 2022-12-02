@@ -30,9 +30,36 @@ public:
   void createMandelbrot2();
   void createComplexFractal();
   void createComplexFractal2();
-  enum InteractionMode { IM_FRACTAL, IM_COLORTABLE };
-  enum FractalMode { M_MANDELBROT, M_JULIA, M_COMPLEX }; 
+  
+  enum InteractionMode
+  {
+    IM_FRACTAL,
+    IM_COLORTABLE
+  };
+  enum FractalMode
+  {
+    M_MANDELBROT,
+    M_JULIA,
+    M_COMPLEX
+  };
 
+  void displayColorTable();
+  void setInteractionMode(InteractionMode mode);
+  void setColorTable();
+  void decreaseColorTableSize();
+  void increaseColorTableSize();
+  void zoomIn();
+  void zoomOut();
+  void moveLeft();
+  void moveRight();
+  void moveDown();
+  void moveUp();
+  void setFractalMode(FractalMode mode);
+  void increaseMaxNumber();
+  void decreaseMaxNumber();
+  void setAB(int x, int y);
+  void resetPlane();
+  void createFractal();
 
 protected:
   int mHeight, mWidth;
