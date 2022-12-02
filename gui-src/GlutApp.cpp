@@ -251,10 +251,11 @@ void GlutApp::createComplexFractal2()
 void GlutApp::displayColorTable()
 {
   glBegin(GL_POINTS);
-  for (int k = mMinX; k < mMaxX; k++)
+  PPM &p = mActionData.getOutputImage();
+  for (int k = 0; k < p.getHeight(); k++)
   {
     // double l = k * mNumColor / mHeight;
-    for (int j = mMinY; j < mMaxY; j++)
+    for (int j = 0; j < p.getWidth(); j++)
     {
       double i = j * mNumColor / mWidth;
       //.
@@ -269,7 +270,7 @@ void GlutApp::displayColorTable()
       double truGreen = green / 255.0;
       double truBlue = blue / 255.0;
       glColor3d(truRed, truGreen, truBlue);
-      glVertex2i(k, j);
+      glVertex2i(j, k);
     }
   }
   glEnd();
@@ -313,8 +314,12 @@ void GlutApp::decreaseColorTableSize()
 {
   if (mActionData.getTable().getNumberOfColors() > 10)
   {
-    int newcolor = mActionData.getTable().getNumberOfColors() / 1.1;
+    double newcolor = mActionData.getTable().getNumberOfColors() / 1.1;
     mActionData.getTable().setNumberOfColors(newcolor);
+    //fractalPlaneSize(mMinX, mMaxX, mMinY, mMaxY);
+    //fractalCalculate();
+    setColorTable();
+    gridApplyColorTable();
   }
 }
 
@@ -322,8 +327,12 @@ void GlutApp::increaseColorTableSize()
 {
   if (mActionData.getTable().getNumberOfColors() < 1024)
   {
-    int newcolor = mActionData.getTable().getNumberOfColors() * 1.1;
+    double newcolor = mActionData.getTable().getNumberOfColors() * 1.1;
     mActionData.getTable().setNumberOfColors(newcolor);
+    //fractalPlaneSize(mMinX, mMaxX, mMinY, mMaxY);
+    //fractalCalculate();
+    setColorTable();
+    gridApplyColorTable();
   }
 }
 
@@ -336,6 +345,9 @@ void GlutApp::zoomIn()
   double dy = (1.0 - 0.9) * (mMaxY - mMinY) / 2.0;
   mMinY = mMinY + dy;
   mMaxY = mMaxY - dy;
+  fractalPlaneSize(mMinX, mMaxX, mMinY, mMaxY);
+  fractalCalculate();
+  gridApplyColorTable();
 }
 
 void GlutApp::zoomOut()
@@ -358,45 +370,62 @@ void GlutApp::zoomOut()
   {
     mMaxY = mMaxY + dy;
   }
+  fractalPlaneSize(mMinX, mMaxX, mMinY, mMaxY);
+  fractalCalculate();
+  gridApplyColorTable();
 }
 
 void GlutApp::moveLeft()
 {
-  int dx = (1.0 - 0.9) * (mMaxX - mMinX) / 2.0;
-  if (mMinX - dx > -2.0)
+  double dx = (1.0 - 0.9) * (mMaxX - mMinX) / 2.0;
+  if (mMinX - dx >= -2.0)
   {
     mMinX = mMinX - dx;
     mMaxX = mMaxX - dx;
+    fractalPlaneSize(mMinX, mMaxX, mMinY, mMaxY);
+    fractalCalculate();
+    gridApplyColorTable();
   }
 }
 
 void GlutApp::moveRight()
 {
-  int dx = (1.0 - 0.9) * (mMaxX - mMinX) / 2.0;
-  if (mMaxX + dx < 2.0)
+  double dx = (1.0 - 0.9) * (mMaxX - mMinX) / 2.0;
+  if (mMaxX + dx <= 2.0)
   {
     mMinX = mMinX + dx;
     mMaxX = mMaxX + dx;
+    fractalPlaneSize(mMinX, mMaxX, mMinY, mMaxY);
+    fractalCalculate();
+    gridApplyColorTable();
   }
+  // fractal calulate
+  // grid apply color table.
 }
 
 void GlutApp::moveDown()
 {
-  int dy = (1.0 - 0.9) * (mMaxY - mMinY) / 2.0;
-  if (mMinY - dy > -2.0)
+  double dy = (1.0 - 0.9) * (mMaxY - mMinY) / 2.0;
+  if (mMinY - dy >= -2.0)
   {
     mMinY = mMinY - dy;
     mMaxY = mMaxY - dy;
+    fractalPlaneSize(mMinX, mMaxX, mMinY, mMaxY);
+    fractalCalculate();
+    gridApplyColorTable();
   }
 }
 
 void GlutApp::moveUp()
 {
-  int dy = (1.0 - 0.9) * (mMaxY - mMinY) / 2.0;
-  if (mMaxY + dy < 2.0)
+  double dy = (1.0 - 0.9) * (mMaxY - mMinY) / 2.0;
+  if (mMaxY + dy <= 2.0)
   {
     mMinY = mMinY + dy;
     mMaxY = mMaxY + dy;
+    fractalPlaneSize(mMinX, mMaxX, mMinY, mMaxY);
+    fractalCalculate();
+    gridApplyColorTable();
   }
 }
 
