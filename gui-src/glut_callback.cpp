@@ -60,6 +60,18 @@ void keyboard_cb(unsigned char c, int x, int y)
   case '.':
     g_app_data->decreaseColorTableSize();
     break;
+  case 'b':
+    g_app_data->setFractalMode(GlutApp::M_MANDELBROT);
+    g_app_data->createFractal();
+    break;
+  case 'n':
+    g_app_data->setFractalMode(GlutApp::M_JULIA);
+    g_app_data->createFractal();
+    break;
+  case 'F':
+    g_app_data->setFractalMode(GlutApp::M_COMPLEX);
+    g_app_data->createFractal();
+    break;
   case 'z':
     g_app_data->zoomIn();
     g_app_data->createFractal();
@@ -68,28 +80,16 @@ void keyboard_cb(unsigned char c, int x, int y)
     g_app_data->zoomOut();
     g_app_data->createFractal();
     break;
+  case 'R':
+    g_app_data->resetPlane();
+    g_app_data->createFractal();
+    break;
   case '=':
     g_app_data->increaseMaxNumber();
     g_app_data->createFractal();
     break;
   case '-':
     g_app_data->decreaseMaxNumber();
-    g_app_data->createFractal();
-    break;
-  case 'b':
-    g_app_data->setFractalMode(GlutApp::M_MANDELBROT);
-    g_app_data->createFractal();
-    break;
-  case 'n':
-    g_app_data->setFractalMode(GlutApp::M_COMPLEX);
-    g_app_data->createFractal();
-    break;
-  case 'F':
-    g_app_data->setFractalMode(GlutApp::M_JULIA);
-    g_app_data->createFractal();
-    break;
-  case 'R':
-    g_app_data->resetPlane();
     g_app_data->createFractal();
     break;
   default:

@@ -67,6 +67,8 @@ protected:
   std::stringstream mOutputStream;
   ActionData mActionData;
   MenuData mMenuData;
+
+  //part2
   double mMinX, mMaxX, mMinY, mMaxY;
   double mA, mB;
   InteractionMode mInteractionMode;
