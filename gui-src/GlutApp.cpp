@@ -3,9 +3,10 @@
 #include "image_menu.h"
 
 GlutApp::GlutApp(int height, int width)
-    : mHeight(height), mWidth(width), mActionData(mInputStream, mOutputStream), mMinX(-2.0), mMaxX(2.0), mMinY(-2.0), mMaxY(2.0), mInteractionMode(IM_FRACTAL), mFractalMode(M_MANDELBROT), mMaxNumber(200), mColor1(0, 0, 255), mColor2(255, 0, 255), mNumColor(32)
+    : mHeight(height), mWidth(width), mActionData(mInputStream, mOutputStream), mMinX(-2.0), mMaxX(2.0), mMinY(-2.0), mMaxY(2.0),mA(-0.180258),mB(0.661323), mInteractionMode(IM_FRACTAL), mFractalMode(M_MANDELBROT), mMaxNumber(200), mColor1(0, 0, 255), mColor2(255, 0, 255), mNumColor(32)
 {
   configureMenu(mMenuData);
+  //juliaParameters(.50,-.80)
   mActionData.setGrid(new ComplexFractal);
   setColorTable();
   createFractal();
