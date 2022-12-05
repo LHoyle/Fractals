@@ -2,6 +2,7 @@
 #include "glut_app.h"
 #include "image_menu.h"
 
+
 GlutApp::GlutApp(int height, int width)
     : mHeight(height), mWidth(width), mActionData(mInputStream, mOutputStream), mMinX(-2.0), mMaxX(2.0), mMinY(-2.0), mMaxY(2.0),mA(-0.180258),mB(0.661323), mInteractionMode(IM_FRACTAL), mFractalMode(M_MANDELBROT), mMaxNumber(200), mColor1(0, 0, 255), mColor2(255, 0, 255), mNumColor(32)
 {
@@ -317,11 +318,11 @@ void GlutApp::decreaseColorTableSize()
   {
     double newcolor = mActionData.getTable().getNumberOfColors() / 1.1;
     mActionData.getTable().setNumberOfColors(newcolor);
-    //fractalPlaneSize(mMinX, mMaxX, mMinY, mMaxY);
-    //fractalCalculate();
+  }
+  fractalPlaneSize(mMinX, mMaxX, mMinY, mMaxY);
+    fractalCalculate();
     setColorTable();
     gridApplyColorTable();
-  }
 }
 
 void GlutApp::increaseColorTableSize()
@@ -330,11 +331,11 @@ void GlutApp::increaseColorTableSize()
   {
     double newcolor = mActionData.getTable().getNumberOfColors() * 1.1;
     mActionData.getTable().setNumberOfColors(newcolor);
-    //fractalPlaneSize(mMinX, mMaxX, mMinY, mMaxY);
-    //fractalCalculate();
+  }
+  fractalPlaneSize(mMinX, mMaxX, mMinY, mMaxY);
+    fractalCalculate();
     setColorTable();
     gridApplyColorTable();
-  }
 }
 
 void GlutApp::zoomIn()
@@ -490,4 +491,36 @@ void GlutApp::createFractal()
   fractalPlaneSize(mMinX, mMaxX, mMinY, mMaxY);
   fractalCalculate();
   gridApplyColorTable();
+}
+
+void GlutApp::zoomInAndMove(int x, int y){
+  zoomIn();
+  createFractal();
+  double dx=abs(x-mWidth/2);
+  double dy=abs(y-mHeight/2);
+  
+  if (dy>dx){
+    if (y>mHeight/2){
+      moveUp();
+      std::cout << "up"<<std::endl;
+      return;
+    }
+    else{
+      moveDown();
+      std::cout << "down"<<std::endl;
+      return;
+    }
+  }
+  else{
+    if (x>mWidth/2){
+      moveRight();
+      std::cout << "right"<<std::endl;
+      return;
+    }
+    else{
+      moveLeft();
+      std::cout << "left"<<std::endl;
+      return;
+    }
+  }
 }

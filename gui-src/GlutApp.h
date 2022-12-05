@@ -61,6 +61,8 @@ public:
   void resetPlane();
   void createFractal();
 
+void zoomInAndMove(int x, int y);
+
 protected:
   int mHeight, mWidth;
   std::stringstream mInputStream;

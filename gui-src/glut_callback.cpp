@@ -168,6 +168,8 @@ void mouse_cb(int mouse_button, int state, int x, int y)
   if (mouse_button == GLUT_MIDDLE_BUTTON && state == GLUT_DOWN)
   {
     std::cout << "Middle Mouse Down. @" << xdisplay << "," << ydisplay << std::endl;
+    g_app_data->zoomInAndMove(xdisplay,ydisplay);
+    g_app_data->createFractal();
   }
   if (mouse_button == GLUT_MIDDLE_BUTTON && state == GLUT_UP)
   {
