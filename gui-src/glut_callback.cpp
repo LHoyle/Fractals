@@ -175,5 +175,15 @@ void mouse_cb(int mouse_button, int state, int x, int y)
   {
     std::cout << "Middle Mouse Up. @" << xdisplay << "," << ydisplay << std::endl;
   }
+  if (mouse_button == GLUT_RIGHT_BUTTON && state == GLUT_DOWN)
+  {    std::cout << "Right Mouse Down. @" << xdisplay << "," << ydisplay << std::endl;
+
+  }
+  if (mouse_button == GLUT_RIGHT_BUTTON && state == GLUT_UP)
+  {
+        std::cout << "Right Mouse Up. @" << xdisplay << "," << ydisplay << std::endl;
+    g_app_data->zoomOut();
+    g_app_data->createFractal();
+  }
   glutPostRedisplay();
 }
