@@ -4,7 +4,10 @@
 
 
 GlutApp::GlutApp(int height, int width)
-    : mHeight(height), mWidth(width), mActionData(mInputStream, mOutputStream), mMinX(-2.0), mMaxX(2.0), mMinY(-2.0), mMaxY(2.0),mA(-0.180258),mB(0.661323), mInteractionMode(IM_FRACTAL), mFractalMode(M_MANDELBROT), mMaxNumber(200), mColor1(0, 0, 255), mColor2(255, 0, 255), mNumColor(32)
+    : mHeight(height), mWidth(width), mActionData(mInputStream, mOutputStream),
+     mMinX(-2.0), mMaxX(2.0), mMinY(-2.0), mMaxY(2.0),mA(-0.180258),mB(0.661323), 
+     mInteractionMode(IM_FRACTAL), mFractalMode(M_MANDELBROT), mMaxNumber(200), 
+     mColor1(0, 0, 255), mColor2(255, 0, 255), mNumColor(32),mImageNumber(1)
 {
   configureMenu(mMenuData);
   //juliaParameters(.50,-.80)
@@ -523,4 +526,19 @@ void GlutApp::zoomInAndMove(int x, int y){
       return;
     }
   }
+}
+
+void GlutApp::writeImage(){
+  mOutputStream.clear();
+  mOutputStream.str("");
+  mInputStream.clear();
+  mInputStream.str("");
+  {
+    std::stringstream tmp;
+    tmp << "image-" << mImageNumber << ".ppm";
+    mInputStream.str(tmp.str());
+  }
+  takeAction("write", mMenuData, mActionData);
+  std::cout<<"Saved file " <<mImageNumber<<std::endl;
+  mImageNumber=mImageNumber+1;
 }

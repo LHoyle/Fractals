@@ -92,6 +92,9 @@ void keyboard_cb(unsigned char c, int x, int y)
     g_app_data->decreaseMaxNumber();
     g_app_data->createFractal();
     break;
+  case 'W':
+    g_app_data->writeImage();
+    break;
   default:
     return; // if we don't care, return without glutPostRedisplay()
   }

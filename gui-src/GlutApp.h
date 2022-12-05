@@ -62,6 +62,7 @@ public:
   void createFractal();
 
 void zoomInAndMove(int x, int y);
+void writeImage();
 
 protected:
   int mHeight, mWidth;
@@ -79,6 +80,8 @@ protected:
   Color mColor1;
   Color mColor2;
   int mNumColor;
+
+  int mImageNumber;
 };
 
 #endif /* _GLUTAPP_H_ */
