@@ -64,6 +64,9 @@ public:
 void zoomInAndMove(int x, int y);
 void writeImage();
 
+void MakeMaxColorTableSize();
+void MakeMinColorTableSize();
+
 protected:
   int mHeight, mWidth;
   std::stringstream mInputStream;

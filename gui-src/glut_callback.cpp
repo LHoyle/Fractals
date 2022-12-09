@@ -105,6 +105,14 @@ void keyboard_cb(unsigned char c, int x, int y)
   case 'W':
     g_app_data->writeImage();
     break;
+  case 'w':
+    g_app_data->writeImage();
+    break;
+  case '~':
+    g_app_data->MakeMaxColorTableSize();
+    break;
+  case '`':
+    g_app_data->MakeMinColorTableSize();
   default:
     return; // if we don't care, return without glutPostRedisplay()
   }
