@@ -60,6 +60,12 @@ void keyboard_cb(unsigned char c, int x, int y)
   case '.':
     g_app_data->decreaseColorTableSize();
     break;
+  case '>':
+    g_app_data->increaseColorTableSize();
+    break;
+  case '<':
+    g_app_data->decreaseColorTableSize();
+    break;
   case 'b':
     g_app_data->setFractalMode(GlutApp::M_MANDELBROT);
     g_app_data->createFractal();
@@ -85,6 +91,10 @@ void keyboard_cb(unsigned char c, int x, int y)
     g_app_data->createFractal();
     break;
   case '=':
+    g_app_data->increaseMaxNumber();
+    g_app_data->createFractal();
+    break;
+  case '+':
     g_app_data->increaseMaxNumber();
     g_app_data->createFractal();
     break;

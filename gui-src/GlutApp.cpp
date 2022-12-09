@@ -317,10 +317,22 @@ void GlutApp::setColorTable()
 
 void GlutApp::decreaseColorTableSize()
 {
-  if (mActionData.getTable().getNumberOfColors() > 10)
+  /*if (mActionData.getTable().getNumberOfColors() > 10)
   {
     double newcolor = mActionData.getTable().getNumberOfColors() / 1.1;
     mActionData.getTable().setNumberOfColors(newcolor);
+    std::cout<<"decrease color table size"<<std::endl;
+  }
+  fractalPlaneSize(mMinX, mMaxX, mMinY, mMaxY);
+    fractalCalculate();
+    setColorTable();
+    gridApplyColorTable();*/
+  
+  if (mNumColor > 10)
+  {
+    double newcolor = mNumColor / 1.1;
+    mNumColor=newcolor;
+    std::cout<<"decrease color table size"<<std::endl;
   }
   fractalPlaneSize(mMinX, mMaxX, mMinY, mMaxY);
     fractalCalculate();
@@ -330,10 +342,22 @@ void GlutApp::decreaseColorTableSize()
 
 void GlutApp::increaseColorTableSize()
 {
-  if (mActionData.getTable().getNumberOfColors() < 1024)
+  /*if (mActionData.getTable().getNumberOfColors() < 1024)
   {
     double newcolor = mActionData.getTable().getNumberOfColors() * 1.1;
     mActionData.getTable().setNumberOfColors(newcolor);
+    std::cout<<"increase color table size"<<std::endl;
+  }
+  fractalPlaneSize(mMinX, mMaxX, mMinY, mMaxY);
+    fractalCalculate();
+    setColorTable();
+    gridApplyColorTable();*/
+
+    if (mNumColor < 1024)
+  {
+    double newcolor = mNumColor * 1.1;
+    mNumColor=newcolor;
+    std::cout<<"increase color table size"<<std::endl;
   }
   fractalPlaneSize(mMinX, mMaxX, mMinY, mMaxY);
     fractalCalculate();
