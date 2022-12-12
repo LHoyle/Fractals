@@ -6,31 +6,31 @@ ThreadedGrid::ThreadedGrid()
     : NumberGrid(), Queu()
 {
     // Queu{1*1};
-    // std::make_tuple(0,0);
+    // std::make_pair(0,0);
     // Queu.push_back(position);
 }
 
 ThreadedGrid::ThreadedGrid(const int &height, const int &width)
     : NumberGrid(height, width), Queu()
 {
-    // Queu = ThreadedVector<std::tuple<int,int>>(height*width);
+    // Queu = ThreadedVector<std::pair<int,int>>(height*width);
     // Queu.push_back(position);
-    // Queu=std::make_tuple(height,width);
+    // Queu=std::make_pair(height,width);
 }
 
 ThreadedGrid::~ThreadedGrid() {}
 void ThreadedGrid::worker()
 {
-    std::vector<std::tuple<int, int>> possition;
+    std::vector<std::pair<int, int>> possition;
     while (Queu.empty() != true)
     {
         possition.clear();
         
         Queu.pop_back(possition,1);
         if(possition.size()>0){
-        std::tuple<int,int> possitionnew=possition[0];
-        int num = calculateNumber(std::get<0>(possitionnew), std::get<1>(possitionnew));
-        setNumber(std::get<0>(possitionnew), std::get<1>(possitionnew), num);
+        std::pair<int,int> possitionnew=possition[0];
+        int num = calculateNumber(possitionnew.first, possitionnew.second);
+        setNumber(possitionnew.first, possitionnew.second, num);
         }
 
     }
@@ -42,7 +42,7 @@ void ThreadedGrid::calculateAllNumbers()
     {
         for (int j=0; j < getWidth(); j++)
         {
-            Queu.push_back({i, j});
+            Queu.push_back(std::pair<int,int>(i, j));
         }
     }
     int max_threads = std::thread::hardware_concurrency();

@@ -41,7 +41,7 @@ void setFractalPlaneSize(ActionData &action_data)
         double MinY = getDouble(action_data, "Min Y? ");
         double MaxY = getDouble(action_data, "Max Y? ");
         Mists->setPlaneSize(MinX, MaxX, MinY, MaxY);
-        Mists->calculateAllNumbers();
+        //Mists->calculateAllNumbers();
         return;
     }
     action_data.getOS() << "Not a ComplexFractal object. Can't set plane size." << std::endl;

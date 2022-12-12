@@ -3,7 +3,7 @@
 #include "NumberGrid.h"
 #include "ThreadedVector.h"
 #include <vector>
-#include <tuple>
+#include <utility>
 
 /*class thread
 {
@@ -27,6 +27,6 @@ public:
     virtual void worker();
 
 protected:
-     ThreadedVector< std::tuple<int,int> > Queu;
+     ThreadedVector< std::pair<int,int> > Queu;
 };
 #endif
