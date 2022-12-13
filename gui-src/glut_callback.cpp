@@ -55,10 +55,10 @@ void keyboard_cb(unsigned char c, int x, int y)
     g_app_data->setInteractionMode(GlutApp::IM_FRACTAL);
     break;
   case ',':
-    g_app_data->increaseColorTableSize();
+    g_app_data->decreaseColorTableSize();
     break;
   case '.':
-    g_app_data->decreaseColorTableSize();
+    g_app_data->increaseColorTableSize();
     break;
   case '>':
     g_app_data->increaseColorTableSize();
