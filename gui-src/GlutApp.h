@@ -67,6 +67,9 @@ void writeImage();
 void MakeMaxColorTableSize();
 void MakeMinColorTableSize();
 
+//test
+void toggleHSVColor();
+
 protected:
   int mHeight, mWidth;
   std::stringstream mInputStream;
@@ -85,6 +88,9 @@ protected:
   int mNumColor;
 
   int mImageNumber;
+
+  //test
+  bool mHSVColor;
 };
 
 #endif /* _GLUTAPP_H_ */

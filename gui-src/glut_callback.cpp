@@ -113,6 +113,10 @@ void keyboard_cb(unsigned char c, int x, int y)
     break;
   case '`':
     g_app_data->MakeMinColorTableSize();
+    break;
+  case 'h':
+    g_app_data->toggleHSVColor();
+    break;
   default:
     return; // if we don't care, return without glutPostRedisplay()
   }
