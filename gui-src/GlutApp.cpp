@@ -6,7 +6,7 @@ GlutApp::GlutApp(int height, int width)
     : mHeight(height), mWidth(width), mActionData(mInputStream, mOutputStream),
       mMinX(-2.0), mMaxX(2.0), mMinY(-2.0), mMaxY(2.0), mA(-0.180258), mB(0.661323),
       mInteractionMode(IM_FRACTAL), mFractalMode(M_MANDELBROT), mMaxNumber(200),
-      mColor1(0, 0, 255), mColor2(255, 0, 255), mNumColor(32), mImageNumber(1),
+      mColor1(32, 67, 255), mColor2(225, 52, 100), mNumColor(32), mImageNumber(1),
       mHSVColor(false)
 {
   configureMenu(mMenuData);
@@ -328,12 +328,13 @@ void GlutApp::setColorTable()
     double value2 = 0.0;
     mColor1.getHSV(hue1, sat1, value1);
     mColor2.getHSV(hue2, sat2, value2);
-    mColor1.setFromHSV(hue1, sat1, value1);
-    mColor2.setFromHSV(hue2, sat2, value2);
+    //mColor1.setFromHSV(hue1, sat1, value1);
+    //mColor2.setFromHSV(hue2, sat2, value2);
+    std::cout<<"expected outcome"<<hue1<<" "<<sat1<<" "<<value1<<" "<<hue2<<" "<<sat2<<" "<<value2<<" "<<std::endl;
     {
       std::stringstream tmp;
       tmp << 0 << " " << hue1 << " " << sat1 << " " << value1 << " " << mNumColor - 1 << " " << hue2 << " "
-          << sat2 << " " << value2;
+          << sat2 << " " << value2<< " ";
       mInputStream.str(tmp.str());
     }
     takeAction("set-hsv-gradient", mMenuData, mActionData);
