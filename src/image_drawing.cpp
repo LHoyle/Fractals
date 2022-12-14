@@ -436,3 +436,19 @@ void diagonalQuadPattern(ActionData &action_data)
         }
     }
 }
+
+void setHueSaturationValueGradient(ActionData& action_data){
+    int pos1 = getInteger(action_data,"First position? ");
+    double hue1 = getDouble(action_data,"First hue? ");
+    double saturation1 = getDouble(action_data,"First saturation? ");
+    double value1 = getDouble(action_data,"First value? ");
+    int pos2 = getInteger(action_data,"Second position? ");
+    double hue2 = getDouble(action_data,"Second hue? ");
+    double saturation2 = getDouble(action_data,"Second saturation? ");
+    double value2 = getDouble(action_data,"Second value? ");
+    Color c1 = Color();
+    Color c2 = Color();
+    c1.setFromHSV(hue1,saturation1,value1);
+    c2.setFromHSV(hue2,saturation2,value2);
+    action_data.getTable().insertHueSaturationValueGradient(c1,c2,pos1,pos2);
+}
